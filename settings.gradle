@@ -1,0 +1,2 @@
+rootProject.name='zs-wan-android'
+include ':app'
