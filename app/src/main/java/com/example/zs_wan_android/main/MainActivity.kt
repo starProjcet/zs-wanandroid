@@ -1,7 +1,8 @@
-package com.example.zs_wan_android
+package com.example.zs_wan_android.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.zs_wan_android.R
 
 class MainActivity : AppCompatActivity() {
 
