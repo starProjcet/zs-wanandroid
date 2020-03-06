@@ -21,7 +21,7 @@ class MainActivity : BaseActivity<IBasePresenter<*>>() ,IBaseView{
     }
 
     override fun createPresenter(): IBasePresenter<*>? {
-        return MainPresenter(this)
+        return null
     }
 
     override fun getLayoutId(): Int {
