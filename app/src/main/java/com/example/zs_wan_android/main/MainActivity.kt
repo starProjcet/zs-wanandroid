@@ -6,7 +6,6 @@ import com.example.zs_wan_android.R
 import com.example.zs_wan_android.base.BaseActivity
 import com.example.zs_wan_android.base.IBasePresenter
 import com.example.zs_wan_android.base.IBaseView
-import com.trello.rxlifecycle3.LifecycleProvider
 
 /**
  * activity基础类
@@ -28,10 +27,6 @@ class MainActivity : BaseActivity<IBasePresenter<*>>() ,IBaseView{
     override fun getLayoutId(): Int {
         return R.layout.activity_main
     }
-
-//    override fun <T> bindLifecycle(): LifecycleProvider<T> {
-//        return bindLifecycle()
-//    }
 
     override fun getContext(): Context? {
         return this

@@ -1,12 +1,11 @@
 package com.example.zs_wan_android.base
 
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.zs_wan_android.utils.ColorUtils
 import com.example.zs_wan_android.utils.StatusUtil
-import com.trello.rxlifecycle3.android.ActivityEvent
-import com.trello.rxlifecycle3.components.support.RxAppCompatActivity
 
-abstract class BaseActivity<P:IBasePresenter<*>> : RxAppCompatActivity() {
+abstract class BaseActivity<P:IBasePresenter<*>> : AppCompatActivity() {
 
     protected val TAG = javaClass.name
     protected var presenter:P? = null
@@ -20,7 +19,6 @@ abstract class BaseActivity<P:IBasePresenter<*>> : RxAppCompatActivity() {
         val presenter = createPresenter()
         if (presenter != null) {
             lifecycle.addObserver(presenter)
-            presenter.bindLifecycle(this)
         }
         setStatusColor()
         setSystemInvadeBlack()

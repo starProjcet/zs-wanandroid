@@ -39,18 +39,16 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-    
+
     //第三方依赖包
     //rxjava 已存在3.0版本
     implementation "io.reactivex.rxjava2:rxjava:$rootProject.ext.rxjavaVersion"
     //rxandroid
     implementation "io.reactivex.rxjava2:rxandroid:$rootProject.ext.rxandroidVersion"
-    implementation "com.trello.rxlifecycle3:rxlifecycle-components:$rootProject.ext.rxlifecycleVersion"
     implementation "com.squareup.okhttp3:okhttp:$rootProject.ext.okhttpVersion"
     // Retrofit库
     implementation "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofitVersion"
     implementation "com.github.bumptech.glide:glide:$rootProject.ext.glideVersion"
-
 
 
 }

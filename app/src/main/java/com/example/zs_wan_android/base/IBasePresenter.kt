@@ -8,8 +8,6 @@ import com.trello.rxlifecycle3.android.ActivityEvent
 
 interface IBasePresenter<V:IBaseView> : LifecycleObserver {
 
-    fun bindLifecycle(lifecycleProvider: LifecycleProvider<ActivityEvent>)
-
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     fun onCreate()
 
