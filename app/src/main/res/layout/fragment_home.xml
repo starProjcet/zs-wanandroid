@@ -5,6 +5,8 @@
     android:layout_height="match_parent"
     app:srlEnableRefresh="true"
     app:srlEnableLoadMore="true"
+    app:srlEnableOverScrollBounce="false"
+    app:srlEnableAutoLoadMore="false"
     android:background="@color/white"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".main.home.HomeFragment">
@@ -46,6 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:overScrollMode="never"
+            android:id="@+id/nestedView"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -53,7 +56,7 @@
                 android:orientation="vertical">
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="10dp"
+                    android:layout_height="16dp"
                     android:background="@drawable/home_top_bg"/>
                 <TextView
                     android:layout_width="match_parent"
@@ -122,8 +125,8 @@
         </androidx.core.widget.NestedScrollView>
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:background="@color/white"
+            android:layout_height="100dp"
+            android:background="@color/theme"
             android:alpha="0"
             android:id="@+id/rlSearch">
 

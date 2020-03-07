@@ -6,29 +6,29 @@
         android:enabled="true"
         android:icon="@mipmap/home"
         app:showAsAction="ifRoom"
-        android:title="首页" />
+        android:title="@string/tab_1" />
     <item
         android:id="@+id/menu_project"
         android:enabled="true"
         android:icon="@mipmap/project"
         app:showAsAction="ifRoom"
-        android:title="项目" />
+        android:title="@string/tab_2" />
     <item
         android:id="@+id/menu_square"
         android:enabled="true"
         android:icon="@mipmap/square"
         app:showAsAction="ifRoom"
-        android:title="广场" />
+        android:title="@string/tab_3" />
     <item
         android:id="@+id/menu_official_account"
         android:enabled="true"
         android:icon="@mipmap/official_account"
         app:showAsAction="ifRoom"
-        android:title="公众号" />
+        android:title="@string/tab_4" />
     <item
         android:id="@+id/menu_mine"
         android:enabled="true"
         app:showAsAction="ifRoom"
         android:icon="@mipmap/mine"
-        android:title="我" />
+        android:title="@string/tab_5" />
 </menu>

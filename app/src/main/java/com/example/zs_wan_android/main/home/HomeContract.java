@@ -1,5 +1,6 @@
 package com.example.zs_wan_android.main.home;
 
+import com.example.zs_wan_android.base.IBasePresenter;
 import com.example.zs_wan_android.base.IBaseView;
 
 public interface HomeContract {
@@ -7,7 +8,7 @@ public interface HomeContract {
         void showData();
     }
 
-    interface Presenter{
+    interface Presenter<T> extends IBasePresenter<HomeContract.View>{
         void loadData();
     }
 }
