@@ -3,6 +3,11 @@ package com.example.zs_wan_android.utils;
 import android.graphics.Color;
 import android.text.TextUtils;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+
+import com.example.zs_wan_android.WanAndroidApplication;
+
 /**
  * des 颜色处理工具类
  *
@@ -44,6 +49,16 @@ public class ColorUtils {
         } catch (Exception e) {
             return 0;
         }
+    }
+
+    /**
+     * 解析颜色
+     *
+     * @param color
+     * @return
+     */
+    public static int parseColor(int color) {
+        return ContextCompat.getColor(WanAndroidApplication.getContext(),color);
     }
 
     /**

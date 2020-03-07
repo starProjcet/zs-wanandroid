@@ -28,8 +28,12 @@ abstract class BaseFragment<P:IBasePresenter<*>>: Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         contentView = inflater.inflate(getLayoutId(), null)
-        init(savedInstanceState)
         return contentView
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        init(savedInstanceState)
     }
 
     protected abstract fun createPresenter(): P?

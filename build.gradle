@@ -30,6 +30,9 @@ ext {
     okhttpVersion = "3.12.3"
     retrofitVersion = "2.7.2"
     glideVersion = "4.11.0"
+    bannerVersion = "2.2.7@aar"
+    refreshLayoutVersion = "1.1.0"
+    refreshHeaderVersion = "1.1.0"
 }
 
 task clean(type: Delete) {
