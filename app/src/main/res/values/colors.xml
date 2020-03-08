@@ -8,6 +8,10 @@
     <color name="theme">#F60B0B</color>
     <color name="normal_color">#bfbfbf</color>
     <color name="white">#FFFFFF</color>
+    <color name="transparent">#00FFFFFF</color>
+
+    <!--    点击波纹效果颜色-->
+    <color name="ripple_gray">#D1D1D1</color>
 
     <!--    一级标题颜色-->
     <color name="text_1">#333333</color>

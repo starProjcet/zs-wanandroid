@@ -15,6 +15,7 @@ abstract class HttpDefaultObserver<T> :Observer<T> {
     }
 
     override fun onSubscribe(d: Disposable) {
+        disposable(d)
     }
 
     override fun onNext(t: T) {
@@ -38,9 +39,8 @@ abstract class HttpDefaultObserver<T> :Observer<T> {
         onError(errorMsg)
     }
 
-
+    abstract fun disposable(d: Disposable)
     abstract fun onSuccess(t:T)
     abstract fun onError(errorMsg:String)
-
 
 }

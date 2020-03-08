@@ -2,9 +2,11 @@ package com.example.zs_wan_android.base
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.zs_wan_android.http.LogoutEvent
 import com.example.zs_wan_android.utils.ColorUtils
 import com.example.zs_wan_android.utils.StatusUtil
 import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Logger
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 
@@ -57,7 +59,7 @@ abstract class BaseActivity<P:IBasePresenter<*>> : AppCompatActivity() {
      * 退出登陆消息
      */
     @Subscribe(threadMode = ThreadMode.MAIN)
-    fun logoutEvent(){
+    public fun logoutEvent(logoutEvent: LogoutEvent){
         finish()
     }
 }

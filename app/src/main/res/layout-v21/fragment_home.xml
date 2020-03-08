@@ -51,7 +51,6 @@
             app:banner_pointAutoPlayAble="true"
             app:banner_pageChangeDuration="1000"
             app:banner_pointAutoPlayInterval="3000"
-
             app:banner_indicatorGravity="left"
             app:banner_pointDrawable="@drawable/bga_banner_selector_point_hollow"
             app:banner_pointContainerBackground="@color/transparent"
@@ -70,28 +69,27 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/home_top_bg"
+                android:elevation="10dp"
                 android:orientation="vertical">
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="16dp"
                     android:background="@drawable/home_top_bg" />
-
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="42dp"
-                    android:layout_marginLeft="@dimen/padding_left"
-                    android:gravity="center_vertical"
-                    android:text="文章列表"
+                    android:textSize="17dp"
                     android:textColor="@color/text_1"
-                    android:textSize="17dp" />
-
+                    android:text="文章列表"
+                    android:gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/padding_left"/>
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvHomeList"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@color/white"
                     android:nestedScrollingEnabled="false"
-                    android:background="@color/white" />
+                    android:id="@+id/rvHomeList"/>
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
 
@@ -100,7 +98,8 @@
             android:layout_width="match_parent"
             android:layout_height="120dp"
             android:alpha="0"
-            android:background="@color/white">
+            android:background="@color/white"
+            android:elevation="5dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -108,18 +107,19 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="52dp"
                 android:layout_marginRight="20dp"
-                android:background="@drawable/search_bg">
+                android:background="@drawable/search_bg"
+                android:elevation="5dp">
 
                 <TextView
-                    android:id="@+id/tvSearch"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/ripple_bg"
                     android:gravity="center"
                     android:paddingLeft="30dp"
                     android:text="请输入关键字进行搜索"
                     android:textColor="@color/text_2"
-                    android:textSize="@dimen/text_1" />
+                    android:textSize="@dimen/text_1"
+                    android:id="@+id/tvSearch"
+                    android:background="@drawable/ripple_bg"/>
 
                 <ImageView
                     android:layout_width="25dp"

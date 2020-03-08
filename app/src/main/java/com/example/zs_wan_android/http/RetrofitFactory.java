@@ -11,9 +11,9 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
-public class RetrofitUtil {
-    private static OkHttpClient.Builder getOkHttpClientBuilder() {
+public class RetrofitFactory {
 
+    private static OkHttpClient.Builder getOkHttpClientBuilder() {
         HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor(new HttpLogger());
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
@@ -29,16 +29,16 @@ public class RetrofitUtil {
                 .cache(cache);
     }
 
-    private static Retrofit.Builder getRetrofitBuilder() {
-        OkHttpClient okHttpClient = RetrofitUtil.getOkHttpClientBuilder().build();
+    public static Retrofit factory() {
+
+        OkHttpClient okHttpClient = getOkHttpClientBuilder().build();
         return new Retrofit.Builder()
                 .client(okHttpClient)
                 .addConverterFactory(FilterGsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .baseUrl(ApiConstants.BASE_URL);
+                .baseUrl(ApiConstants.BASE_URL)
+                .build();
     }
 
-    public static ApiService getApiService(){
-        return getRetrofitBuilder().build().create(ApiService.class);
-    }
+
 }

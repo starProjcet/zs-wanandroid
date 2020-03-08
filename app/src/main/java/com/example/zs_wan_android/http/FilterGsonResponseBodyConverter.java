@@ -37,7 +37,12 @@ public class FilterGsonResponseBodyConverter<T> implements Converter<ResponseBod
             JSONObject object = new JSONObject(jsonString);
             int code = object.getInt("errorCode");
             if (code==0) {
-                return adapter.fromJson(object.getString("data"));
+                T t = adapter.fromJson(object.getString("data"));
+                if (t==null){
+                    throw new BusinessHttpException("服务器异常",-1);
+                }else{
+                    return t;
+                }
             } else {
                 filterCode(object.getString("errorMsg"),code);
             }

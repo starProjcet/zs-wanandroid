@@ -14,8 +14,14 @@ interface ApiService {
     fun getHomeList(@Path("page") pageNo: Int): Observable<HomeEntity>
 
     /**
+     * 获取首页置顶文章数据
      */
-    @GET("/article/list/json")
+    @GET("/article/top/json")
+    fun getTopList(): Observable<MutableList<HomeEntity.DatasBean>>
+
+    /**
+     */
+    @GET("/banner/json")
     fun getBanner(): Observable<MutableList<BannerEntity>>
 
 }
