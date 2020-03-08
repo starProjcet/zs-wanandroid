@@ -58,5 +58,5 @@ dependencies {
     implementation "cn.bingoogolapple:bga-banner:$rootProject.ext.bannerVersion"
     implementation "com.scwang.smartrefresh:SmartRefreshLayout:$rootProject.ext.refreshLayoutVersion"
     implementation "com.scwang.smartrefresh:SmartRefreshHeader:$rootProject.ext.refreshHeaderVersion"
-
+    implementation "org.greenrobot:eventbus:$rootProject.ext.eventBusVersion"
 }

@@ -1,24 +1,15 @@
 package com.example.zs_wan_android.http;
 
-import android.util.Log;
-
 import com.example.zs_wan_android.WanAndroidApplication;
 import com.example.zs_wan_android.constants.ApiConstants;
 import com.example.zs_wan_android.constants.Constants;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
 import java.io.File;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
 import java.util.concurrent.TimeUnit;
-
 import okhttp3.Cache;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitUtil {
     private static OkHttpClient.Builder getOkHttpClientBuilder() {

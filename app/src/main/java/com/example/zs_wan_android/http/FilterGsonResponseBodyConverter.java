@@ -39,14 +39,26 @@ public class FilterGsonResponseBodyConverter<T> implements Converter<ResponseBod
             if (code==0) {
                 return adapter.fromJson(object.getString("data"));
             } else {
-                // 特定 API 的错误，在相应的 DefaultObserver 的 onError 的方法中进行处理
-                throw new HttpException(object.getString("errorMsg"), code);
+                filterCode(object.getString("errorMsg"),code);
             }
-        } catch (HttpException | JSONException e) {
+        } catch (JSONException e) {
             e.printStackTrace();
-        } finally {
+            throw new BusinessHttpException("数据解析异常",-1);
+        }finally {
             value.close();
         }
         return null;
+    }
+
+    private void filterCode(String msg,int code) throws BusinessHttpException {
+        //特定 API 的错误，在相应的 DefaultObserver 的 onError 的方法中进行处理
+        //throw new HttpException(msg, code);
+        switch (code){
+            //登录手失败
+            case -1001:
+                break;
+            default:
+                throw new BusinessHttpException(msg, code);
+        }
     }
 }
