@@ -6,6 +6,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.example.zs_wan_android.R
 import com.example.zs_wan_android.entity.HomeEntity
+import com.example.zs_wan_android.utils.ColorUtils
 
 class HomeArticleAdapter(layoutResId:Int) :BaseQuickAdapter<HomeEntity.DatasBean,BaseViewHolder>(layoutResId)
 ,BaseQuickAdapter.OnItemClickListener{
@@ -15,21 +16,17 @@ class HomeArticleAdapter(layoutResId:Int) :BaseQuickAdapter<HomeEntity.DatasBean
     }
 
     override fun convert(helper: BaseViewHolder, item: HomeEntity.DatasBean?) {
-        val tvTag = helper.getView<TextView>(R.id.tvTag)
-        val tvAuthor = helper.getView<TextView>(R.id.tvAuthor)
-        val tvDate = helper.getView<TextView>(R.id.tvDate)
-        val tvTitle = helper.getView<TextView>(R.id.tvTitle)
-        val tvChapterName = helper.getView<TextView>(R.id.tvChapterName)
         if (item?.type==1){
-            tvTag.visibility = View.VISIBLE
-            tvTag.text = "置顶"
+            helper.setText(R.id.tvTag,"置顶")
+            helper.setVisible(R.id.tvTag,true)
+            helper.setTextColor(R.id.tvTag,ColorUtils.parseColor(R.color.theme))
         }else{
-            tvTag.visibility = View.GONE
+            helper.setGone(R.id.tvTag,true)
         }
-        tvAuthor.text = item?.author
-        tvDate.text = item?.niceDate
-        tvTitle.text = item?.title
-        tvChapterName.text = item?.superChapterName
+        helper.setText(R.id.tvAuthor,item?.author)
+        helper.setText(R.id.tvDate,item?.niceDate)
+        helper.setText(R.id.tvTitle,item?.title)
+        helper.setText(R.id.tvChapterName,item?.superChapterName)
     }
 
     override fun onItemClick(adapter: BaseQuickAdapter<*, *>?, view: View?, position: Int) {

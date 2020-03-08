@@ -54,7 +54,7 @@ class HomeFragment : BaseFragment<HomeContract.Presenter<HomeContract.View>>() ,
         nestedView.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener
         { _, _, scrollY, _, _ ->
             var alpha = if (scrollY>0){
-                scrollY.toFloat() / (500).toFloat()
+                scrollY.toFloat() / (300).toFloat()
             }else{
                 0f
             }

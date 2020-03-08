@@ -9,6 +9,7 @@
     <color name="normal_color">#bfbfbf</color>
     <color name="white">#FFFFFF</color>
     <color name="transparent">#00FFFFFF</color>
+    <color name="division_line">#EDEDED</color>
 
     <!--    点击波纹效果颜色-->
     <color name="ripple_gray">#D1D1D1</color>

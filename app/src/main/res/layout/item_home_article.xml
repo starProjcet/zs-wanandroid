@@ -49,7 +49,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/text_3"
+        android:background="@color/division_line"
         android:layout_below="@+id/tvChapterName"
         android:layout_marginTop="@dimen/padding"/>
 </RelativeLayout>
