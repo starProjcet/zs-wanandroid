@@ -19,23 +19,22 @@
         tools:ignore="GoogleAppIndexingWarning">
 
         <activity android:name=".SplashActivity"
-            android:screenOrientation="portrait">
-
-        </activity>
-        <activity android:name=".base.BaseActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".main.MainActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".main.login.LoginActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="fullSensor"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".base.BaseActivity"
+            android:screenOrientation="fullSensor"/>
+        <activity android:name=".main.MainActivity"
+            android:screenOrientation="fullSensor"/>
+        <activity android:name=".main.login.LoginActivity"
+            android:screenOrientation="fullSensor"/>
         <activity android:name=".main.web.WebActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="fullSensor"/>
     </application>
 
 </manifest>

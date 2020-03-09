@@ -30,9 +30,9 @@ class HomePresenter(view:HomeContract.View):BasePresenter<HomeContract.View>(vie
 
                 override fun onSuccess(t: HomeEntity) {
                     if (pageNum==0){
-                        loadTopList(t.datas)
+                        t.datas?.let { loadTopList(it) }
                     }else{
-                        view?.showList(t.datas)
+                        t.datas?.let { view?.showList(it) }
                     }
                 }
 

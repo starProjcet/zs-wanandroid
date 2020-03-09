@@ -1,5 +1,6 @@
 package com.example.zs_wan_android.adapter
 
+import android.text.TextUtils
 import android.view.View
 import android.widget.TextView
 import com.chad.library.adapter.base.BaseQuickAdapter
@@ -16,17 +17,20 @@ class HomeArticleAdapter(layoutResId:Int) :BaseQuickAdapter<HomeEntity.DatasBean
     }
 
     override fun convert(helper: BaseViewHolder, item: HomeEntity.DatasBean?) {
-        if (item?.type==1){
-            helper.setText(R.id.tvTag,"置顶")
-            helper.setVisible(R.id.tvTag,true)
-            helper.setTextColor(R.id.tvTag,ColorUtils.parseColor(R.color.theme))
-        }else{
-            helper.setGone(R.id.tvTag,true)
+        item?.run {
+            if (type==1){
+                helper.setText(R.id.tvTag,"置顶")
+                helper.setVisible(R.id.tvTag,true)
+                helper.setTextColor(R.id.tvTag,ColorUtils.parseColor(R.color.theme))
+            }else{
+                helper.setGone(R.id.tvTag,true)
+            }
+            helper.setText(R.id.tvAuthor,if (!TextUtils.isEmpty(author))author else shareUser)
+            helper.setText(R.id.tvDate,niceDate)
+            helper.setText(R.id.tvTitle,title)
+            helper.setText(R.id.tvChapterName,superChapterName)
         }
-        helper.setText(R.id.tvAuthor,item?.author)
-        helper.setText(R.id.tvDate,item?.niceDate)
-        helper.setText(R.id.tvTitle,item?.title)
-        helper.setText(R.id.tvChapterName,item?.superChapterName)
+
     }
 
     override fun onItemClick(adapter: BaseQuickAdapter<*, *>?, view: View?, position: Int) {
