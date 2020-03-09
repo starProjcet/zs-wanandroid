@@ -2,7 +2,6 @@ package com.example.zs_wan_android.main
 
 import android.content.Context
 import android.os.Bundle
-import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.example.zs_wan_android.R
@@ -15,10 +14,9 @@ import com.example.zs_wan_android.main.mine.MineFragment
 import com.example.zs_wan_android.main.project.ProjectFragment
 import com.example.zs_wan_android.main.square.SquareFragment
 import com.example.zs_wan_android.utils.ColorUtils
-import com.example.zs_wan_android.utils.StatusUtil
+import com.example.zs_wan_android.utils.StatusUtils
 import com.google.android.material.bottomnavigation.LabelVisibilityMode
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_main.view.*
 
 
 /**
@@ -33,7 +31,7 @@ class MainActivity : BaseActivity<IBasePresenter<*>>() ,IBaseView{
     private var fragments: MutableList<Fragment> = mutableListOf()
 
     override fun init(savedInstanceState: Bundle?) {
-       initFragment()
+        initFragment()
         initBottom()
     }
 
@@ -97,7 +95,7 @@ class MainActivity : BaseActivity<IBasePresenter<*>>() ,IBaseView{
      * 设置状态栏背景颜色
      */
     override fun setStatusColor() {
-        StatusUtil.setUseStatusBarColor(this, ColorUtils.parseColor("#00ffffff"))
+        StatusUtils.setUseStatusBarColor(this, ColorUtils.parseColor("#00ffffff"))
     }
 
     /**
@@ -105,7 +103,7 @@ class MainActivity : BaseActivity<IBasePresenter<*>>() ,IBaseView{
      */
     override fun setSystemInvadeBlack() {
         //第二个参数是是否沉浸,第三个参数是状态栏字体是否为黑色。
-        StatusUtil.setSystemStatus(this, true, true)
+        StatusUtils.setSystemStatus(this, true, true)
     }
 
 }

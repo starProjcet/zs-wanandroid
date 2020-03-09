@@ -1,14 +1,12 @@
 package com.example.zs_wan_android.http;
 
 
-import android.util.Log;
-
+import com.example.zs_wan_android.constants.Constants;
+import com.example.zs_wan_android.utils.PrefUtils;
 import com.google.gson.Gson;
 import com.google.gson.TypeAdapter;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.IOException;
 import retrofit2.Converter;
 import okhttp3.ResponseBody;
@@ -61,7 +59,9 @@ public class FilterGsonResponseBodyConverter<T> implements Converter<ResponseBod
         switch (code){
             //登录手失败
             case -1001:
-                break;
+                PrefUtils.INSTANCE.setBoolean(Constants.LOGIN,false);
+                PrefUtils.INSTANCE.setHashSet(Constants.COOKIE,null);
+                throw new BusinessHttpException(msg, code);
             default:
                 throw new BusinessHttpException(msg, code);
         }

@@ -1,12 +1,11 @@
 package com.example.zs_wan_android.main.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.core.widget.NestedScrollView
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import cn.bingoogolapple.bgabanner.BGABanner
 import com.bumptech.glide.Glide
@@ -15,7 +14,6 @@ import com.example.zs_wan_android.adapter.HomeArticleAdapter
 import com.example.zs_wan_android.base.BaseFragment
 import com.example.zs_wan_android.entity.BannerEntity
 import com.example.zs_wan_android.entity.HomeEntity
-import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import com.scwang.smartrefresh.layout.api.RefreshLayout
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener
@@ -23,7 +21,10 @@ import kotlinx.android.synthetic.main.fragment_home.*
 
 
 /**
- * A simple [Fragment] subclass.
+ * 首页
+ *
+ * @author zs
+ * @data 2020-03-09
  */
 class HomeFragment : BaseFragment<HomeContract.Presenter<HomeContract.View>>() ,BGABanner.Adapter<ImageView?, String?>
 ,BGABanner.Delegate<ImageView?, String?> ,HomeContract.View,OnLoadMoreListener,OnRefreshListener{
@@ -53,7 +54,7 @@ class HomeFragment : BaseFragment<HomeContract.Presenter<HomeContract.View>>() ,
     private fun addScrollListener(){
         nestedView.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener
         { _, _, scrollY, _, _ ->
-            var alpha = if (scrollY>0){
+            val alpha = if (scrollY>0){
                 scrollY.toFloat() / (300).toFloat()
             }else{
                 0f
@@ -79,7 +80,6 @@ class HomeFragment : BaseFragment<HomeContract.Presenter<HomeContract.View>>() ,
      * banner点击事件
      */
     override fun onBannerItemClick(banner: BGABanner?, itemView: ImageView?, model: String?, position: Int) {
-
     }
 
     /**
@@ -111,7 +111,7 @@ class HomeFragment : BaseFragment<HomeContract.Presenter<HomeContract.View>>() ,
     }
 
     override fun onError(error: String) {
-
+        Toast.makeText(context,error,Toast.LENGTH_SHORT).show()
     }
 
     /**
@@ -125,8 +125,8 @@ class HomeFragment : BaseFragment<HomeContract.Presenter<HomeContract.View>>() ,
      * 刷新
      */
     override fun onRefresh(refreshLayout: RefreshLayout) {
-    }
 
+    }
 
     override fun createPresenter(): HomeContract.Presenter<HomeContract.View>? {
         return HomePresenter(this)

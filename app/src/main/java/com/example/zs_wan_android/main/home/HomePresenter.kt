@@ -1,12 +1,10 @@
 package com.example.zs_wan_android.main.home
 
-import android.util.Log
 import com.example.zs_wan_android.base.BasePresenter
 import com.example.zs_wan_android.entity.BannerEntity
 import com.example.zs_wan_android.entity.HomeEntity
 import com.example.zs_wan_android.http.HttpDefaultObserver
 import com.example.zs_wan_android.http.RetrofitHelper
-import com.google.gson.Gson
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers

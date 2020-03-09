@@ -4,9 +4,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.zs_wan_android.http.LogoutEvent
 import com.example.zs_wan_android.utils.ColorUtils
-import com.example.zs_wan_android.utils.StatusUtil
+import com.example.zs_wan_android.utils.StatusUtils
 import org.greenrobot.eventbus.EventBus
-import org.greenrobot.eventbus.Logger
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 
@@ -21,10 +20,11 @@ abstract class BaseActivity<P:IBasePresenter<*>> : AppCompatActivity() {
         if (layoutId != 0) {
             setContentView(layoutId)
         }
-        val presenter = createPresenter()
-        if (presenter != null) {
-            lifecycle.addObserver(presenter)
+        presenter = createPresenter()
+        presenter?.let {
+            lifecycle.addObserver(it)
         }
+
         setStatusColor()
         setSystemInvadeBlack()
         init(savedInstanceState)
@@ -40,7 +40,7 @@ abstract class BaseActivity<P:IBasePresenter<*>> : AppCompatActivity() {
      * 设置状态栏背景颜色
      */
     open fun setStatusColor() {
-        StatusUtil.setUseStatusBarColor(this, ColorUtils.parseColor("#F60B0B"))
+        StatusUtils.setUseStatusBarColor(this, ColorUtils.parseColor("#F60B0B"))
     }
 
     /**
@@ -48,7 +48,7 @@ abstract class BaseActivity<P:IBasePresenter<*>> : AppCompatActivity() {
      */
     open fun setSystemInvadeBlack() {
         //第二个参数是是否沉浸,第三个参数是状态栏字体是否为黑色。
-        StatusUtil.setSystemStatus(this, true, false)
+        StatusUtils.setSystemStatus(this, true, false)
     }
 
     protected abstract fun createPresenter(): P?

@@ -10,7 +10,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import androidx.annotation.ColorInt;
 
-public class StatusUtil {
+public class StatusUtils {
 
     /**
      * Use default color {@link #defaultColor_21} between 5.0 and 6.0.

@@ -59,5 +59,6 @@ dependencies {
     implementation "com.scwang.smartrefresh:SmartRefreshLayout:$rootProject.ext.refreshLayoutVersion"
     implementation "com.scwang.smartrefresh:SmartRefreshHeader:$rootProject.ext.refreshHeaderVersion"
     implementation "org.greenrobot:eventbus:$rootProject.ext.eventBusVersion"
+
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.50'
 }
