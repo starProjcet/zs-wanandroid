@@ -1,11 +1,15 @@
 package com.example.zs_wan_android.base
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.zs_wan_android.main.login.LoginActivity
+import com.example.zs_wan_android.utils.AppUtils
 
 /**
  * fragment基础类
@@ -33,6 +37,34 @@ abstract class BaseFragment<P:IBasePresenter<*>>: Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         init(savedInstanceState)
+    }
+
+    /**
+     * 界面跳转
+     * @param isLogin 启动界面是否需要登录
+     */
+    protected fun intent(clazz:Class<*>, isLogin:Boolean){
+        //需要登录&&未登录
+        if (isLogin && !AppUtils.isLogin()) {
+            startActivity(Intent(context, LoginActivity::class.java))
+        }else{
+            startActivity(Intent(context,clazz))
+        }
+    }
+
+    /**
+     * 携带bundle跳转
+     * @param isLogin 启动界面是否需要登录
+     */
+    protected fun intent(bundle: Bundle, clazz:Class<*>, isLogin:Boolean){
+        //需要登录&&未登录
+        if (isLogin && !AppUtils.isLogin()) {
+            startActivity(Intent(context, LoginActivity::class.java))
+        }else{
+            startActivity(Intent(context, clazz).apply {
+                putExtra("bundle", bundle)
+            })
+        }
     }
 
     protected abstract fun createPresenter(): P?

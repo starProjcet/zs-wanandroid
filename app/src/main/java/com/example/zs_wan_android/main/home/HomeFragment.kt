@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.core.widget.NestedScrollView
 import androidx.recyclerview.widget.LinearLayoutManager
 import cn.bingoogolapple.bgabanner.BGABanner
@@ -14,6 +13,7 @@ import com.example.zs_wan_android.adapter.HomeArticleAdapter
 import com.example.zs_wan_android.base.BaseFragment
 import com.example.zs_wan_android.entity.BannerEntity
 import com.example.zs_wan_android.entity.HomeEntity
+import com.example.zs_wan_android.utils.ToastUtils
 import com.scwang.smartrefresh.layout.api.RefreshLayout
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener
@@ -40,9 +40,20 @@ class HomeFragment : BaseFragment<HomeContract.Presenter<HomeContract.View>>() ,
     }
 
     private fun initView(){
+        smartRefresh?.setOnRefreshListener(this)
+        smartRefresh?.setOnLoadMoreListener(this)
         addScrollListener()
         rvHomeList.layoutManager = LinearLayoutManager(context)
-        tvSearch.setOnClickListener{
+        ivSearch.setOnClickListener{
+
+        }
+        tvShare.setOnClickListener{
+
+        }
+        tvHistory.setOnClickListener{
+
+        }
+        tvCollect.setOnClickListener{
 
         }
     }
@@ -111,7 +122,7 @@ class HomeFragment : BaseFragment<HomeContract.Presenter<HomeContract.View>>() ,
     }
 
     override fun onError(error: String) {
-        Toast.makeText(context,error,Toast.LENGTH_SHORT).show()
+        ToastUtils.show(error)
     }
 
     /**

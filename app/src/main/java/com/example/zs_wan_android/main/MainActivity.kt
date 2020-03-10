@@ -13,8 +13,7 @@ import com.example.zs_wan_android.main.home.HomeFragment
 import com.example.zs_wan_android.main.mine.MineFragment
 import com.example.zs_wan_android.main.project.ProjectFragment
 import com.example.zs_wan_android.main.square.SquareFragment
-import com.example.zs_wan_android.utils.ColorUtils
-import com.example.zs_wan_android.utils.StatusUtils
+import com.example.zs_wan_android.utils.ToastUtils
 import com.google.android.material.bottomnavigation.LabelVisibilityMode
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -91,19 +90,14 @@ class MainActivity : BaseActivity<IBasePresenter<*>>() ,IBaseView{
 
     }
 
-    /**
-     * 设置状态栏背景颜色
-     */
-    override fun setStatusColor() {
-        StatusUtils.setUseStatusBarColor(this, ColorUtils.parseColor("#00ffffff"))
+    var lastTime:Long = 0
+    override fun onBackPressed() {
+        if (System.currentTimeMillis() - this.lastTime > 2000L) {
+            ToastUtils.show("再按一次退出程序")
+            this.lastTime = System.currentTimeMillis()
+            return
+        } else {
+            super.onBackPressed()
+        }
     }
-
-    /**
-     * 沉浸式状态
-     */
-    override fun setSystemInvadeBlack() {
-        //第二个参数是是否沉浸,第三个参数是状态栏字体是否为黑色。
-        StatusUtils.setSystemStatus(this, true, true)
-    }
-
 }

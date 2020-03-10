@@ -5,15 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    app:srlEnableAutoLoadMore="false"
+    android:id="@+id/smartRefresh"
     app:srlEnableLoadMore="true"
-    app:srlEnableOverScrollBounce="false"
     app:srlEnableRefresh="true"
     tools:context=".main.home.HomeFragment">
-
+<!--    app:srlEnableAutoLoadMore="false"-->
+<!--    app:srlEnableOverScrollBounce="false"-->
     <com.scwang.smartrefresh.layout.header.ClassicsHeader
         android:layout_width="match_parent"
-        android:layout_height="85dp"
+        android:layout_height="105dp"
         app:srlAccentColor="@color/text_2"
         app:srlPrimaryColor="@color/white" />
 
@@ -117,27 +117,66 @@
                 android:layout_height="46dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="52dp"
-                android:layout_marginRight="20dp"
-                android:background="@drawable/search_bg">
-
-                <TextView
-                    android:id="@+id/tvSearch"
+                android:background="@drawable/search_bg"
+                android:layout_marginRight="20dp">
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/ripple_bg"
-                    android:gravity="center_vertical"
-                    android:paddingLeft="30dp"
-                    android:text="请输入关键字进行搜索"
-                    android:textColor="@color/text_2"
-                    android:textSize="@dimen/text_1" />
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_toLeftOf="@+id/ivSearch">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:gravity="center"
+                        android:text="  收藏  "
+                        android:textColor="@color/theme"
+                        android:textSize="@dimen/text_1"
+                        android:id="@+id/tvCollect"
+                        android:textStyle="bold"
+                        android:background="@drawable/ripple_bg"/>
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="30dp"
+                        android:background="@color/division_line"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:gravity="center"
+                        android:text="历史记录"
+                        android:textColor="@color/theme"
+                        android:textSize="@dimen/text_1"
+                        android:id="@+id/tvHistory"
+                        android:textStyle="bold"
+                        android:background="@drawable/ripple_bg"/>
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="30dp"
+                        android:background="@color/division_line"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="分享"
+                        android:textColor="@color/text_2"
+                        android:textSize="@dimen/text_1"
+                        android:id="@+id/tvShare"
+                        android:textStyle="bold"
+                        android:background="@drawable/ripple_bg"/>
+                </LinearLayout>
 
                 <ImageView
-                    android:layout_width="22dp"
-                    android:layout_height="22dp"
+                    android:layout_width="46dp"
+                    android:layout_height="46dp"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginRight="30dp"
-                    android:src="@mipmap/search" />
+                    android:src="@mipmap/search"
+                    android:id="@+id/ivSearch"
+                    android:padding="13dp"
+                    android:background="@drawable/ripple_bg"/>
             </RelativeLayout>
         </RelativeLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

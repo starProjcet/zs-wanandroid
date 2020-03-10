@@ -1,8 +1,13 @@
 package com.example.zs_wan_android.base
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.zs_wan_android.R
 import com.example.zs_wan_android.http.LogoutEvent
+import com.example.zs_wan_android.main.login.LoginActivity
+import com.example.zs_wan_android.utils.AppUtils
 import com.example.zs_wan_android.utils.ColorUtils
 import com.example.zs_wan_android.utils.StatusUtils
 import org.greenrobot.eventbus.EventBus
@@ -39,21 +44,17 @@ abstract class BaseActivity<P:IBasePresenter<*>> : AppCompatActivity() {
     /**
      * 设置状态栏背景颜色
      */
-    open fun setStatusColor() {
-        StatusUtils.setUseStatusBarColor(this, ColorUtils.parseColor("#F60B0B"))
+    protected open fun setStatusColor() {
+        StatusUtils.setUseStatusBarColor(this, ColorUtils.parseColor("#00ffffff"))
     }
 
     /**
      * 沉浸式状态
      */
-    open fun setSystemInvadeBlack() {
+    protected open  fun setSystemInvadeBlack() {
         //第二个参数是是否沉浸,第三个参数是状态栏字体是否为黑色。
-        StatusUtils.setSystemStatus(this, true, false)
+        StatusUtils.setSystemStatus(this, true, true)
     }
-
-    protected abstract fun createPresenter(): P?
-    protected abstract fun getLayoutId(): Int
-    protected abstract fun init(savedInstanceState: Bundle?)
 
     /**
      * 退出登陆消息
@@ -62,4 +63,36 @@ abstract class BaseActivity<P:IBasePresenter<*>> : AppCompatActivity() {
     public fun logoutEvent(logoutEvent: LogoutEvent){
         finish()
     }
+
+    /**
+     * 界面跳转
+     * @param isLogin 启动界面是否需要登录
+     */
+    protected fun intent(clazz:Class<*>,isLogin:Boolean){
+        //需要登录&&未登录
+        if (isLogin && !AppUtils.isLogin()) {
+            startActivity(Intent(this, LoginActivity::class.java))
+        }else{
+            startActivity(Intent(this,clazz))
+        }
+    }
+    /**
+     * 携带bundle跳转
+     * @param isLogin 启动界面是否需要登录
+     */
+    protected fun intent(bundle: Bundle,clazz:Class<*>,isLogin:Boolean){
+        //需要登录&&未登录
+        if (isLogin && !AppUtils.isLogin()) {
+            startActivity(Intent(this, LoginActivity::class.java))
+        }else{
+            startActivity(Intent(this, clazz).apply {
+                putExtra("bundle", bundle)
+            })
+        }
+    }
+
+    protected abstract fun init(savedInstanceState: Bundle?)
+    protected abstract fun createPresenter(): P?
+    protected abstract fun getLayoutId(): Int
+
 }
