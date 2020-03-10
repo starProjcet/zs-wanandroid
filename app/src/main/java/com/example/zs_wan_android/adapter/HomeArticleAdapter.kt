@@ -17,7 +17,7 @@ class HomeArticleAdapter(layoutResId:Int) :BaseQuickAdapter<HomeEntity.DatasBean
 
     override fun convert(helper: BaseViewHolder, item: HomeEntity.DatasBean?) {
         if (item?.type==1){
-            helper.setText(R.id.tvTag,"置顶")
+            helper.setText(R.id.tvTag,"置顶 ")
             helper.setVisible(R.id.tvTag,true)
             helper.setTextColor(R.id.tvTag,ColorUtils.parseColor(R.color.theme))
         }else{
