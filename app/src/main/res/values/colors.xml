@@ -6,6 +6,7 @@
 
 
     <color name="theme">#F60B0B</color>
+    <color name="theme_2">#009688</color>
     <color name="normal_color">#bfbfbf</color>
     <color name="white">#FFFFFF</color>
     <color name="black">#111111</color>

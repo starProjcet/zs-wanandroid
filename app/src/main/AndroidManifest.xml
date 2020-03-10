@@ -17,8 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
-
-        <activity android:name=".SplashActivity"
+        <activity android:name=".main.SetActivity"></activity>
+        <activity
+            android:name=".SplashActivity"
             android:screenOrientation="fullSensor"
             android:theme="@style/SplashTheme">
             <intent-filter>
@@ -27,14 +28,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".base.BaseActivity"
-            android:screenOrientation="fullSensor"/>
-        <activity android:name=".main.MainActivity"
-            android:screenOrientation="fullSensor"/>
-        <activity android:name=".main.login.LoginActivity"
-            android:screenOrientation="fullSensor"/>
-        <activity android:name=".main.web.WebActivity"
-            android:screenOrientation="fullSensor"/>
+        <activity
+            android:name=".base.BaseActivity"
+            android:screenOrientation="fullSensor" />
+        <activity
+            android:name=".main.MainActivity"
+            android:screenOrientation="fullSensor" />
+        <activity
+            android:name=".main.login.LoginActivity"
+            android:screenOrientation="fullSensor" />
+        <activity
+            android:name=".main.web.WebActivity"
+            android:screenOrientation="fullSensor" />
     </application>
 
 </manifest>
