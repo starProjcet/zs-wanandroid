@@ -132,19 +132,14 @@
 
                 <TextView
                     style="@style/text_1"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="40dp"
+                    android:drawableRight="@mipmap/arrow_right"
                     android:text="我的积分"
                     android:textStyle="bold" />
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:src="@mipmap/arrow_right" />
 
                 <TextView
                     android:id="@+id/tvIntegral"
@@ -188,19 +183,14 @@
 
                 <TextView
                     style="@style/text_1"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="40dp"
+                    android:drawableRight="@mipmap/arrow_right"
                     android:text="我的收藏"
                     android:textStyle="bold" />
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:src="@mipmap/arrow_right" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -221,19 +211,13 @@
 
                 <TextView
                     style="@style/text_1"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="40dp"
+                    android:drawableRight="@mipmap/arrow_right"
                     android:text="我的文章"
                     android:textStyle="bold" />
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:src="@mipmap/arrow_right" />
             </RelativeLayout>
 
             <View
@@ -259,19 +243,13 @@
 
                 <TextView
                     style="@style/text_1"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="40dp"
+                    android:drawableRight="@mipmap/arrow_right"
                     android:text="网站"
                     android:textStyle="bold" />
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:src="@mipmap/arrow_right" />
             </RelativeLayout>
             <RelativeLayout
                 android:id="@+id/rlGirl"
@@ -291,19 +269,13 @@
 
                 <TextView
                     style="@style/text_1"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="40dp"
+                    android:drawableRight="@mipmap/arrow_right"
                     android:text="轻松一下"
                     android:textStyle="bold" />
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:src="@mipmap/arrow_right" />
             </RelativeLayout>
             <RelativeLayout
                 android:id="@+id/rlSet"
@@ -322,19 +294,13 @@
 
                 <TextView
                     style="@style/text_1"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="40dp"
+                    android:drawableRight="@mipmap/arrow_right"
                     android:text="设置"
                     android:textStyle="bold" />
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:src="@mipmap/arrow_right" />
             </RelativeLayout>
 
         </LinearLayout>

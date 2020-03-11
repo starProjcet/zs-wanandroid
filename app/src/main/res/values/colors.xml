@@ -13,7 +13,7 @@
     <color name="black">#111111</color>
     <color name="transparent">#00FFFFFF</color>
     <color name="division_line">#EDEDED</color>
-    <color name="division_line_thickening">#EDEDED</color>
+    <color name="division_line_thickening">#F8F8F8</color>
 
     <!--    点击波纹效果颜色-->
     <color name="ripple_gray">#D1D1D1</color>
