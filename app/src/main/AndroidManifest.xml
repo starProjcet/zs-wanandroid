@@ -17,9 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
-
-        <activity android:name="com.zs.wanandroid.SplashActivity"
-            android:screenOrientation="fullSensor"
+        <activity
+            android:name="com.zs.wanandroid.SplashActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,14 +27,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.zs.wanandroid.base.BaseActivity"
-            android:screenOrientation="fullSensor"/>
-        <activity android:name="com.zs.wanandroid.main.MainActivity"
-            android:screenOrientation="fullSensor"/>
-        <activity android:name="com.zs.wanandroid.main.login.LoginActivity"
-            android:screenOrientation="fullSensor"/>
-        <activity android:name="com.zs.wanandroid.main.web.WebActivity"
-            android:screenOrientation="fullSensor"/>
+        <!--设置-->
+        <activity android:name="com.zs.wanandroid.main.set.SetActivity"
+            android:screenOrientation="portrait"/>
+        <!--主界面-->
+        <activity
+            android:name="com.zs.wanandroid.main.MainActivity"
+            android:screenOrientation="portrait" />
+        <!--登陆-->
+        <activity
+            android:name="com.zs.wanandroid.main.login.LoginActivity"
+            android:screenOrientation="portrait" />
+        <!--web-->
+        <activity
+            android:name="com.zs.wanandroid.main.web.WebActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

@@ -2,6 +2,7 @@ package com.zs.wanandroid.http;
 
 
 import com.zs.wanandroid.constants.Constants;
+import com.zs.wanandroid.utils.AppUtils;
 import com.zs.wanandroid.utils.PrefUtils;
 import com.google.gson.Gson;
 import com.google.gson.TypeAdapter;
@@ -57,10 +58,9 @@ public class FilterGsonResponseBodyConverter<T> implements Converter<ResponseBod
         //特定 API 的错误，在相应的 DefaultObserver 的 onError 的方法中进行处理
         //throw new HttpException(msg, code);
         switch (code){
-            //登录手失败
+            //登录失败
             case -1001:
-                PrefUtils.INSTANCE.setBoolean(Constants.LOGIN,false);
-                PrefUtils.INSTANCE.setHashSet(Constants.COOKIE,null);
+                AppUtils.resetUser();
                 throw new BusinessHttpException(msg, code);
             default:
                 throw new BusinessHttpException(msg, code);

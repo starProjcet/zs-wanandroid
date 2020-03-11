@@ -9,6 +9,7 @@ import com.zs.wanandroid.constants.Constants
 import com.zs.wanandroid.main.MainActivity
 import com.zs.wanandroid.utils.AppUtils
 import com.zs.wanandroid.utils.PrefUtils
+import com.zs.wanandroid.utils.ToastUtils
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : BaseActivity<LoginContract.Presenter<LoginContract.View>>(),
@@ -46,7 +47,7 @@ class LoginActivity : BaseActivity<LoginContract.Presenter<LoginContract.View>>(
     }
 
     override fun onError(error: String) {
-        com.zs.wanandroid.utils.ToastUtils.show(error)
+        ToastUtils.show(error)
     }
     override fun getLayoutId(): Int {
         return R.layout.activity_login
@@ -62,7 +63,7 @@ class LoginActivity : BaseActivity<LoginContract.Presenter<LoginContract.View>>(
     var lastTime:Long = 0
     override fun onBackPressed() {
         if (System.currentTimeMillis() - this.lastTime > 2000L) {
-            com.zs.wanandroid.utils.ToastUtils.show("再按一次退出程序")
+            ToastUtils.show("再按一次退出程序")
             this.lastTime = System.currentTimeMillis()
             return
         } else {

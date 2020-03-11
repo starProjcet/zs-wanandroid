@@ -3,12 +3,10 @@ package com.zs.wanandroid.base
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.zs.wanandroid.http.LogoutEvent
 import com.zs.wanandroid.main.login.LoginActivity
 import com.zs.wanandroid.utils.AppUtils
+import com.zs.wanandroid.utils.StatusUtils
 import org.greenrobot.eventbus.EventBus
-import org.greenrobot.eventbus.Subscribe
-import org.greenrobot.eventbus.ThreadMode
 
 abstract class BaseActivity<P: IBasePresenter<*>> : AppCompatActivity() {
 
@@ -29,19 +27,19 @@ abstract class BaseActivity<P: IBasePresenter<*>> : AppCompatActivity() {
         setStatusColor()
         setSystemInvadeBlack()
         init(savedInstanceState)
-        EventBus.getDefault().register(this)
+        //EventBus.getDefault().register(this)
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        EventBus.getDefault().unregister(this)
+        //EventBus.getDefault().unregister(this)
     }
 
     /**
      * 设置状态栏背景颜色
      */
     protected open fun setStatusColor() {
-        com.zs.wanandroid.utils.StatusUtils.setUseStatusBarColor(this, com.zs.wanandroid.utils.ColorUtils.parseColor("#00ffffff"))
+        StatusUtils.setUseStatusBarColor(this, com.zs.wanandroid.utils.ColorUtils.parseColor("#00ffffff"))
     }
 
     /**
@@ -49,16 +47,16 @@ abstract class BaseActivity<P: IBasePresenter<*>> : AppCompatActivity() {
      */
     protected open  fun setSystemInvadeBlack() {
         //第二个参数是是否沉浸,第三个参数是状态栏字体是否为黑色。
-        com.zs.wanandroid.utils.StatusUtils.setSystemStatus(this, true, true)
+        StatusUtils.setSystemStatus(this, true, true)
     }
 
-    /**
-     * 退出登陆消息
-     */
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public fun logoutEvent(logoutEvent: LogoutEvent){
-        finish()
-    }
+//    /**
+//     * 退出登陆消息
+//     */
+//    @Subscribe(threadMode = ThreadMode.MAIN)
+//    public fun logoutEvent(logoutEvent: LogoutEvent){
+//        finish()
+//    }
 
     /**
      * 界面跳转

@@ -34,6 +34,8 @@ interface ApiService {
     fun login(@Field("username") username: String,
               @Field("password") password: String): Observable<LoginEntity>
 
+    @GET("/user/logout/json")
+    fun logout():Observable<Any>
 
     /**
      * 获取收藏文章数据

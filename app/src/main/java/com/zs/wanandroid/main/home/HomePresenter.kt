@@ -1,10 +1,13 @@
 package com.zs.wanandroid.main.home
 
 import com.zs.wanandroid.base.BasePresenter
+import com.zs.wanandroid.constants.Constants
 import com.zs.wanandroid.entity.BannerEntity
 import com.zs.wanandroid.entity.HomeEntity
 import com.zs.wanandroid.http.HttpDefaultObserver
 import com.zs.wanandroid.http.RetrofitHelper
+import com.zs.wanandroid.utils.AppUtils
+import com.zs.wanandroid.utils.PrefUtils
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
@@ -21,7 +24,7 @@ class HomePresenter(view: HomeContract.View):
      * 加载首页文章列表
      */
     override fun loadData(pageNum:Int) {
-        com.zs.wanandroid.http.RetrofitHelper.getApiService()
+        RetrofitHelper.getApiService()
             .getHomeList(pageNum)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -48,7 +51,7 @@ class HomePresenter(view: HomeContract.View):
      * 包括置顶文章
      */
     private fun loadTopList(list:MutableList<HomeEntity.DatasBean>){
-        com.zs.wanandroid.http.RetrofitHelper.getApiService()
+        RetrofitHelper.getApiService()
             .getTopList()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

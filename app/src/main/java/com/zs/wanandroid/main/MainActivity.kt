@@ -13,7 +13,6 @@ import com.zs.wanandroid.main.home.HomeFragment
 import com.zs.wanandroid.main.mine.MineFragment
 import com.zs.wanandroid.main.project.ProjectFragment
 import com.zs.wanandroid.main.square.SquareFragment
-import com.zs.wanandroid.utils.ToastUtils
 import com.google.android.material.bottomnavigation.LabelVisibilityMode
 import kotlinx.android.synthetic.main.activity_main.*
 
