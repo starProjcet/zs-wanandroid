@@ -9,7 +9,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
-        android:name=".WanAndroidApplication"
+        android:name="com.zs.wanandroid.WanAndroidApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -18,7 +18,7 @@
         android:theme="@style/Theme.Design.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <activity android:name=".SplashActivity"
+        <activity android:name="com.zs.wanandroid.SplashActivity"
             android:screenOrientation="fullSensor"
             android:theme="@style/SplashTheme">
             <intent-filter>
@@ -27,13 +27,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".base.BaseActivity"
+        <activity android:name="com.zs.wanandroid.base.BaseActivity"
             android:screenOrientation="fullSensor"/>
-        <activity android:name=".main.MainActivity"
+        <activity android:name="com.zs.wanandroid.main.MainActivity"
             android:screenOrientation="fullSensor"/>
-        <activity android:name=".main.login.LoginActivity"
+        <activity android:name="com.zs.wanandroid.main.login.LoginActivity"
             android:screenOrientation="fullSensor"/>
-        <activity android:name=".main.web.WebActivity"
+        <activity android:name="com.zs.wanandroid.main.web.WebActivity"
             android:screenOrientation="fullSensor"/>
     </application>
 

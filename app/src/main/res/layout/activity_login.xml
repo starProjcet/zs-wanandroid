@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:fitsSystemWindows="true"
-    tools:context=".main.login.LoginActivity">
+    tools:context="com.zs.wanandroid.main.login.LoginActivity">
 
     <View
         android:layout_width="50dp"
@@ -38,7 +38,7 @@
         android:layout_marginTop="20dp"
         android:id="@+id/tvRegisterLeft"
         style="@style/text_1"
-        android:text="点击此处进行"/>
+        android:text="点击此处进行  "/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -48,13 +48,13 @@
         app:layout_constraintTop_toTopOf="@+id/tvRegisterLeft"
         android:textSize="@dimen/text_1"
         android:textColor="@color/theme"
-        android:text="  注册"
+        android:text="注册"
         android:id="@+id/tvRegister"
         android:background="@drawable/ripple_bg"/>
     <EditText
         android:id="@+id/etUsername"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:layout_marginLeft="@dimen/padding"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/tvLogin"
@@ -75,7 +75,7 @@
     <EditText
         android:id="@+id/etPassword"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:layout_marginLeft="@dimen/padding"
         android:layout_marginRight="@dimen/padding"
         app:layout_constraintStart_toStartOf="parent"
@@ -107,4 +107,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etPassword"
         android:layout_marginTop="50dp"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btLogin"
+        android:layout_marginTop="50dp"
+        android:textSize="@dimen/text_1"
+        android:textColor="@color/theme"
+        android:gravity="center"
+        android:text="跳过登陆"
+        android:id="@+id/tvSkip"
+        android:background="@drawable/ripple_bg"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
