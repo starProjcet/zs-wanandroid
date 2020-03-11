@@ -115,7 +115,7 @@ class HomeFragment : BaseFragment<HomeContract.Presenter<HomeContract.View>>() ,
     }
 
     override fun onError(error: String) {
-        com.zs.wanandroid.utils.ToastUtils.show(error)
+        ToastUtils.show(error)
     }
 
     /**

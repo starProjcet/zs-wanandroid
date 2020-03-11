@@ -1,7 +1,7 @@
 package com.zs.wanandroid.http;
 
 
-import com.android.constants.Constants;
+import com.zs.wanandroid.constants.Constants;
 import com.zs.wanandroid.utils.PrefUtils;
 import com.google.gson.Gson;
 import com.google.gson.TypeAdapter;

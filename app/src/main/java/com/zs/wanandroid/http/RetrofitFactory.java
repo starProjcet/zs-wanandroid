@@ -1,8 +1,8 @@
 package com.zs.wanandroid.http;
 
 import com.zs.wanandroid.WanAndroidApplication;
-import com.android.constants.ApiConstants;
-import com.android.constants.Constants;
+import com.zs.wanandroid.constants.ApiConstants;
+import com.zs.wanandroid.constants.Constants;
 import java.io.File;
 import java.util.concurrent.TimeUnit;
 import okhttp3.Cache;

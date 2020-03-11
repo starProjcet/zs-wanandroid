@@ -1,6 +1,7 @@
 package com.zs.wanandroid.utils;
 
-import com.android.constants.Constants;
+
+import com.zs.wanandroid.constants.Constants;
 
 public class AppUtils {
 

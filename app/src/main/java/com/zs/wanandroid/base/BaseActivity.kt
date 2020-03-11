@@ -6,8 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.zs.wanandroid.http.LogoutEvent
 import com.zs.wanandroid.main.login.LoginActivity
 import com.zs.wanandroid.utils.AppUtils
-import com.zs.wanandroid.utils.ColorUtils
-import com.zs.wanandroid.utils.StatusUtils
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -68,7 +66,7 @@ abstract class BaseActivity<P: IBasePresenter<*>> : AppCompatActivity() {
      */
     protected fun intent(clazz:Class<*>,isLogin:Boolean){
         //需要登录&&未登录
-        if (isLogin && !com.zs.wanandroid.utils.AppUtils.isLogin()) {
+        if (isLogin && !AppUtils.isLogin()) {
             startActivity(Intent(this, LoginActivity::class.java))
         }else{
             startActivity(Intent(this,clazz))
@@ -80,7 +78,7 @@ abstract class BaseActivity<P: IBasePresenter<*>> : AppCompatActivity() {
      */
     protected fun intent(bundle: Bundle,clazz:Class<*>,isLogin:Boolean){
         //需要登录&&未登录
-        if (isLogin && !com.zs.wanandroid.utils.AppUtils.isLogin()) {
+        if (isLogin && !AppUtils.isLogin()) {
             startActivity(Intent(this, LoginActivity::class.java))
         }else{
             startActivity(Intent(this, clazz).apply {

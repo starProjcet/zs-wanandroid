@@ -9,7 +9,6 @@ import com.zs.wanandroid.constants.Constants
 import com.zs.wanandroid.main.MainActivity
 import com.zs.wanandroid.utils.AppUtils
 import com.zs.wanandroid.utils.PrefUtils
-import com.zs.wanandroid.utils.ToastUtils
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : BaseActivity<LoginContract.Presenter<LoginContract.View>>(),
@@ -17,7 +16,7 @@ class LoginActivity : BaseActivity<LoginContract.Presenter<LoginContract.View>>(
 
 
     override fun init(savedInstanceState: Bundle?) {
-        if (com.zs.wanandroid.utils.AppUtils.isLogin()){
+        if (AppUtils.isLogin()){
             startActivity(Intent(this, MainActivity::class.java))
             finish()
         }
@@ -41,7 +40,7 @@ class LoginActivity : BaseActivity<LoginContract.Presenter<LoginContract.View>>(
 
 
     override fun loginSuccess() {
-        PrefUtils.setBoolean(com.zs.wanandroid.constants.Constants.LOGIN,true)
+        PrefUtils.setBoolean(Constants.LOGIN,true)
         startActivity(Intent(this, MainActivity::class.java))
         finish()
     }

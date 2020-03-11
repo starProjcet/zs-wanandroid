@@ -43,7 +43,7 @@ abstract class BaseFragment<P: IBasePresenter<*>>: Fragment() {
      */
     protected fun intent(clazz:Class<*>, isLogin:Boolean){
         //需要登录&&未登录
-        if (isLogin && !com.zs.wanandroid.utils.AppUtils.isLogin()) {
+        if (isLogin && !AppUtils.isLogin()) {
             startActivity(Intent(context, LoginActivity::class.java))
         }else{
             startActivity(Intent(context,clazz))
@@ -56,7 +56,7 @@ abstract class BaseFragment<P: IBasePresenter<*>>: Fragment() {
      */
     protected fun intent(bundle: Bundle, clazz:Class<*>, isLogin:Boolean){
         //需要登录&&未登录
-        if (isLogin && !com.zs.wanandroid.utils.AppUtils.isLogin()) {
+        if (isLogin && !AppUtils.isLogin()) {
             startActivity(Intent(context, LoginActivity::class.java))
         }else{
             startActivity(Intent(context, clazz).apply {

@@ -20,7 +20,7 @@ class HomeArticleAdapter(layoutResId:Int) :BaseQuickAdapter<HomeEntity.DatasBean
             if (type==1){
                 helper.setText(R.id.tvTag,"置顶 ")
                 helper.setVisible(R.id.tvTag,true)
-                helper.setTextColor(R.id.tvTag, com.zs.wanandroid.utils.ColorUtils.parseColor(R.color.theme))
+                helper.setTextColor(R.id.tvTag, ColorUtils.parseColor(R.color.theme))
             }else{
                 helper.setGone(R.id.tvTag,true)
             }

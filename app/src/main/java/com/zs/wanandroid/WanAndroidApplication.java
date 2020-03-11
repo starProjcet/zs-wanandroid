@@ -4,7 +4,6 @@ import android.app.Application;
 import android.content.Context;
 
 import com.example.zs_wan_android.R;
-import com.android.utils.ColorUtils;
 import com.scwang.smartrefresh.header.MaterialHeader;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.DefaultRefreshFooterCreator;
@@ -13,6 +12,7 @@ import com.scwang.smartrefresh.layout.api.RefreshFooter;
 import com.scwang.smartrefresh.layout.api.RefreshHeader;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.footer.BallPulseFooter;
+import com.zs.wanandroid.utils.ColorUtils;
 
 public class WanAndroidApplication extends Application {
     private static Application baseApplication;

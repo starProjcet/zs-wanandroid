@@ -40,5 +40,5 @@ interface ApiService {
      */
     @GET("/lg/collect/list/{page}/json")
     fun getCollectData(@Path("page") pageNo: Int):
-            Observable<com.zs.wanandroid.entity.CollectEntity>
+            Observable<CollectEntity>
 }
