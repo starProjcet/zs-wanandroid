@@ -6,12 +6,14 @@
 
 
     <color name="theme">#F60B0B</color>
-    <color name="theme_2">#009688</color>
+    <color name="theme_2">#00CAAE</color>
+
     <color name="normal_color">#bfbfbf</color>
     <color name="white">#FFFFFF</color>
     <color name="black">#111111</color>
     <color name="transparent">#00FFFFFF</color>
     <color name="division_line">#EDEDED</color>
+    <color name="division_line_thickening">#EDEDED</color>
 
     <!--    点击波纹效果颜色-->
     <color name="ripple_gray">#D1D1D1</color>
@@ -22,4 +24,6 @@
     <color name="text_2">#999999</color>
     <!--    三级标题颜色-->
     <color name="text_3">#bbbbbb</color>
+
+    <color name="orange">#ea9518</color>
 </resources>

@@ -3,13 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".main.square.SquareFragment">
+    android:background="@color/white"
+    tools:context="com.zs.wanandroid.main.square.SquareFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment"
-        android:layout_marginTop="200dp"/>
+        android:text="squ"
+        android:layout_marginTop="200dp"
+        style="@style/text_1"/>
+
 
 </FrameLayout>
