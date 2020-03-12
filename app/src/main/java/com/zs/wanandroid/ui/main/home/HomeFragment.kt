@@ -19,6 +19,7 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener
 import com.zs.wanandroid.constants.Constants
+import com.zs.wanandroid.ui.search.SearchActivity
 import com.zs.wanandroid.ui.web.WebActivity
 import com.zs.wanandroid.weight.ReloadListener
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -57,6 +58,9 @@ class HomeFragment : BaseFragment<HomeContract.Presenter<HomeContract.View>>() ,
         addScrollListener()
         rvHomeList.layoutManager = LinearLayoutManager(context)
         ivSearch.setOnClickListener{
+            intent(SearchActivity::class.java,false)
+            //瞬间开启activity，无动画
+            activity?.overridePendingTransition(0, 0)
 
         }
     }

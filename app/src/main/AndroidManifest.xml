@@ -17,6 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name="com.zs.wanandroid.ui.search.SearchActivity"></activity>
         <activity
             android:name="com.zs.wanandroid.ui.SplashActivity"
             android:screenOrientation="portrait"
@@ -26,27 +27,22 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <!-- 设置 -->
+        </activity> <!-- 设置 -->
         <activity
             android:name="com.zs.wanandroid.ui.set.SetActivity"
-            android:screenOrientation="portrait" />
-        <!-- 主界面 -->
+            android:screenOrientation="portrait" /> <!-- 主界面 -->
         <activity
             android:name="com.zs.wanandroid.ui.main.MainActivity"
-            android:screenOrientation="portrait" />
-        <!-- 登陆 -->
+            android:screenOrientation="portrait" /> <!-- 登陆 -->
         <activity
             android:name="com.zs.wanandroid.ui.login.LoginActivity"
-            android:screenOrientation="portrait" />
-        <!-- web -->
+            android:screenOrientation="portrait" /> <!-- web -->
         <activity
             android:name="com.zs.wanandroid.ui.web.WebActivity"
+            android:screenOrientation="portrait" /> <!-- 收藏 -->
+        <activity
+            android:name="com.zs.wanandroid.ui.collect.CollectActivity"
             android:screenOrientation="portrait" />
-        <!-- 收藏 -->
-        <activity android:name="com.zs.wanandroid.ui.collect.CollectActivity"
-            android:screenOrientation="portrait" />
-
     </application>
 
 </manifest>
