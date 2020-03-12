@@ -22,4 +22,14 @@ public class Constants {
      * 用户信息
      */
     public static final String USER_INFO = "userInfo";
+
+    /**
+     * webView url
+     */
+    public static final String WEB_URL = "webUrl";
+
+    /**
+     * webView 标题
+     */
+    public static final String WEB_TITLE = "webTitle";
 }

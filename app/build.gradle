@@ -64,7 +64,8 @@ dependencies {
     implementation "com.scwang.smartrefresh:SmartRefreshHeader:$rootProject.ext.refreshHeaderVersion"
     implementation "org.greenrobot:eventbus:$rootProject.ext.eventBusVersion"
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.50'
-    implementation 'com.afollestad.material-dialogs:core:3.1.1'
+    //dialog
+    implementation 'com.afollestad.material-dialogs:core:3.3.0'
     implementation 'com.wang.avi:library:2.1.3'
 
 

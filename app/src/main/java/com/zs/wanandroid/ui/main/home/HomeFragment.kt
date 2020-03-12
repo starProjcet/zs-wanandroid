@@ -8,6 +8,7 @@ import androidx.core.widget.NestedScrollView
 import androidx.recyclerview.widget.LinearLayoutManager
 import cn.bingoogolapple.bgabanner.BGABanner
 import com.bumptech.glide.Glide
+import com.chad.library.adapter.base.BaseQuickAdapter
 import com.example.zs_wan_android.R
 import com.zs.wanandroid.adapter.HomeArticleAdapter
 import com.zs.wanandroid.base.BaseFragment
@@ -17,6 +18,8 @@ import com.zs.wanandroid.utils.ToastUtils
 import com.scwang.smartrefresh.layout.api.RefreshLayout
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener
+import com.zs.wanandroid.constants.Constants
+import com.zs.wanandroid.ui.web.WebActivity
 import com.zs.wanandroid.weight.ReloadListener
 import kotlinx.android.synthetic.main.fragment_home.*
 
@@ -28,7 +31,9 @@ import kotlinx.android.synthetic.main.fragment_home.*
  * @data 2020-03-09
  */
 class HomeFragment : BaseFragment<HomeContract.Presenter<HomeContract.View>>() ,BGABanner.Adapter<ImageView?, String?>
-,BGABanner.Delegate<ImageView?, String?> , HomeContract.View,OnLoadMoreListener,OnRefreshListener,ReloadListener{
+,BGABanner.Delegate<ImageView?, String?> , HomeContract.View,OnLoadMoreListener,OnRefreshListener,ReloadListener
+,BaseQuickAdapter.OnItemClickListener{
+
 
     private var pageNum:Int = 0
     private var article = mutableListOf<HomeEntity.DatasBean>()
@@ -43,6 +48,7 @@ class HomeFragment : BaseFragment<HomeContract.Presenter<HomeContract.View>>() ,
     private fun initView(){
         homeArticleAdapter =
             HomeArticleAdapter(R.layout.item_home_article)
+        homeArticleAdapter?.onItemClickListener = this
         homeArticleAdapter?.setNewData(article)
         rvHomeList.adapter = homeArticleAdapter
         loadingTip.setReloadListener(this)
@@ -165,6 +171,14 @@ class HomeFragment : BaseFragment<HomeContract.Presenter<HomeContract.View>>() ,
     override fun reload() {
         loadingTip.loading()
         loadData()
+    }
+
+
+    override fun onItemClick(adapter: BaseQuickAdapter<*, *>?, view: View?, position: Int) {
+        intent(Bundle().apply {
+            putString(Constants.WEB_URL,article[position].link)
+            putString(Constants.WEB_TITLE,article[position].title)
+        },WebActivity::class.java,false)
     }
 
     /**

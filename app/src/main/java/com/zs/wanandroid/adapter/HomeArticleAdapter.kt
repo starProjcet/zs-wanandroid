@@ -8,12 +8,8 @@ import com.example.zs_wan_android.R
 import com.zs.wanandroid.entity.HomeEntity
 import com.zs.wanandroid.utils.ColorUtils
 
-class HomeArticleAdapter(layoutResId:Int) :BaseQuickAdapter<HomeEntity.DatasBean,BaseViewHolder>(layoutResId)
-    ,BaseQuickAdapter.OnItemClickListener{
+class HomeArticleAdapter(layoutResId:Int) :BaseQuickAdapter<HomeEntity.DatasBean,BaseViewHolder>(layoutResId) {
 
-    init {
-        onItemClickListener = this
-    }
 
     override fun convert(helper: BaseViewHolder, item: HomeEntity.DatasBean?) {
         item?.run {
@@ -29,10 +25,6 @@ class HomeArticleAdapter(layoutResId:Int) :BaseQuickAdapter<HomeEntity.DatasBean
             helper.setText(R.id.tvTitle,title)
             helper.setText(R.id.tvChapterName,superChapterName)
         }
-    }
-
-    override fun onItemClick(adapter: BaseQuickAdapter<*, *>?, view: View?, position: Int) {
-
     }
 
 }

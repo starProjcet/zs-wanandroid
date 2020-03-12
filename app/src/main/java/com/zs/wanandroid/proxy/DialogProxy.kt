@@ -17,16 +17,14 @@ class DialogProxy {
          */
         fun confirm(context: Context,tips:String,callBack:IConfirmClickCallBack?){
             MaterialDialog(context).show {
-                title(R.string.dialog_title)
+                cornerRadius(8f)
+                title(text = "提示")
                 message(text = tips)
                 positiveButton(text = "确定") {
                     callBack?.onClick()
                 }
-                negativeButton(R.string.dialog_cancel)
+                negativeButton(text = "取消")
             }
         }
     }
-
-
-
 }

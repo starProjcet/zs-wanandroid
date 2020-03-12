@@ -60,7 +60,7 @@ abstract class BaseFragment<P: IBasePresenter<*>>: Fragment() {
             startActivity(Intent(context, LoginActivity::class.java))
         }else{
             startActivity(Intent(context, clazz).apply {
-                putExtra("bundle", bundle)
+                putExtras(bundle)
             })
         }
     }
