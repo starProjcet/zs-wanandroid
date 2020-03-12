@@ -1,9 +1,7 @@
 package com.zs.wanandroid.http;
 
 
-import com.zs.wanandroid.constants.Constants;
-import com.zs.wanandroid.utils.AppUtils;
-import com.zs.wanandroid.utils.PrefUtils;
+import com.zs.wanandroid.utils.AppManager;
 import com.google.gson.Gson;
 import com.google.gson.TypeAdapter;
 import org.json.JSONException;
@@ -60,7 +58,7 @@ public class FilterGsonResponseBodyConverter<T> implements Converter<ResponseBod
         switch (code){
             //登录失败
             case -1001:
-                AppUtils.resetUser();
+                AppManager.Companion.resetUser();
                 throw new BusinessHttpException(msg, code);
             default:
                 throw new BusinessHttpException(msg, code);

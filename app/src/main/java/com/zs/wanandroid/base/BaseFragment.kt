@@ -6,8 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.zs.wanandroid.main.login.LoginActivity
-import com.zs.wanandroid.utils.AppUtils
+import com.zs.wanandroid.ui.login.LoginActivity
+import com.zs.wanandroid.utils.AppManager
 
 /**
  * fragment基础类
@@ -43,7 +43,7 @@ abstract class BaseFragment<P: IBasePresenter<*>>: Fragment() {
      */
     protected fun intent(clazz:Class<*>, isLogin:Boolean){
         //需要登录&&未登录
-        if (isLogin && !AppUtils.isLogin()) {
+        if (isLogin && !AppManager.isLogin()) {
             startActivity(Intent(context, LoginActivity::class.java))
         }else{
             startActivity(Intent(context,clazz))
@@ -56,7 +56,7 @@ abstract class BaseFragment<P: IBasePresenter<*>>: Fragment() {
      */
     protected fun intent(bundle: Bundle, clazz:Class<*>, isLogin:Boolean){
         //需要登录&&未登录
-        if (isLogin && !AppUtils.isLogin()) {
+        if (isLogin && !AppManager.isLogin()) {
             startActivity(Intent(context, LoginActivity::class.java))
         }else{
             startActivity(Intent(context, clazz).apply {

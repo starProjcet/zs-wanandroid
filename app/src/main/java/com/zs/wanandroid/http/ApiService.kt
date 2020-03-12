@@ -1,9 +1,6 @@
 package com.zs.wanandroid.http
 
-import com.zs.wanandroid.entity.BannerEntity
-import com.zs.wanandroid.entity.CollectEntity
-import com.zs.wanandroid.entity.HomeEntity
-import com.zs.wanandroid.entity.LoginEntity
+import com.zs.wanandroid.entity.*
 import io.reactivex.Observable
 import retrofit2.http.*
 
@@ -32,7 +29,7 @@ interface ApiService {
     @FormUrlEncoded
     @POST("/user/login")
     fun login(@Field("username") username: String,
-              @Field("password") password: String): Observable<LoginEntity>
+              @Field("password") password: String): Observable<UserEntity>
 
     @GET("/user/logout/json")
     fun logout():Observable<Any>
@@ -43,4 +40,10 @@ interface ApiService {
     @GET("/lg/collect/list/{page}/json")
     fun getCollectData(@Path("page") pageNo: Int):
             Observable<CollectEntity>
+
+    /**
+     * 获取个人积分
+     */
+    @GET("/lg/coin/userinfo/json")
+    fun getIntegral():Observable<IntegralEntity>
 }

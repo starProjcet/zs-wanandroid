@@ -17,4 +17,9 @@ public class Constants {
      * 登陆状态
      */
     public static final String LOGIN = "login";
+
+    /**
+     * 用户信息
+     */
+    public static final String USER_INFO = "userInfo";
 }

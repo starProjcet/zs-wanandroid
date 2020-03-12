@@ -3,10 +3,9 @@ package com.zs.wanandroid.base
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.zs.wanandroid.main.login.LoginActivity
-import com.zs.wanandroid.utils.AppUtils
+import com.zs.wanandroid.ui.login.LoginActivity
+import com.zs.wanandroid.utils.AppManager
 import com.zs.wanandroid.utils.StatusUtils
-import org.greenrobot.eventbus.EventBus
 
 abstract class BaseActivity<P: IBasePresenter<*>> : AppCompatActivity() {
 
@@ -27,12 +26,6 @@ abstract class BaseActivity<P: IBasePresenter<*>> : AppCompatActivity() {
         setStatusColor()
         setSystemInvadeBlack()
         init(savedInstanceState)
-        //EventBus.getDefault().register(this)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        //EventBus.getDefault().unregister(this)
     }
 
     /**
@@ -50,13 +43,6 @@ abstract class BaseActivity<P: IBasePresenter<*>> : AppCompatActivity() {
         StatusUtils.setSystemStatus(this, true, true)
     }
 
-//    /**
-//     * 退出登陆消息
-//     */
-//    @Subscribe(threadMode = ThreadMode.MAIN)
-//    public fun logoutEvent(logoutEvent: LogoutEvent){
-//        finish()
-//    }
 
     /**
      * 界面跳转
@@ -64,7 +50,7 @@ abstract class BaseActivity<P: IBasePresenter<*>> : AppCompatActivity() {
      */
     protected fun intent(clazz:Class<*>,isLogin:Boolean){
         //需要登录&&未登录
-        if (isLogin && !AppUtils.isLogin()) {
+        if (isLogin && !AppManager.isLogin()) {
             startActivity(Intent(this, LoginActivity::class.java))
         }else{
             startActivity(Intent(this,clazz))
@@ -76,7 +62,7 @@ abstract class BaseActivity<P: IBasePresenter<*>> : AppCompatActivity() {
      */
     protected fun intent(bundle: Bundle,clazz:Class<*>,isLogin:Boolean){
         //需要登录&&未登录
-        if (isLogin && !AppUtils.isLogin()) {
+        if (isLogin && !AppManager.isLogin()) {
             startActivity(Intent(this, LoginActivity::class.java))
         }else{
             startActivity(Intent(this, clazz).apply {

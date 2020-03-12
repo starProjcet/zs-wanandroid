@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context="com.zs.wanandroid.main.project.ProjectFragment">
+    tools:context="com.zs.wanandroid.ui.main.project.ProjectFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
