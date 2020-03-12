@@ -5,6 +5,7 @@ import android.view.View
 import com.example.zs_wan_android.R
 import com.zs.wanandroid.base.BaseFragment
 import com.zs.wanandroid.entity.IntegralEntity
+import com.zs.wanandroid.http.LoginEvent
 import com.zs.wanandroid.http.LogoutEvent
 import com.zs.wanandroid.ui.collect.CollectActivity
 import com.zs.wanandroid.ui.login.LoginActivity
@@ -72,7 +73,7 @@ class MineFragment : BaseFragment<MineContract.Presenter<MineContract.View>>(),V
 
     override fun showIntegral(integralEntity: IntegralEntity) {
         tvUserName.text = integralEntity.username
-        tvId.text = integralEntity.userId.toString()
+        tvId.text = String.format("%s","id:${integralEntity.userId}")
         tvRanking.text = integralEntity.rank.toString()
         tvIntegral.text = integralEntity.coinCount.toString()
     }
@@ -94,11 +95,22 @@ class MineFragment : BaseFragment<MineContract.Presenter<MineContract.View>>(),V
     }
 
     /**
-     * 退出登陆消息
+     * 登陆消息
      */
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public fun logoutEvent(logoutEvent: LogoutEvent){
+    public fun loginEvent(loginEvent: LoginEvent){
         presenter?.loadIntegral()
+    }
+
+    /**
+     * 退出消息
+     */
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public fun logoutEvent(loginEvent: LogoutEvent){
+        tvUserName.text = "请先登录"
+        tvId.text = "--"
+        tvRanking.text = "0"
+        tvIntegral.text = "0"
     }
 
 }

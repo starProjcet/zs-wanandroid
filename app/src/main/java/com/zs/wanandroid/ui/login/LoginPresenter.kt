@@ -4,6 +4,7 @@ import com.zs.wanandroid.base.BasePresenter
 import com.zs.wanandroid.constants.Constants
 import com.zs.wanandroid.entity.UserEntity
 import com.zs.wanandroid.http.HttpDefaultObserver
+import com.zs.wanandroid.http.LoginEvent
 import com.zs.wanandroid.http.LogoutEvent
 import com.zs.wanandroid.http.RetrofitHelper
 import com.zs.wanandroid.utils.PrefUtils
@@ -27,7 +28,7 @@ class LoginPresenter(view: LoginContract.View):
                 override fun onSuccess(t: UserEntity) {
                     //登陆成功保存用户信息，并发送消息
                     PrefUtils.setObject(Constants.USER_INFO,t)
-                    EventBus.getDefault().post(LogoutEvent())
+                    EventBus.getDefault().post(LoginEvent())
                     view?.loginSuccess()
                 }
                 override fun onError(errorMsg: String) {

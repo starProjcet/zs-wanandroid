@@ -1,6 +1,8 @@
 package com.zs.wanandroid.utils
 
 import com.zs.wanandroid.constants.Constants
+import com.zs.wanandroid.http.LogoutEvent
+import org.greenrobot.eventbus.EventBus
 import java.util.HashSet
 
 
@@ -24,6 +26,8 @@ class AppManager {
          * 退出登录，重置用户状态
          */
         fun resetUser() {
+            //发送退出登录消息
+            EventBus.getDefault().post(LogoutEvent())
             PrefUtils.setBoolean(Constants.LOGIN, false)
             PrefUtils.setHashSet(Constants.COOKIE, HashSet())
             PrefUtils.setObject(Constants.USER_INFO, null)

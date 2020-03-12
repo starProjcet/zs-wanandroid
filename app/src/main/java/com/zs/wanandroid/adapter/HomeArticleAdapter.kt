@@ -16,7 +16,7 @@ class HomeArticleAdapter(layoutResId:Int) :BaseQuickAdapter<HomeEntity.DatasBean
             if (type==1){
                 helper.setText(R.id.tvTag,"置顶 ")
                 helper.setVisible(R.id.tvTag,true)
-                helper.setTextColor(R.id.tvTag, ColorUtils.parseColor(R.color.theme))
+                helper.setTextColor(R.id.tvTag, ColorUtils.parseColor(R.color.red))
             }else{
                 helper.setGone(R.id.tvTag,true)
             }

@@ -56,7 +56,7 @@ class HomeFragment : BaseFragment<HomeContract.Presenter<HomeContract.View>>() ,
         smartRefresh?.setOnLoadMoreListener(this)
         addScrollListener()
         rvHomeList.layoutManager = LinearLayoutManager(context)
-        tvSearch.setOnClickListener{
+        ivSearch.setOnClickListener{
 
         }
     }

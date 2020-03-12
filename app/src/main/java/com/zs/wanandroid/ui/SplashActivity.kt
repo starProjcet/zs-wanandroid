@@ -23,21 +23,11 @@ class SplashActivity : BaseActivity<IBasePresenter<*>>() {
     private var disposable:Disposable? = null
 
     override fun init(savedInstanceState: Bundle?) {
-        anim()
         disposable = Observable.timer(2500,TimeUnit.MILLISECONDS)
             .subscribe {
                 intent(MainActivity::class.java,false)
                 finish()
             }
-    }
-
-    /**
-     * logo动画
-     */
-    private fun anim(){
-        ivLogo.animation = AnimationUtils.loadAnimation(this,
-            R.anim.logo_anim
-        )
     }
 
     override fun onDestroy() {
