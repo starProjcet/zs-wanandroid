@@ -19,7 +19,7 @@ class SetPresenter(view:SetContract.View)
                 override fun disposable(d: Disposable) {
                     addSubscribe(d)
                 }
-                override fun onSuccess(t: Any?) {
+                override fun onSuccess(t: Any) {
                     view?.logoutSuccess()
                 }
                 override fun onError(errorMsg: String) {

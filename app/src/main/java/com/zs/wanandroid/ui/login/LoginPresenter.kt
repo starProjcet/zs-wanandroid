@@ -25,7 +25,7 @@ class LoginPresenter(view: LoginContract.View):
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : HttpDefaultObserver<UserEntity>() {
-                override fun onSuccess(t: UserEntity?) {
+                override fun onSuccess(t: UserEntity) {
                     //登陆成功保存用户信息，并发送消息
                     PrefUtils.setObject(Constants.USER_INFO,t)
                     EventBus.getDefault().post(LoginEvent())

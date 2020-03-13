@@ -31,11 +31,10 @@ abstract class HttpDefaultObserver<T> :Observer<BaseResponse<T>> {
         if (t.errorCode==0) {
 
             if (t.data==null){
-                val tClass =
-                    (javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[0] as Class<T>
+                val tClass = (javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[0] as Class<T>
                 t.data = tClass.newInstance()
             }
-            onSuccess(t.data)
+            t.data?.let { onSuccess(it) }
         }
         //code!=0代表业务出错，进行过滤
         else{
@@ -73,7 +72,7 @@ abstract class HttpDefaultObserver<T> :Observer<BaseResponse<T>> {
     }
 
     abstract fun disposable(d: Disposable)
-    abstract fun onSuccess(t:T?)
+    abstract fun onSuccess(t:T)
     abstract fun onError(errorMsg:String)
 
 }

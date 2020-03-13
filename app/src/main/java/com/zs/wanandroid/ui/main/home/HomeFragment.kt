@@ -19,6 +19,7 @@ import com.zs.wanandroid.utils.ToastUtils
 import com.scwang.smartrefresh.layout.api.RefreshLayout
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener
+import com.zs.wanandroid.adapter.OnCollectClickListener
 import com.zs.wanandroid.constants.Constants
 import com.zs.wanandroid.http.LoginEvent
 import com.zs.wanandroid.http.LogoutEvent
@@ -26,7 +27,10 @@ import com.zs.wanandroid.ui.search.SearchActivity
 import com.zs.wanandroid.ui.web.WebActivity
 import com.zs.wanandroid.utils.AppManager
 import com.zs.wanandroid.weight.ReloadListener
+import kotlinx.android.synthetic.main.activity_collect.*
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_home.loadingTip
+import kotlinx.android.synthetic.main.fragment_home.smartRefresh
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -40,9 +44,7 @@ import org.greenrobot.eventbus.ThreadMode
  */
 class HomeFragment : BaseFragment<HomeContract.Presenter<HomeContract.View>>() ,BGABanner.Adapter<ImageView?, String?>
 ,BGABanner.Delegate<ImageView?, String?> , HomeContract.View,OnLoadMoreListener,OnRefreshListener,ReloadListener
-,BaseQuickAdapter.OnItemClickListener,HomeArticleAdapter.OnCollectClickListener{
-
-
+,BaseQuickAdapter.OnItemClickListener, OnCollectClickListener {
     private var pageNum:Int = 0
     private var articleList = mutableListOf<HomeEntity.DatasBean>()
     private var bannerList = mutableListOf<BannerEntity>()
@@ -160,7 +162,8 @@ class HomeFragment : BaseFragment<HomeContract.Presenter<HomeContract.View>>() ,
             articleList.addAll(list)
             homeArticleAdapter?.setNewData(articleList)
         }else {
-            ToastUtils.show("没有数据啦...")
+            if (articleList.size==0)loadingTip.showEmpty()
+            else ToastUtils.show("没有数据啦...")
         }
     }
 
@@ -194,7 +197,8 @@ class HomeFragment : BaseFragment<HomeContract.Presenter<HomeContract.View>>() ,
      * 加载更多
      */
     override fun onLoadMore(refreshLayout: RefreshLayout) {
-        presenter?.loadData(pageNum++)
+        pageNum++
+        presenter?.loadData(pageNum)
     }
 
     /**
@@ -275,6 +279,9 @@ class HomeFragment : BaseFragment<HomeContract.Presenter<HomeContract.View>>() ,
      */
     @Subscribe(threadMode = ThreadMode.MAIN)
     public fun logoutEvent(loginEvent: LogoutEvent){
-
+        articleList.forEach {
+            it.collect = false
+        }
+        homeArticleAdapter?.notifyDataSetChanged()
     }
 }

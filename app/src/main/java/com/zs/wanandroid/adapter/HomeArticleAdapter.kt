@@ -21,10 +21,9 @@ class HomeArticleAdapter(layoutResId:Int) :BaseQuickAdapter<HomeEntity.DatasBean
         item?.run {
             if (type==1){
                 helper.setText(R.id.tvTag,"置顶 ")
-                helper.setVisible(R.id.tvTag,true)
                 helper.setTextColor(R.id.tvTag, ColorUtils.parseColor(R.color.red))
             }else{
-                helper.setGone(R.id.tvTag,true)
+                helper.setText(R.id.tvTag,"")
             }
             helper.setText(R.id.tvAuthor,if (!TextUtils.isEmpty(author))author else shareUser)
             helper.setText(R.id.tvDate,niceDate)
@@ -44,7 +43,4 @@ class HomeArticleAdapter(layoutResId:Int) :BaseQuickAdapter<HomeEntity.DatasBean
         }
     }
 
-    interface OnCollectClickListener{
-        fun onCollectClick(helper: BaseViewHolder, position: Int)
-    }
 }

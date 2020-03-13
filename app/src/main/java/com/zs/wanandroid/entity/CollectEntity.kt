@@ -29,7 +29,7 @@ class CollectEntity {
     var pageCount: Int = 0
     var size: Int = 0
     var total: Int = 0
-    var datas: List<DatasBean>? = null
+    var datas: MutableList<DatasBean>? = null
 
     class DatasBean {
         /**

@@ -26,8 +26,8 @@ class MinePresenter(view: MineContract.View):BasePresenter<MineContract.View> (v
                     addSubscribe(d)
                 }
 
-                override fun onSuccess(t: IntegralEntity?) {
-                    t?.let {view?.showIntegral(t) }
+                override fun onSuccess(t: IntegralEntity) {
+                    view?.showIntegral(t)
                 }
 
                 override fun onError(errorMsg: String) {

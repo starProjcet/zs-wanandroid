@@ -1,6 +1,5 @@
 package com.zs.wanandroid.ui.main.home
 
-import android.util.Log
 import com.zs.wanandroid.base.BasePresenter
 import com.zs.wanandroid.entity.BannerEntity
 import com.zs.wanandroid.entity.HomeEntity
@@ -32,13 +31,11 @@ class HomePresenter(view: HomeContract.View):
                     addSubscribe(d)
                 }
 
-                override fun onSuccess(t: HomeEntity?) {
-                    t?.let {
-                        if (pageNum==0){
-                            t.datas?.let { loadTopList(it) }
-                        }else{
-                            t.datas?.let { view?.showList(it) }
-                        }
+                override fun onSuccess(t: HomeEntity) {
+                    if (pageNum==0){
+                        t.datas?.let { loadTopList(it) }
+                    }else{
+                        t.datas?.let { view?.showList(it) }
                     }
 
                 }
@@ -63,8 +60,8 @@ class HomePresenter(view: HomeContract.View):
                 }
 
                 //获取置顶文章成功加入到文章列表头部
-                override fun onSuccess(t: MutableList<HomeEntity.DatasBean>?) {
-                    t?.let { list.addAll(0, it) }
+                override fun onSuccess(t: MutableList<HomeEntity.DatasBean>) {
+                    list.addAll(0, t)
                     view?.showList(list)
                 }
 
@@ -86,8 +83,8 @@ class HomePresenter(view: HomeContract.View):
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : HttpDefaultObserver<MutableList<BannerEntity>>() {
-                override fun onSuccess(t: MutableList<BannerEntity>?) {
-                    t?.let { view?.showBanner(it) }
+                override fun onSuccess(t: MutableList<BannerEntity>) {
+                    view?.showBanner(t)
                 }
                 override fun onError(errorMsg: String) {
                     view?.onError(errorMsg)
@@ -112,7 +109,7 @@ class HomePresenter(view: HomeContract.View):
                     addSubscribe(d)
                 }
 
-                override fun onSuccess(t: Any?) {
+                override fun onSuccess(t: Any) {
                     view?.unCollectSuccess()
                 }
 
@@ -137,8 +134,7 @@ class HomePresenter(view: HomeContract.View):
                     addSubscribe(d)
                 }
 
-                override fun onSuccess(t: Any?) {
-                    Log.i("zhaosisi","collect:"+t.toString())
+                override fun onSuccess(t: Any) {
                     view?.collectSuccess()
                 }
 

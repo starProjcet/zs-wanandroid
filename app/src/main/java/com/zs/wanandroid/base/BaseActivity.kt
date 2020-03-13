@@ -66,7 +66,7 @@ abstract class BaseActivity<P: IBasePresenter<*>> : AppCompatActivity() {
             startActivity(Intent(this, LoginActivity::class.java))
         }else{
             startActivity(Intent(this, clazz).apply {
-                putExtra("bundle", bundle)
+                putExtras(bundle)
             })
         }
     }

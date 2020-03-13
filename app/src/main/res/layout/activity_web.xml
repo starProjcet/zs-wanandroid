@@ -39,7 +39,7 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="3dp"
         android:layout_marginTop="55dp"
         android:background="@color/division_line_thickening"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,7 +48,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="56dp">
+        android:layout_marginTop="58dp">
         <WebView
             android:id="@+id/webView"
             android:layout_width="match_parent"

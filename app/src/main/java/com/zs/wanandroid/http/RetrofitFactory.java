@@ -5,9 +5,10 @@ import com.zs.wanandroid.constants.ApiConstants;
 import com.zs.wanandroid.constants.Constants;
 import java.io.File;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+
 import okhttp3.Cache;
 import okhttp3.OkHttpClient;
-import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -20,8 +21,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitFactory {
 
     private static OkHttpClient.Builder getOkHttpClientBuilder() {
-        HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor(new HttpLogger());
-        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor("OkGo");
+        loggingInterceptor.setPrintLevel(HttpLoggingInterceptor.Level.BODY);
+        loggingInterceptor.setColorLevel(Level.INFO);
         File cacheFile = new File(WanAndroidApplication.getContext().getCacheDir(), "cache");
         //100Mb
         Cache cache = new Cache(cacheFile, 1024 * 1024 * 100);
