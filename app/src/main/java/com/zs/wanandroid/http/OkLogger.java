@@ -14,7 +14,7 @@ import android.util.Log;
 public class OkLogger {
     private static boolean isLogEnable = true;
 
-    private static String tag = "OkGo";
+    private static String tag = "OkHttp";
 
     public static void debug(boolean isEnable) {
         debug(tag, isEnable);

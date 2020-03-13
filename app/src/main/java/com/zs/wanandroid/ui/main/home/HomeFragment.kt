@@ -50,6 +50,11 @@ class HomeFragment : BaseFragment<HomeContract.Presenter<HomeContract.View>>() ,
     private var bannerList = mutableListOf<BannerEntity>()
     private var homeArticleAdapter: HomeArticleAdapter? = null
     private var currentPosition = 0
+    /**
+     * 点击收藏后将点击事件上锁,等接口有相应结果再解锁
+     * 避免重复点击产生的bug
+     */
+    private var lockCollectClick = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -173,6 +178,7 @@ class HomeFragment : BaseFragment<HomeContract.Presenter<HomeContract.View>>() ,
     }
 
     override fun unCollectSuccess() {
+        lockCollectClick = true
         if (currentPosition<articleList.size) {
             articleList[currentPosition].collect = false
             homeArticleAdapter?.notifyItemChanged(currentPosition)
@@ -180,6 +186,7 @@ class HomeFragment : BaseFragment<HomeContract.Presenter<HomeContract.View>>() ,
     }
 
     override fun collectSuccess() {
+        lockCollectClick = true
         if (currentPosition<articleList.size) {
             articleList[currentPosition].collect = true
             homeArticleAdapter?.notifyItemChanged(currentPosition)
@@ -187,6 +194,7 @@ class HomeFragment : BaseFragment<HomeContract.Presenter<HomeContract.View>>() ,
     }
 
     override fun onError(error: String) {
+        lockCollectClick = true
         //请求失败将page -1
         if (pageNum>0)pageNum--
         dismissRefresh()
@@ -231,7 +239,8 @@ class HomeFragment : BaseFragment<HomeContract.Presenter<HomeContract.View>>() ,
             ToastUtils.show("请先登录")
             return
         }
-        if (position<articleList.size){
+        if (position<articleList.size&&lockCollectClick){
+            lockCollectClick = false
             //记录当前点击的item
             currentPosition = position
             //收藏状态调用取消收藏接口，反之亦然
