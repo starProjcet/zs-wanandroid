@@ -87,8 +87,10 @@ class HomeFragment : BaseFragment<HomeContract.Presenter<HomeContract.View>>() ,
         nestedView.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener
         { _, _, scrollY, _, _ ->
             val alpha = if (scrollY>0){
+                ivSearch.isEnabled = true
                 scrollY.toFloat() / (300).toFloat()
             }else{
+                ivSearch.isEnabled = false
                 0f
             }
             rlSearch.alpha = alpha
@@ -112,7 +114,10 @@ class HomeFragment : BaseFragment<HomeContract.Presenter<HomeContract.View>>() ,
      * banner点击事件
      */
     override fun onBannerItemClick(banner: BGABanner?, itemView: ImageView?, model: String?, position: Int) {
-
+        intent(Bundle().apply {
+            putString(Constants.WEB_URL,bannerList[position].url)
+            putString(Constants.WEB_TITLE,bannerList[position].title)
+        },WebActivity::class.java,false)
     }
 
     /**

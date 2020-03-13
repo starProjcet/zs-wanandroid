@@ -33,7 +33,7 @@
         android:layout_centerVertical="true"
         android:visibility="gone"
         app:indicatorColor="@color/theme"
-        app:indicatorName="BallPulseIndicator"
+        app:indicatorName="BallBeatIndicator"
         android:id="@+id/indicatorView"/>
 
     <LinearLayout
