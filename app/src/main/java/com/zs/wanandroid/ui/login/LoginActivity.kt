@@ -100,6 +100,7 @@ class LoginActivity : BaseActivity<LoginContract.Presenter<LoginContract.View>>(
         setViewStatus(true)
         ToastUtils.show(error)
     }
+
     override fun getLayoutId(): Int {
         return R.layout.activity_login
     }

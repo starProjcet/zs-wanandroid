@@ -17,7 +17,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name="com.zs.wanandroid.ui.search.SearchActivity"></activity>
+        <activity android:name="com.zs.wanandroid.ui.girl.GirlActivity"></activity>
+        <activity android:name="com.zs.wanandroid.ui.search.SearchActivity" />
         <activity
             android:name="com.zs.wanandroid.ui.SplashActivity"
             android:screenOrientation="portrait"
