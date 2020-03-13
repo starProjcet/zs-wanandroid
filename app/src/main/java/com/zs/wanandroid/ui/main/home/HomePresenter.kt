@@ -17,6 +17,7 @@ class HomePresenter(view: HomeContract.View):
     BasePresenter<HomeContract.View>(view) ,
     HomeContract.Presenter<HomeContract.View> {
 
+
     /**
      * 加载首页文章列表
      */
@@ -30,12 +31,15 @@ class HomePresenter(view: HomeContract.View):
                     addSubscribe(d)
                 }
 
-                override fun onSuccess(t: HomeEntity) {
-                    if (pageNum==0){
-                        t.datas?.let { loadTopList(it) }
-                    }else{
-                        t.datas?.let { view?.showList(it) }
+                override fun onSuccess(t: HomeEntity?) {
+                    t?.let {
+                        if (pageNum==0){
+                            t.datas?.let { loadTopList(it) }
+                        }else{
+                            t.datas?.let { view?.showList(it) }
+                        }
                     }
+
                 }
 
                 override fun onError(errorMsg: String) {
@@ -58,8 +62,8 @@ class HomePresenter(view: HomeContract.View):
                 }
 
                 //获取置顶文章成功加入到文章列表头部
-                override fun onSuccess(top: MutableList<HomeEntity.DatasBean>) {
-                    list.addAll(0,top)
+                override fun onSuccess(t: MutableList<HomeEntity.DatasBean>?) {
+                    t?.let { list.addAll(0, it) }
                     view?.showList(list)
                 }
 
@@ -81,8 +85,8 @@ class HomePresenter(view: HomeContract.View):
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : HttpDefaultObserver<MutableList<BannerEntity>>() {
-                override fun onSuccess(t: MutableList<BannerEntity>) {
-                    view?.showBanner(t)
+                override fun onSuccess(t: MutableList<BannerEntity>?) {
+                    t?.let { view?.showBanner(it) }
                 }
                 override fun onError(errorMsg: String) {
                     view?.onError(errorMsg)
@@ -91,6 +95,55 @@ class HomePresenter(view: HomeContract.View):
                 override fun disposable(d: Disposable) {
                     addSubscribe(d)
                 }
+            })
+    }
+
+    /**
+     * 取消收藏
+     */
+    override fun unCollect(id: Int) {
+        RetrofitHelper.getApiService()
+            .unCollect(id)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(object : HttpDefaultObserver<Any>(){
+                override fun disposable(d: Disposable) {
+                    addSubscribe(d)
+                }
+
+                override fun onSuccess(t: Any?) {
+                    view?.unCollectSuccess()
+                }
+
+                override fun onError(errorMsg: String) {
+                    view?.onError(errorMsg)
+                }
+
+            })
+
+    }
+
+    /**
+     * 收藏
+     */
+    override fun collect(id: Int) {
+        RetrofitHelper.getApiService()
+            .collect(id)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(object : HttpDefaultObserver<Any>(){
+                override fun disposable(d: Disposable) {
+                    addSubscribe(d)
+                }
+
+                override fun onSuccess(t: Any?) {
+                    view?.collectSuccess()
+                }
+
+                override fun onError(errorMsg: String) {
+                    view?.onError(errorMsg)
+                }
+
             })
     }
 }

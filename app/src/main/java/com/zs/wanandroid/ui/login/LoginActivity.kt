@@ -2,7 +2,6 @@ package com.zs.wanandroid.ui.login
 
 import android.content.Context
 import android.os.Bundle
-import android.text.InputType
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.view.View

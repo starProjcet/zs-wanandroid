@@ -9,11 +9,14 @@ interface HomeContract {
     interface View : IBaseView {
         fun showList(list: MutableList<HomeEntity.DatasBean>)
         fun showBanner(bannerList:MutableList<BannerEntity>)
+        fun collectSuccess()
+        fun unCollectSuccess()
     }
 
-    interface Presenter<T> :
-        IBasePresenter<View> {
+    interface Presenter<T> : IBasePresenter<View> {
         fun loadData(pageNum:Int)
         fun loadBanner()
+        fun collect(id:Int)
+        fun unCollect(id:Int)
     }
 }

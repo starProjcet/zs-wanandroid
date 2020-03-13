@@ -45,6 +45,14 @@
         android:layout_marginTop="10dp"
         style="@style/text_3"
         tools:text="开发环境"/>
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:id="@+id/ivCollect"
+        android:padding="5dp"
+        android:layout_alignTop="@+id/tvChapterName"
+        android:layout_alignParentRight="true"
+        android:src="@mipmap/article_un_collect"/>
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"

@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import cn.bingoogolapple.bgabanner.BGABanner
 import com.bumptech.glide.Glide
 import com.chad.library.adapter.base.BaseQuickAdapter
+import com.chad.library.adapter.base.BaseViewHolder
 import com.example.zs_wan_android.R
 import com.zs.wanandroid.adapter.HomeArticleAdapter
 import com.zs.wanandroid.base.BaseFragment
@@ -19,10 +20,16 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener
 import com.zs.wanandroid.constants.Constants
+import com.zs.wanandroid.http.LoginEvent
+import com.zs.wanandroid.http.LogoutEvent
 import com.zs.wanandroid.ui.search.SearchActivity
 import com.zs.wanandroid.ui.web.WebActivity
+import com.zs.wanandroid.utils.AppManager
 import com.zs.wanandroid.weight.ReloadListener
 import kotlinx.android.synthetic.main.fragment_home.*
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 
 
 /**
@@ -33,13 +40,21 @@ import kotlinx.android.synthetic.main.fragment_home.*
  */
 class HomeFragment : BaseFragment<HomeContract.Presenter<HomeContract.View>>() ,BGABanner.Adapter<ImageView?, String?>
 ,BGABanner.Delegate<ImageView?, String?> , HomeContract.View,OnLoadMoreListener,OnRefreshListener,ReloadListener
-,BaseQuickAdapter.OnItemClickListener{
+,BaseQuickAdapter.OnItemClickListener,HomeArticleAdapter.OnCollectClickListener{
 
 
     private var pageNum:Int = 0
-    private var article = mutableListOf<HomeEntity.DatasBean>()
+    private var articleList = mutableListOf<HomeEntity.DatasBean>()
     private var bannerList = mutableListOf<BannerEntity>()
     private var homeArticleAdapter: HomeArticleAdapter? = null
+    private var currentPosition = 0
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        EventBus.getDefault().register(this)
+    }
+
+
     override fun init(savedInstanceState: Bundle?) {
         initView()
         loadingTip.loading()
@@ -50,7 +65,8 @@ class HomeFragment : BaseFragment<HomeContract.Presenter<HomeContract.View>>() ,
         homeArticleAdapter =
             HomeArticleAdapter(R.layout.item_home_article)
         homeArticleAdapter?.onItemClickListener = this
-        homeArticleAdapter?.setNewData(article)
+        homeArticleAdapter?.setCollectClickListener(this)
+        homeArticleAdapter?.setNewData(articleList)
         rvHomeList.adapter = homeArticleAdapter
         loadingTip.setReloadListener(this)
         smartRefresh?.setOnRefreshListener(this)
@@ -74,7 +90,7 @@ class HomeFragment : BaseFragment<HomeContract.Presenter<HomeContract.View>>() ,
         if (bannerList.size==0){
             presenter?.loadBanner()
         }
-        article.clear()
+        articleList.clear()
         pageNum = 0
         presenter?.loadData(pageNum)
     }
@@ -141,8 +157,8 @@ class HomeFragment : BaseFragment<HomeContract.Presenter<HomeContract.View>>() ,
         dismissRefresh()
         loadingTip.dismiss()
         if (list.isNotEmpty()){
-            article.addAll(list)
-            homeArticleAdapter?.setNewData(article)
+            articleList.addAll(list)
+            homeArticleAdapter?.setNewData(articleList)
         }else {
             ToastUtils.show("没有数据啦...")
         }
@@ -151,6 +167,20 @@ class HomeFragment : BaseFragment<HomeContract.Presenter<HomeContract.View>>() ,
     override fun showBanner(bannerList:MutableList<BannerEntity>) {
         this.bannerList.addAll(bannerList)
         initBanner()
+    }
+
+    override fun unCollectSuccess() {
+        if (currentPosition<articleList.size) {
+            articleList[currentPosition].collect = false
+            homeArticleAdapter?.notifyItemChanged(currentPosition)
+        }
+    }
+
+    override fun collectSuccess() {
+        if (currentPosition<articleList.size) {
+            articleList[currentPosition].collect = true
+            homeArticleAdapter?.notifyItemChanged(currentPosition)
+        }
     }
 
     override fun onError(error: String) {
@@ -182,13 +212,32 @@ class HomeFragment : BaseFragment<HomeContract.Presenter<HomeContract.View>>() ,
         loadData()
     }
 
-
     override fun onItemClick(adapter: BaseQuickAdapter<*, *>?, view: View?, position: Int) {
         intent(Bundle().apply {
-            putString(Constants.WEB_URL,article[position].link)
-            putString(Constants.WEB_TITLE,article[position].title)
+            putString(Constants.WEB_URL,articleList[position].link)
+            putString(Constants.WEB_TITLE,articleList[position].title)
         },WebActivity::class.java,false)
     }
+
+    /**
+     * 收藏点击
+     */
+    override fun onCollectClick(helper: BaseViewHolder, position: Int) {
+        if (!AppManager.isLogin()) {
+            ToastUtils.show("请先登录")
+            return
+        }
+        if (position<articleList.size){
+            //记录当前点击的item
+            currentPosition = position
+            //收藏状态调用取消收藏接口，反之亦然
+            articleList[position].apply {
+                if (collect) presenter?.unCollect(id)
+                else presenter?.collect(id)
+            }
+        }
+    }
+
 
     /**
      * 隐藏刷新加载
@@ -206,5 +255,26 @@ class HomeFragment : BaseFragment<HomeContract.Presenter<HomeContract.View>>() ,
 
     override fun getLayoutId(): Int {
         return R.layout.fragment_home
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        EventBus.getDefault().unregister(this)
+    }
+
+    /**
+     * 登陆消息，更新收藏状态
+     */
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public fun loginEvent(loginEvent: LoginEvent){
+
+    }
+
+    /**
+     * 退出消息
+     */
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public fun logoutEvent(loginEvent: LogoutEvent){
+
     }
 }

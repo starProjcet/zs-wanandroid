@@ -10,6 +10,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * des Retrofit工厂类
@@ -39,7 +40,7 @@ public class RetrofitFactory {
         OkHttpClient okHttpClient = getOkHttpClientBuilder().build();
         return new Retrofit.Builder()
                 .client(okHttpClient)
-                .addConverterFactory(FilterGsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .baseUrl(ApiConstants.BASE_URL)
                 .build();

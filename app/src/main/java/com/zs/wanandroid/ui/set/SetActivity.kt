@@ -18,9 +18,6 @@ class SetActivity : BaseActivity<SetContract.Presenter<SetContract.View>>(),SetC
 
 
     override fun init(savedInstanceState: Bundle?) {
-        /**
-         * 因为后端不记录登陆状态，所以此处制作模拟退出
-         */
         ivBack.setOnClickListener(this)
         tvClear.setOnClickListener(this)
         tvVersion.setOnClickListener(this)
@@ -55,10 +52,6 @@ class SetActivity : BaseActivity<SetContract.Presenter<SetContract.View>>(),SetC
                 DialogProxy.confirm(this,"是否确定退出?",object : IConfirmClickCallBack {
                     override fun onClick() {
                         presenter?.logout()
-                        finish()
-                        ToastUtils.show("已退出登录")
-                        AppManager.resetUser()
-                        intent(LoginActivity::class.java,false)
                     }
                 })
 
@@ -74,7 +67,14 @@ class SetActivity : BaseActivity<SetContract.Presenter<SetContract.View>>(),SetC
         return R.layout.activity_set
     }
 
+    /**
+     * 退出登陆成功，清除用户状态
+     */
     override fun logoutSuccess() {
+        finish()
+        ToastUtils.show("已退出登录")
+        AppManager.resetUser()
+        intent(LoginActivity::class.java,false)
     }
 
     override fun getContext(): Context? {

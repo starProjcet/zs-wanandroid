@@ -1,6 +1,7 @@
 package com.zs.wanandroid.http
 
 import com.google.gson.JsonParseException
+import com.zs.wanandroid.utils.AppManager
 import io.reactivex.Observer
 import io.reactivex.disposables.Disposable
 import org.json.JSONException
@@ -9,7 +10,13 @@ import java.net.SocketTimeoutException
 import java.net.UnknownHostException
 
 
-abstract class HttpDefaultObserver<T> :Observer<T> {
+/**
+ * des 给Response脱壳,对服务器错误统一处理
+ *
+ * @author zs
+ * @data 2020-03-13
+ */
+abstract class HttpDefaultObserver<T> :Observer<BaseResponse<T>> {
 
     override fun onComplete() {
     }
@@ -18,8 +25,14 @@ abstract class HttpDefaultObserver<T> :Observer<T> {
         disposable(d)
     }
 
-    override fun onNext(t: T) {
-        onSuccess(t)
+    override fun onNext(t: BaseResponse<T>) {
+        if (t.errorCode==0) {
+            onSuccess(t.data)
+        }
+        //code!=0代表业务出错，进行过滤
+        else{
+            filterCode(t.errorMsg,t.errorCode)
+        }
     }
 
     override fun onError(e: Throwable) {
@@ -39,8 +52,21 @@ abstract class HttpDefaultObserver<T> :Observer<T> {
         onError(errorMsg)
     }
 
+    @Throws(BusinessHttpException::class)
+    private fun filterCode(msg: String, code: Int) {
+        when (code) {
+            //登录失败
+            -1001 -> {
+                AppManager.resetUser()
+                throw BusinessHttpException(msg, code)
+            }
+            //未知code,将errorMsg封装至异常内抛出,由onError()捕获处理
+            else -> throw BusinessHttpException(msg, code)
+        }
+    }
+
     abstract fun disposable(d: Disposable)
-    abstract fun onSuccess(t:T)
+    abstract fun onSuccess(t:T?)
     abstract fun onError(errorMsg:String)
 
 }
