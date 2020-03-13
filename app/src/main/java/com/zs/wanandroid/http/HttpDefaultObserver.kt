@@ -8,6 +8,8 @@ import org.json.JSONException
 import java.net.ConnectException
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import java.lang.reflect.ParameterizedType
 
 
 /**
@@ -27,6 +29,12 @@ abstract class HttpDefaultObserver<T> :Observer<BaseResponse<T>> {
 
     override fun onNext(t: BaseResponse<T>) {
         if (t.errorCode==0) {
+
+            if (t.data==null){
+                val tClass =
+                    (javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[0] as Class<T>
+                t.data = tClass.newInstance()
+            }
             onSuccess(t.data)
         }
         //code!=0代表业务出错，进行过滤
@@ -52,16 +60,15 @@ abstract class HttpDefaultObserver<T> :Observer<BaseResponse<T>> {
         onError(errorMsg)
     }
 
-    @Throws(BusinessHttpException::class)
     private fun filterCode(msg: String, code: Int) {
         when (code) {
             //登录失败
             -1001 -> {
                 AppManager.resetUser()
-                throw BusinessHttpException(msg, code)
+                onError(BusinessHttpException(msg, code))
             }
-            //未知code,将errorMsg封装至异常内抛出,由onError()捕获处理
-            else -> throw BusinessHttpException(msg, code)
+            //未知code,将errorMsg封装成异常,由onError()处理
+            else -> onError(BusinessHttpException(msg, code))
         }
     }
 

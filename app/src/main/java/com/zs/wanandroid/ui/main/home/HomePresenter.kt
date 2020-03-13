@@ -1,5 +1,6 @@
 package com.zs.wanandroid.ui.main.home
 
+import android.util.Log
 import com.zs.wanandroid.base.BasePresenter
 import com.zs.wanandroid.entity.BannerEntity
 import com.zs.wanandroid.entity.HomeEntity
@@ -137,6 +138,7 @@ class HomePresenter(view: HomeContract.View):
                 }
 
                 override fun onSuccess(t: Any?) {
+                    Log.i("zhaosisi","collect:"+t.toString())
                     view?.collectSuccess()
                 }
 
