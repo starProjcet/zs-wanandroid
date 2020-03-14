@@ -49,6 +49,9 @@ class SplashActivity : BaseActivity<IBasePresenter<*>>(), PermissionCallbacks {
         }
     }
 
+    /**
+     * 开始倒计时跳转
+     */
     private fun startIntent(){
         disposable = Observable.timer(2000,TimeUnit.MILLISECONDS)
             .subscribe {
@@ -85,6 +88,9 @@ class SplashActivity : BaseActivity<IBasePresenter<*>>(), PermissionCallbacks {
         EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this)
     }
 
+    /**
+     * 权限申请失败
+     */
     override fun onPermissionsDenied(requestCode: Int, perms: MutableList<String>) {
     }
 
