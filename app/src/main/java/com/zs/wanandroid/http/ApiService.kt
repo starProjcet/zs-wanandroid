@@ -59,5 +59,18 @@ interface ApiService {
     @POST("/lg/uncollect_originId/{id}/json")
     fun unCollect(@Path("id") id: Int): Observable<BaseResponse<Any>>
 
+    /**
+     * 获取项目tab
+     */
+    @GET("/project/tree/json")
+    fun getProjectTabList(): Observable<BaseResponse<MutableList<ProjectTabEntity>>>
+
+    /**
+     * 获取项目tab
+     */
+    @GET("project/list/{pageNum}/json")
+    fun getProjectList(@Path("pageNum")pageNum:Int,@Query("cid")cid:Int)
+            : Observable<BaseResponse<ProjectListEntity>>
+
 
 }

@@ -26,5 +26,21 @@ class DialogProxy {
                 negativeButton(text = "取消")
             }
         }
+
+        /**
+         * 提示对话框
+         */
+        fun tips(context: Context,tips:String,callBack:IConfirmClickCallBack?){
+            MaterialDialog(context).show {
+                cornerRadius(8f)
+                title(text = "提示")
+                message(text = tips)
+                cancelable(false)  //calls setCancelable on the underlying dialog
+                cancelOnTouchOutside(false)
+                positiveButton(text = "确定") {
+                    callBack?.onClick()
+                }
+            }
+        }
     }
 }

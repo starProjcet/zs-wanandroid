@@ -91,6 +91,7 @@ class CollectActivity : BaseActivity<CollectContract.Presenter<CollectContract.V
         lockCollectClick = true
         //请求失败将page -1
         if (pageNum>0)pageNum--
+        loadingTip.dismiss()
         dismissRefresh()
         ToastUtils.show(error)
     }

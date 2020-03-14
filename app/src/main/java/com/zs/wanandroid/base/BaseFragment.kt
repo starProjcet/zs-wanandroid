@@ -65,8 +65,8 @@ abstract class BaseFragment<P: IBasePresenter<*>>: Fragment() {
         }
     }
 
+    protected abstract fun init(savedInstanceState: Bundle?)
     protected abstract fun createPresenter(): P?
     protected abstract fun getLayoutId(): Int
-    protected abstract fun init(savedInstanceState: Bundle?)
 
 }

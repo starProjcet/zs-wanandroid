@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import com.example.zs_wan_android.R
 import com.zs.wanandroid.base.BaseFragment
+import com.zs.wanandroid.base.LazyFragment
 import com.zs.wanandroid.entity.IntegralEntity
 import com.zs.wanandroid.http.LoginEvent
 import com.zs.wanandroid.http.LogoutEvent
@@ -22,7 +23,7 @@ import org.greenrobot.eventbus.ThreadMode
  * @author zs
  * @data 2020-03-13
  */
-class MineFragment : BaseFragment<MineContract.Presenter<MineContract.View>>(),View.OnClickListener,
+class MineFragment : LazyFragment<MineContract.Presenter<MineContract.View>>(),View.OnClickListener,
     MineContract.View {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,7 +31,7 @@ class MineFragment : BaseFragment<MineContract.Presenter<MineContract.View>>(),V
         EventBus.getDefault().register(this)
     }
 
-    override fun init(savedInstanceState: Bundle?) {
+    override fun lazyInit() {
         setListener()
         if (AppManager.isLogin()) {
             presenter?.loadIntegral()
@@ -112,5 +113,7 @@ class MineFragment : BaseFragment<MineContract.Presenter<MineContract.View>>(),V
         tvRanking.text = "0"
         tvIntegral.text = "0"
     }
+
+
 
 }

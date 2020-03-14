@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.peramission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name="com.zs.wanandroid.WanAndroidApplication"
@@ -20,7 +20,7 @@
         <activity
             android:name="com.zs.wanandroid.ui.SplashActivity"
             android:screenOrientation="portrait"
-            android:launchMode="singleTask"
+
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

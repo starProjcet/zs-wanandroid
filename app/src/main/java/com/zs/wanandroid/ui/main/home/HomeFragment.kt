@@ -1,5 +1,6 @@
 package com.zs.wanandroid.ui.main.home
 
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +13,6 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.example.zs_wan_android.R
 import com.zs.wanandroid.adapter.HomeArticleAdapter
-import com.zs.wanandroid.base.BaseFragment
 import com.zs.wanandroid.entity.BannerEntity
 import com.zs.wanandroid.entity.HomeEntity
 import com.zs.wanandroid.utils.ToastUtils
@@ -20,14 +20,15 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener
 import com.zs.wanandroid.adapter.OnCollectClickListener
+import com.zs.wanandroid.base.LazyFragment
 import com.zs.wanandroid.constants.Constants
 import com.zs.wanandroid.http.LoginEvent
 import com.zs.wanandroid.http.LogoutEvent
+import com.zs.wanandroid.proxy.ImageLoad
 import com.zs.wanandroid.ui.search.SearchActivity
 import com.zs.wanandroid.ui.web.WebActivity
 import com.zs.wanandroid.utils.AppManager
 import com.zs.wanandroid.weight.ReloadListener
-import kotlinx.android.synthetic.main.activity_collect.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.loadingTip
 import kotlinx.android.synthetic.main.fragment_home.smartRefresh
@@ -42,7 +43,7 @@ import org.greenrobot.eventbus.ThreadMode
  * @author zs
  * @data 2020-03-09
  */
-class HomeFragment : BaseFragment<HomeContract.Presenter<HomeContract.View>>() ,BGABanner.Adapter<ImageView?, String?>
+class HomeFragment : LazyFragment<HomeContract.Presenter<HomeContract.View>>() ,BGABanner.Adapter<ImageView?, String?>
 ,BGABanner.Delegate<ImageView?, String?> , HomeContract.View,OnLoadMoreListener,OnRefreshListener,ReloadListener
 ,BaseQuickAdapter.OnItemClickListener, OnCollectClickListener {
     private var pageNum:Int = 0
@@ -61,14 +62,18 @@ class HomeFragment : BaseFragment<HomeContract.Presenter<HomeContract.View>>() ,
         EventBus.getDefault().register(this)
     }
 
-
-    override fun init(savedInstanceState: Bundle?) {
+    override fun lazyInit() {
         initView()
         loadingTip.loading()
         loadData()
     }
 
     private fun initView(){
+        if (Build.VERSION.SDK_INT>= Build.VERSION_CODES.LOLLIPOP){
+            rlSearch.elevation = 10f
+            llRadius.elevation = 20f
+        }
+
         homeArticleAdapter =
             HomeArticleAdapter(R.layout.item_home_article)
         homeArticleAdapter?.onItemClickListener = this
@@ -125,11 +130,12 @@ class HomeFragment : BaseFragment<HomeContract.Presenter<HomeContract.View>>() ,
      */
     override fun fillBannerItem(banner: BGABanner?, itemView: ImageView?, model: String?, position: Int) {
         itemView?.let {
-            itemView.scaleType = ImageView.ScaleType.CENTER_CROP
+            it.scaleType = ImageView.ScaleType.CENTER_CROP
             val bannerEntity = bannerList[position]
             Glide.with(this)
                 .load(bannerEntity.imagePath)
-                .into(itemView)
+                .into(it)
+            ImageLoad.load(it,bannerEntity.imagePath)
         }
     }
 
@@ -197,6 +203,7 @@ class HomeFragment : BaseFragment<HomeContract.Presenter<HomeContract.View>>() ,
         lockCollectClick = true
         //请求失败将page -1
         if (pageNum>0)pageNum--
+        loadingTip.dismiss()
         dismissRefresh()
         ToastUtils.show(error)
     }
@@ -293,4 +300,6 @@ class HomeFragment : BaseFragment<HomeContract.Presenter<HomeContract.View>>() ,
         }
         homeArticleAdapter?.notifyDataSetChanged()
     }
+
+
 }

@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
+import androidx.lifecycle.Lifecycle
 import com.example.zs_wan_android.R
 import com.zs.wanandroid.base.BaseActivity
 import com.zs.wanandroid.base.IBasePresenter
@@ -67,9 +68,10 @@ class MainActivity : BaseActivity<IBasePresenter<*>>(),
         if (!currentFragment.isAdded) {
             supportFragmentManager.beginTransaction().remove(currentFragment).commit()
             ft.add(R.id.frameLayout, currentFragment)
+            ft.setMaxLifecycle(currentFragment, Lifecycle.State.RESUMED)
         }
         ft.show(currentFragment)
-        ft.commitAllowingStateLoss()
+        ft.commit()
     }
 
     override fun createPresenter(): IBasePresenter<*>? {
