@@ -223,7 +223,6 @@ object PrefUtils {
                 }
             }
         }
-
         return `object`
     }
 

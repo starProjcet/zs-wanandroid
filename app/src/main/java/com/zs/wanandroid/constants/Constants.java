@@ -32,4 +32,10 @@ public class Constants {
      * webView 标题
      */
     public static final String WEB_TITLE = "webTitle";
+
+
+    /**
+     * 搜索历史
+     */
+    public static final String SEARCH_RECORD = "searchRecord";
 }

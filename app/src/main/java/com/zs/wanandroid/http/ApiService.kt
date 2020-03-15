@@ -9,13 +9,13 @@ interface ApiService {
      * 获取首页文章数据
      */
     @GET("/article/list/{page}/json")
-    fun getHomeList(@Path("page") pageNo: Int): Observable<BaseResponse<HomeEntity>>
+    fun getHomeList(@Path("page") pageNo: Int): Observable<BaseResponse<ArticleEntity>>
 
     /**
      * 获取首页置顶文章数据
      */
     @GET("/article/top/json")
-    fun getTopList(): Observable<BaseResponse<MutableList<HomeEntity.DatasBean>>>
+    fun getTopList(): Observable<BaseResponse<MutableList<ArticleEntity.DatasBean>>>
 
     /**
      * banner
@@ -73,4 +73,10 @@ interface ApiService {
             : Observable<BaseResponse<ProjectListEntity>>
 
 
+    /**
+     * 获取项目tab
+     */
+    @POST("article/query/{pageNum}/json")
+    fun search(@Path("pageNum")pageNum:Int,@Query("k")cid:String)
+            : Observable<BaseResponse<ArticleEntity>>
 }

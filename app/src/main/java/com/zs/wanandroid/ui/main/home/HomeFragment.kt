@@ -14,7 +14,7 @@ import com.chad.library.adapter.base.BaseViewHolder
 import com.example.zs_wan_android.R
 import com.zs.wanandroid.adapter.HomeArticleAdapter
 import com.zs.wanandroid.entity.BannerEntity
-import com.zs.wanandroid.entity.HomeEntity
+import com.zs.wanandroid.entity.ArticleEntity
 import com.zs.wanandroid.utils.ToastUtils
 import com.scwang.smartrefresh.layout.api.RefreshLayout
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener
@@ -47,7 +47,7 @@ class HomeFragment : LazyFragment<HomeContract.Presenter<HomeContract.View>>() ,
 ,BGABanner.Delegate<ImageView?, String?> , HomeContract.View,OnLoadMoreListener,OnRefreshListener,ReloadListener
 ,BaseQuickAdapter.OnItemClickListener, OnCollectClickListener {
     private var pageNum:Int = 0
-    private var articleList = mutableListOf<HomeEntity.DatasBean>()
+    private var articleList = mutableListOf<ArticleEntity.DatasBean>()
     private var bannerList = mutableListOf<BannerEntity>()
     private var homeArticleAdapter: HomeArticleAdapter? = null
     private var currentPosition = 0
@@ -167,7 +167,7 @@ class HomeFragment : LazyFragment<HomeContract.Presenter<HomeContract.View>>() ,
     /**
      * 文章列表加载成功
      */
-    override fun showList(list: MutableList<HomeEntity.DatasBean>) {
+    override fun showList(list: MutableList<ArticleEntity.DatasBean>) {
         dismissRefresh()
         loadingTip.dismiss()
         if (list.isNotEmpty()){

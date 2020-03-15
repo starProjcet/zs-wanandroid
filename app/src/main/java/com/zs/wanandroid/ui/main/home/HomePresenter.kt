@@ -2,7 +2,7 @@ package com.zs.wanandroid.ui.main.home
 
 import com.zs.wanandroid.base.BasePresenter
 import com.zs.wanandroid.entity.BannerEntity
-import com.zs.wanandroid.entity.HomeEntity
+import com.zs.wanandroid.entity.ArticleEntity
 import com.zs.wanandroid.http.HttpDefaultObserver
 import com.zs.wanandroid.http.RetrofitHelper
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -26,12 +26,12 @@ class HomePresenter(view: HomeContract.View):
             .getHomeList(pageNum)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(object : HttpDefaultObserver<HomeEntity>(){
+            .subscribe(object : HttpDefaultObserver<ArticleEntity>(){
                 override fun disposable(d: Disposable) {
                     addSubscribe(d)
                 }
 
-                override fun onSuccess(t: HomeEntity) {
+                override fun onSuccess(t: ArticleEntity) {
                     if (pageNum==0){
                         t.datas?.let { loadTopList(it) }
                     }else{
@@ -49,18 +49,18 @@ class HomePresenter(view: HomeContract.View):
     /**
      * 包括置顶文章
      */
-    private fun loadTopList(list:MutableList<HomeEntity.DatasBean>){
+    private fun loadTopList(list:MutableList<ArticleEntity.DatasBean>){
         RetrofitHelper.getApiService()
             .getTopList()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(object : HttpDefaultObserver<MutableList<HomeEntity.DatasBean>>(){
+            .subscribe(object : HttpDefaultObserver<MutableList<ArticleEntity.DatasBean>>(){
                 override fun disposable(d: Disposable) {
                     addSubscribe(d)
                 }
 
                 //获取置顶文章成功加入到文章列表头部
-                override fun onSuccess(t: MutableList<HomeEntity.DatasBean>) {
+                override fun onSuccess(t: MutableList<ArticleEntity.DatasBean>) {
                     list.addAll(0, t)
                     view?.showList(list)
                 }
