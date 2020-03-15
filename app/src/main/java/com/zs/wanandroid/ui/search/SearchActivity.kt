@@ -34,6 +34,11 @@ import kotlinx.android.synthetic.main.activity_search.loadingTip
 import kotlinx.android.synthetic.main.activity_search.smartRefresh
 import kotlinx.android.synthetic.main.fragment_home.*
 
+/**
+ * des搜索界面
+ * @author zs
+ * @data 2020-03-15
+ */
 class SearchActivity : BaseActivity<SearchContract.Presenter<SearchContract.View>>(),SearchContract.View
     , View.OnClickListener, OnLoadMoreListener, ReloadListener, BaseQuickAdapter.OnItemClickListener,
     OnCollectClickListener {

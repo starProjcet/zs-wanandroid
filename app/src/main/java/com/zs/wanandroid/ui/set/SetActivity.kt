@@ -5,9 +5,11 @@ import android.os.Bundle
 import android.view.View
 import com.example.zs_wan_android.R
 import com.zs.wanandroid.base.BaseActivity
+import com.zs.wanandroid.constants.Constants
 import com.zs.wanandroid.proxy.DialogProxy
 import com.zs.wanandroid.proxy.IConfirmClickCallBack
 import com.zs.wanandroid.ui.login.LoginActivity
+import com.zs.wanandroid.ui.web.WebActivity
 import com.zs.wanandroid.utils.AppManager
 import com.zs.wanandroid.utils.StatusUtils
 import com.zs.wanandroid.utils.ToastUtils
@@ -33,7 +35,7 @@ class SetActivity : BaseActivity<SetContract.Presenter<SetContract.View>>(),SetC
             R.id.ivBack->finish()
             //清除缓存
             R.id.tvClear->{
-                DialogProxy.confirm(this,"是否确定清除缓存?",object : IConfirmClickCallBack {
+                DialogProxy.confirm(this,"缓存中可能包含小姐姐照片哦，是否确定清除?",object : IConfirmClickCallBack {
                     override fun onClick() {
                         ToastUtils.show("已清除")
                     }
@@ -42,11 +44,23 @@ class SetActivity : BaseActivity<SetContract.Presenter<SetContract.View>>(),SetC
             //版本
             R.id.tvVersion-> ToastUtils.show("已是最新版本")
             //关于作者
-            R.id.tvAuthor->{}
+            R.id.tvAuthor->{
+
+            }
             //项目
-            R.id.tvProject->{}
+            R.id.tvProject->{
+                intent(Bundle().apply {
+                    putString(Constants.WEB_URL,Constants.APP_GITHUB)
+                    putString(Constants.WEB_TITLE,Constants.APP_NAME)
+                }, WebActivity::class.java,false)
+            }
             //版权
-            R.id.tvCopyright->{}
+            R.id.tvCopyright->{
+                DialogProxy.tips(this,Constants.COPYRIGHT,object : IConfirmClickCallBack {
+                    override fun onClick() {
+                    }
+                })
+            }
             //退出登录
             R.id.tvLogout->{
                 DialogProxy.confirm(this,"是否确定退出?",object : IConfirmClickCallBack {

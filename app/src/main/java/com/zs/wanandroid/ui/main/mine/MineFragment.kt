@@ -5,12 +5,15 @@ import android.view.View
 import com.example.zs_wan_android.R
 import com.zs.wanandroid.base.BaseFragment
 import com.zs.wanandroid.base.LazyFragment
+import com.zs.wanandroid.constants.Constants
 import com.zs.wanandroid.entity.IntegralEntity
 import com.zs.wanandroid.http.LoginEvent
 import com.zs.wanandroid.http.LogoutEvent
 import com.zs.wanandroid.ui.collect.CollectActivity
+import com.zs.wanandroid.ui.girl.GirlActivity
 import com.zs.wanandroid.ui.login.LoginActivity
 import com.zs.wanandroid.ui.set.SetActivity
+import com.zs.wanandroid.ui.web.WebActivity
 import com.zs.wanandroid.utils.AppManager
 import com.zs.wanandroid.utils.ToastUtils
 import kotlinx.android.synthetic.main.fragment_mine.*
@@ -65,8 +68,13 @@ class MineFragment : LazyFragment<MineContract.Presenter<MineContract.View>>(),V
             R.id.rlIntegral->{}
             R.id.rlCollect-> intent(CollectActivity::class.java,true)
             R.id.rlArticle->{}
-            R.id.rlWebsite->{}
-            R.id.rlGirl->{}
+            R.id.rlWebsite->{
+                intent(Bundle().apply {
+                    putString(Constants.WEB_URL,Constants.WEBSITE)
+                    putString(Constants.WEB_TITLE,Constants.APP_NAME)
+                }, WebActivity::class.java,false)
+            }
+            R.id.rlGirl->intent(GirlActivity::class.java,false)
             R.id.rlSet-> intent(SetActivity::class.java,false)
 
         }

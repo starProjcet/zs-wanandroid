@@ -2,6 +2,7 @@ package com.zs.wanandroid.ui.web
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.text.Html
 import android.webkit.WebChromeClient
 import android.webkit.WebSettings
 import android.webkit.WebView
@@ -28,7 +29,7 @@ class WebActivity : BaseActivity<IBasePresenter<*>>() {
         ivBack.setOnClickListener {
             finish()
         }
-        tvTitle.text = title
+        tvTitle.text = Html.fromHtml(title)
         initWebView()
     }
 
