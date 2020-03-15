@@ -103,6 +103,7 @@ class HomeFragment : LazyFragment<HomeContract.Presenter<HomeContract.View>>() ,
             presenter?.loadBanner()
         }
         articleList.clear()
+        homeArticleAdapter?.setNewData(articleList)
         pageNum = 0
         presenter?.loadData(pageNum)
     }

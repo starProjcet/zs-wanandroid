@@ -66,6 +66,7 @@ class CollectActivity : BaseActivity<CollectContract.Presenter<CollectContract.V
     private fun loadData(){
         //banner只加载一次
         collectList.clear()
+        collectAdapter?.setNewData(collectList)
         pageNum = 0
         presenter?.loadData(pageNum)
     }

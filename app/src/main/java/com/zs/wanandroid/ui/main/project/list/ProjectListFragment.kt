@@ -61,6 +61,7 @@ class ProjectListFragment : LazyFragment<ProjectListContract.Presenter<ProjectLi
 
     private fun loadData(){
         projectList.clear()
+        projectAdapter?.setNewData(projectList)
         pageNum = 1
         presenter?.loadData(projectId,pageNum)
     }
