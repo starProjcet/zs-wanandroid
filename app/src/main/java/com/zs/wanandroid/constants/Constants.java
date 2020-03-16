@@ -72,7 +72,13 @@ public class Constants {
      */
     public static final String GIRL1 = "https://upload-images.jianshu.io/upload_images/10073662-c9b63f859fc3fda7.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240";
     public static final String GIRL2 = "https://upload-images.jianshu.io/upload_images/10073662-8ef3fd89f96905f0.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240";
-    public static final String GIRL3 = "https://upload-images.jianshu.io/upload_images/10073662-c9b63f859fc3fda7.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240";
+    public static final String GIRL3 = "https://upload-images.jianshu.io/upload_images/10073662-bc4ba4281c3e4005.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240";
+    public static final String GIRL4 = "http://upload-images.jianshu.io/upload_images/10073662-56aec9777c861864.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1080/q/50";
+    public static final String GIRL5 = "http://upload-images.jianshu.io/upload_images/10073662-43f533727aeee777.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1080/q/50";
+    public static final String GIRL6 = "http://upload-images.jianshu.io/upload_images/10073662-2a0f84dd95b5aca1.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1080/q/50";
+    public static final String GIRL7 = "http://upload-images.jianshu.io/upload_images/10073662-ba492f929e4f9982.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1080/q/50";
+    public static final String GIRL8 = "http://upload-images.jianshu.io/upload_images/10073662-a09f48d86949df0b.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1080/q/50";
+    public static final String GIRL9 = "http://upload-images.jianshu.io/upload_images/10073662-0b5910561f3e008e.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1080/q/50";
 
     /**
      * 体系fragment

@@ -45,7 +45,7 @@ class SetActivity : BaseActivity<SetContract.Presenter<SetContract.View>>(),SetC
             R.id.tvVersion-> ToastUtils.show("已是最新版本")
             //关于作者
             R.id.tvAuthor->{
-
+                DialogProxy.author(this)
             }
             //项目
             R.id.tvProject->{

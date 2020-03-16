@@ -4,6 +4,15 @@ import com.zs.wanandroid.constants.Constants
 import com.zs.wanandroid.http.LogoutEvent
 import org.greenrobot.eventbus.EventBus
 import java.util.HashSet
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
+import androidx.core.content.ContextCompat.getSystemService
+import androidx.core.content.ContextCompat.getSystemService
+
+
+
+
 
 
 
@@ -31,6 +40,15 @@ class AppManager {
             PrefUtils.setBoolean(Constants.LOGIN, false)
             PrefUtils.setHashSet(Constants.COOKIE, HashSet())
             PrefUtils.setObject(Constants.USER_INFO, null)
+        }
+
+        /**
+         * 复制剪切板
+         */
+        fun copy(context: Context,msg:String){
+            var clip = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+            clip.text = msg
+            ToastUtils.show("已复制")
         }
     }
 }
