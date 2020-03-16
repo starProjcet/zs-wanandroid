@@ -16,5 +16,5 @@ class ProjectListEntity {
     var pageCount = 0
     var size = 0
     var total = 0
-    var datas: MutableList<ProjectEntity>? = null
+    var datas: MutableList<ArticleEntity.DatasBean>? = null
 }

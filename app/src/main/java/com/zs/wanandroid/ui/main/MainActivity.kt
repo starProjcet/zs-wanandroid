@@ -13,7 +13,7 @@ import com.zs.wanandroid.ui.main.account.OfficialAccountFragment
 import com.zs.wanandroid.ui.main.home.HomeFragment
 import com.zs.wanandroid.ui.main.mine.MineFragment
 import com.zs.wanandroid.ui.main.project.ProjectFragment
-import com.zs.wanandroid.ui.main.square.SquareFragment
+import com.zs.wanandroid.ui.main.system.SystemFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -37,7 +37,7 @@ class MainActivity : BaseActivity<IBasePresenter<*>>(),
     private fun initFragment() {
         fragments.add(HomeFragment())
         fragments.add(ProjectFragment())
-        fragments.add(SquareFragment())
+        fragments.add(SystemFragment())
         fragments.add(OfficialAccountFragment())
         fragments.add(MineFragment())
         setFragmentPosition(0)

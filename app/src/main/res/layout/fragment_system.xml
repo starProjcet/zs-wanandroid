@@ -5,25 +5,26 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical"
-    tools:context="com.zs.wanandroid.ui.main.project.ProjectFragment">
+    tools:context="com.zs.wanandroid.ui.main.system.SystemFragment">
 
-    <FrameLayout
-        android:id="@+id/flTop"
+    <LinearLayout
+        android:id="@+id/llTop"
         android:layout_width="match_parent"
         android:layout_height="84dp"
-        android:background="@color/white">
+        android:background="@color/white"
+        android:gravity="center_horizontal">
 
         <net.lucode.hackware.magicindicator.MagicIndicator
             android:id="@+id/magicView"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginTop="34dp" />
-    </FrameLayout>
-
+    </LinearLayout>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
 
 </LinearLayout>

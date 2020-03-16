@@ -12,7 +12,7 @@ import com.bumptech.glide.Glide
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.example.zs_wan_android.R
-import com.zs.wanandroid.adapter.HomeArticleAdapter
+import com.zs.wanandroid.adapter.ArticleAdapter
 import com.zs.wanandroid.entity.BannerEntity
 import com.zs.wanandroid.entity.ArticleEntity
 import com.zs.wanandroid.utils.ToastUtils
@@ -49,7 +49,7 @@ class HomeFragment : LazyFragment<HomeContract.Presenter<HomeContract.View>>() ,
     private var pageNum:Int = 0
     private var articleList = mutableListOf<ArticleEntity.DatasBean>()
     private var bannerList = mutableListOf<BannerEntity>()
-    private var homeArticleAdapter: HomeArticleAdapter? = null
+    private var articleAdapter: ArticleAdapter? = null
     private var currentPosition = 0
     /**
      * 点击收藏后将点击事件上锁,等接口有相应结果再解锁
@@ -74,12 +74,12 @@ class HomeFragment : LazyFragment<HomeContract.Presenter<HomeContract.View>>() ,
             llRadius.elevation = 20f
         }
 
-        homeArticleAdapter =
-            HomeArticleAdapter(R.layout.item_home_article)
-        homeArticleAdapter?.onItemClickListener = this
-        homeArticleAdapter?.setCollectClickListener(this)
-        homeArticleAdapter?.setNewData(articleList)
-        rvHomeList.adapter = homeArticleAdapter
+        articleAdapter =
+            ArticleAdapter(articleList)
+        articleAdapter?.onItemClickListener = this
+        articleAdapter?.setCollectClickListener(this)
+        articleAdapter?.setNewData(articleList)
+        rvHomeList.adapter = articleAdapter
         loadingTip.setReloadListener(this)
         smartRefresh?.setOnRefreshListener(this)
         smartRefresh?.setOnLoadMoreListener(this)
@@ -103,7 +103,7 @@ class HomeFragment : LazyFragment<HomeContract.Presenter<HomeContract.View>>() ,
             presenter?.loadBanner()
         }
         articleList.clear()
-        homeArticleAdapter?.setNewData(articleList)
+        articleAdapter?.setNewData(articleList)
         pageNum = 0
         presenter?.loadData(pageNum)
     }
@@ -172,7 +172,7 @@ class HomeFragment : LazyFragment<HomeContract.Presenter<HomeContract.View>>() ,
         loadingTip.dismiss()
         if (list.isNotEmpty()){
             articleList.addAll(list)
-            homeArticleAdapter?.setNewData(articleList)
+            articleAdapter?.setNewData(articleList)
         }else {
             if (articleList.size==0)loadingTip.showEmpty()
             else ToastUtils.show("没有数据啦...")
@@ -188,7 +188,7 @@ class HomeFragment : LazyFragment<HomeContract.Presenter<HomeContract.View>>() ,
         lockCollectClick = true
         if (currentPosition<articleList.size) {
             articleList[currentPosition].collect = false
-            homeArticleAdapter?.notifyItemChanged(currentPosition)
+            articleAdapter?.notifyItemChanged(currentPosition)
         }
     }
 
@@ -196,7 +196,7 @@ class HomeFragment : LazyFragment<HomeContract.Presenter<HomeContract.View>>() ,
         lockCollectClick = true
         if (currentPosition<articleList.size) {
             articleList[currentPosition].collect = true
-            homeArticleAdapter?.notifyItemChanged(currentPosition)
+            articleAdapter?.notifyItemChanged(currentPosition)
         }
     }
 
@@ -299,7 +299,7 @@ class HomeFragment : LazyFragment<HomeContract.Presenter<HomeContract.View>>() ,
         articleList.forEach {
             it.collect = false
         }
-        homeArticleAdapter?.notifyDataSetChanged()
+        articleAdapter?.notifyDataSetChanged()
     }
 
 

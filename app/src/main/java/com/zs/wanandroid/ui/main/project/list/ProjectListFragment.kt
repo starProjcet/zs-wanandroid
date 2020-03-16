@@ -10,11 +10,11 @@ import com.example.zs_wan_android.R
 import com.scwang.smartrefresh.layout.api.RefreshLayout
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener
+import com.zs.wanandroid.adapter.ArticleAdapter
 import com.zs.wanandroid.adapter.OnCollectClickListener
-import com.zs.wanandroid.adapter.ProjectAdapter
 import com.zs.wanandroid.base.LazyFragment
 import com.zs.wanandroid.constants.Constants
-import com.zs.wanandroid.entity.ProjectEntity
+import com.zs.wanandroid.entity.ArticleEntity
 import com.zs.wanandroid.ui.web.WebActivity
 import com.zs.wanandroid.utils.AppManager
 import com.zs.wanandroid.utils.ToastUtils
@@ -33,11 +33,11 @@ class ProjectListFragment : LazyFragment<ProjectListContract.Presenter<ProjectLi
 ,ProjectListContract.View,OnCollectClickListener,BaseQuickAdapter.OnItemClickListener
     , OnLoadMoreListener, OnRefreshListener, ReloadListener {
 
-    private var projectList = mutableListOf<ProjectEntity>()
+    private var projectList = mutableListOf<ArticleEntity.DatasBean>()
     private var pageNum = 1
     private var projectId : Int = 0
     private var name:String? = null
-    private var projectAdapter:ProjectAdapter? = null
+    private var projectAdapter:ArticleAdapter? = null
     private var currentPosition = 0
 
     override fun lazyInit() {
@@ -52,8 +52,8 @@ class ProjectListFragment : LazyFragment<ProjectListContract.Presenter<ProjectLi
         loadingTip.setReloadListener(this)
         smartRefresh?.setOnRefreshListener(this)
         smartRefresh?.setOnLoadMoreListener(this)
-        projectAdapter = ProjectAdapter(R.layout.item_project)
-        projectAdapter?.setOnCollectClickListener(this)
+        projectAdapter = ArticleAdapter(projectList)
+        projectAdapter?.setCollectClickListener(this)
         projectAdapter?.onItemClickListener = this
         rvProject.layoutManager = LinearLayoutManager(context)
         rvProject.adapter = projectAdapter
@@ -66,7 +66,7 @@ class ProjectListFragment : LazyFragment<ProjectListContract.Presenter<ProjectLi
         presenter?.loadData(projectId,pageNum)
     }
 
-    override fun showList(list: MutableList<ProjectEntity>) {
+    override fun showList(list: MutableList<ArticleEntity.DatasBean>) {
         dismissRefresh()
         loadingTip.dismiss()
         if (list.isNotEmpty()){

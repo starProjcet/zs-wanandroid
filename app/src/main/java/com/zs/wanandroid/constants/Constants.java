@@ -8,6 +8,14 @@ package com.zs.wanandroid.constants;
  */
 public class Constants {
     public static final int DEFAULT_TIMEOUT = 10000;
+    /**
+     * 多布局中带图片
+     */
+    public static final int ITEM_ARTICLE = 10;
+    /**
+     * 多布局中不带图片
+     */
+    public static final int ITEM_ARTICLE_PIC = 20;
 
     /**
      * http持久化保存
@@ -65,4 +73,13 @@ public class Constants {
     public static final String GIRL1 = "https://upload-images.jianshu.io/upload_images/10073662-c9b63f859fc3fda7.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240";
     public static final String GIRL2 = "https://upload-images.jianshu.io/upload_images/10073662-8ef3fd89f96905f0.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240";
     public static final String GIRL3 = "https://upload-images.jianshu.io/upload_images/10073662-c9b63f859fc3fda7.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240";
+
+    /**
+     * 体系fragment
+     */
+    public static final String SYSTEM_1 = "体系";
+    /**
+     * 导航体系fragment
+     */
+    public static final String SYSTEM_2 = "导航";
 }

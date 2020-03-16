@@ -1,5 +1,8 @@
 package com.zs.wanandroid.entity
 
+import com.chad.library.adapter.base.entity.MultiItemEntity
+import com.zs.wanandroid.constants.Constants
+
 class ArticleEntity {
     /**
      * curPage : 2
@@ -18,7 +21,15 @@ class ArticleEntity {
     var total = 0
     var datas: MutableList<DatasBean>? = null
 
-    class DatasBean {
+    class DatasBean: MultiItemEntity {
+        override fun getItemType(): Int {
+            return if (envelopePic.isNullOrEmpty()){
+                Constants.ITEM_ARTICLE
+            }else{
+                Constants.ITEM_ARTICLE_PIC
+            }
+        }
+
         /**
          * apkLink :
          * audit : 1

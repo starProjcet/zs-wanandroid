@@ -4,7 +4,6 @@ import android.os.Build
 import android.os.Build.VERSION
 import android.os.Bundle
 import android.view.View
-import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import com.example.zs_wan_android.R
 import com.zs.wanandroid.adapter.FragmentListAdapter
@@ -43,6 +42,7 @@ class ProjectFragment : BaseFragment<ProjectContract.Presenter<ProjectContract.V
 
     private fun initFragment(){
         val fragmentList = mutableListOf<Fragment>()
+        val list = mutableListOf<String>()
         tabList.forEach {
             val fragment = ProjectListFragment()
             val bundle = Bundle()
@@ -50,12 +50,13 @@ class ProjectFragment : BaseFragment<ProjectContract.Presenter<ProjectContract.V
             bundle.putString("name", it.name)
             fragment.arguments = bundle
             fragmentList.add(fragment)
+            it.name?.let { it1 -> list.add(it1) }
         }
         val adapter = FragmentListAdapter(fragmentList,childFragmentManager)
         viewPager.offscreenPageLimit = 6
         viewPager.adapter = adapter
         val commonNavigator = CommonNavigator(context)
-        val tabAdapter = TabAdapter(tabList)
+        val tabAdapter = TabAdapter(list)
         //tab点击事件
         tabAdapter.setOnTabClickListener(this)
         commonNavigator.adapter = tabAdapter

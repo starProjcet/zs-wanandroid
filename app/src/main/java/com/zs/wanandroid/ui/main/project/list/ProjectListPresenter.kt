@@ -1,7 +1,6 @@
 package com.zs.wanandroid.ui.main.project.list
 
 import com.zs.wanandroid.base.BasePresenter
-import com.zs.wanandroid.entity.ProjectEntity
 import com.zs.wanandroid.entity.ProjectListEntity
 import com.zs.wanandroid.http.HttpDefaultObserver
 import com.zs.wanandroid.http.RetrofitHelper

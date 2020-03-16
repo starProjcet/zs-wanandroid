@@ -20,9 +20,9 @@ import net.lucode.hackware.magicindicator.buildins.commonnavigator.indicators.Li
  * @author zs
  * @data 2020-03-14
  */
-class TabAdapter(tabList:MutableList<ProjectTabEntity>) :CommonNavigatorAdapter(){
+class TabAdapter(tabList:MutableList<String>) :CommonNavigatorAdapter(){
 
-    private var projectTabList = tabList
+    private var tabList = tabList
 
     private var onTabClickListener : OnTabClickListener? = null
     fun setOnTabClickListener(onTabClickListener : OnTabClickListener){
@@ -32,7 +32,7 @@ class TabAdapter(tabList:MutableList<ProjectTabEntity>) :CommonNavigatorAdapter(
     override fun getTitleView(context: Context?, index: Int): IPagerTitleView {
         val simplePagerTitleView =
             ZsSimplePagerTitleView(context)
-        simplePagerTitleView.text = projectTabList[index].name
+        simplePagerTitleView.text = tabList[index]
         simplePagerTitleView.textSize = 16f
         simplePagerTitleView.setPadding(40, 0, 40, 0)
         simplePagerTitleView.normalColor = ColorUtils.parseColor(R.color.text_2)
@@ -56,7 +56,7 @@ class TabAdapter(tabList:MutableList<ProjectTabEntity>) :CommonNavigatorAdapter(
     }
 
     override fun getCount(): Int {
-        return projectTabList.size
+        return tabList.size
     }
 
     override fun getIndicator(context: Context?): IPagerIndicator {

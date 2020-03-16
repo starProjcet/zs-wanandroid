@@ -17,7 +17,7 @@ import com.chad.library.adapter.base.BaseViewHolder
 import com.example.zs_wan_android.R
 import com.scwang.smartrefresh.layout.api.RefreshLayout
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener
-import com.zs.wanandroid.adapter.HomeArticleAdapter
+import com.zs.wanandroid.adapter.ArticleAdapter
 import com.zs.wanandroid.adapter.OnCollectClickListener
 import com.zs.wanandroid.base.BaseActivity
 import com.zs.wanandroid.constants.Constants
@@ -32,7 +32,6 @@ import com.zs.wanandroid.weight.ReloadListener
 import kotlinx.android.synthetic.main.activity_search.*
 import kotlinx.android.synthetic.main.activity_search.loadingTip
 import kotlinx.android.synthetic.main.activity_search.smartRefresh
-import kotlinx.android.synthetic.main.fragment_home.*
 
 /**
  * des搜索界面
@@ -53,7 +52,7 @@ class SearchActivity : BaseActivity<SearchContract.Presenter<SearchContract.View
 
     private var pageNum:Int = 0
     private var articleList = mutableListOf<ArticleEntity.DatasBean>()
-    private var articleAdapter: HomeArticleAdapter? = null
+    private var articleAdapter: ArticleAdapter? = null
     private var currentPosition = 0
 
     override fun init(savedInstanceState: Bundle?) {
@@ -74,7 +73,7 @@ class SearchActivity : BaseActivity<SearchContract.Presenter<SearchContract.View
         addSearchListener()
 
         articleAdapter =
-            HomeArticleAdapter(R.layout.item_home_article)
+            ArticleAdapter(articleList)
         articleAdapter?.onItemClickListener = this
         articleAdapter?.setCollectClickListener(this)
         articleAdapter?.setNewData(articleList)
@@ -105,6 +104,7 @@ class SearchActivity : BaseActivity<SearchContract.Presenter<SearchContract.View
                 //搜索框为空的时候显示搜索历史
                 if (editText.text!!.toString().isEmpty()) {
                     loadRecord()
+                    loadingTip.dismiss()
                     ivClear.visibility = View.GONE
                     smartRefresh.visibility = View.GONE
                     clRecord.visibility = View.VISIBLE

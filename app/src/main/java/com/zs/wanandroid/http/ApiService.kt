@@ -68,7 +68,7 @@ interface ApiService {
     /**
      * 获取项目tab
      */
-    @GET("project/list/{pageNum}/json")
+    @GET("/project/list/{pageNum}/json")
     fun getProjectList(@Path("pageNum")pageNum:Int,@Query("cid")cid:Int)
             : Observable<BaseResponse<ProjectListEntity>>
 
@@ -76,7 +76,19 @@ interface ApiService {
     /**
      * 获取项目tab
      */
-    @POST("article/query/{pageNum}/json")
+    @POST("/article/query/{pageNum}/json")
     fun search(@Path("pageNum")pageNum:Int,@Query("k")cid:String)
             : Observable<BaseResponse<ArticleEntity>>
+
+    /**
+     * 体系
+     */
+    @GET("/tree/json")
+    fun getSystemList() : Observable<BaseResponse<MutableList<SystemListEntity>>>
+
+    /**
+     * 导航
+     */
+    @GET("/navi/json")
+    fun getNavigation() : Observable<BaseResponse<MutableList<NavigationEntity>>>
 }
