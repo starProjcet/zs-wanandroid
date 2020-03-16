@@ -9,7 +9,7 @@ interface MineContract {
         /**
          * 显示积分和用户信息
          */
-        fun showIntegral(integralEntity: IntegralEntity)
+        fun showIntegral(e: IntegralEntity)
     }
 
     interface Presenter<T>:IBasePresenter<View>{

@@ -12,6 +12,7 @@ import com.zs.wanandroid.http.LogoutEvent
 import com.zs.wanandroid.ui.collect.CollectActivity
 import com.zs.wanandroid.ui.girl.GirlActivity
 import com.zs.wanandroid.ui.login.LoginActivity
+import com.zs.wanandroid.ui.rank.RankActivity
 import com.zs.wanandroid.ui.set.SetActivity
 import com.zs.wanandroid.ui.web.WebActivity
 import com.zs.wanandroid.utils.AppManager
@@ -29,6 +30,7 @@ import org.greenrobot.eventbus.ThreadMode
 class MineFragment : LazyFragment<MineContract.Presenter<MineContract.View>>(),View.OnClickListener,
     MineContract.View {
 
+    private var integralEntity: IntegralEntity? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         EventBus.getDefault().register(this)
@@ -64,7 +66,13 @@ class MineFragment : LazyFragment<MineContract.Presenter<MineContract.View>>(),V
                 }
             }
             R.id.llHistory->{}
-            R.id.llRanking->{}
+            R.id.llRanking->{
+                intent(Bundle().apply {
+                    integralEntity?.coinCount?.let { putInt(Constants.MY_INTEGRAL, it) }
+                    integralEntity?.rank?.let { putInt(Constants.MY_RANK, it) }
+                    integralEntity?.username?.let { putString(Constants.MY_NAME, it) }
+                }, RankActivity::class.java,true)
+            }
             R.id.rlIntegral->{}
             R.id.rlCollect-> intent(CollectActivity::class.java,true)
             R.id.rlArticle->{}
@@ -80,11 +88,15 @@ class MineFragment : LazyFragment<MineContract.Presenter<MineContract.View>>(),V
         }
     }
 
-    override fun showIntegral(integralEntity: IntegralEntity) {
-        tvUserName.text = integralEntity.username
-        tvId.text = String.format("%s","id:${integralEntity.userId}")
-        tvRanking.text = integralEntity.rank.toString()
-        tvIntegral.text = integralEntity.coinCount.toString()
+    override fun showIntegral(e: IntegralEntity) {
+        this.integralEntity = e
+        integralEntity?.apply {
+            tvUserName.text = username
+            tvId.text = String.format("%s","id:$userId")
+            tvRanking.text = rank.toString()
+            tvIntegral.text = coinCount.toString()
+        }
+
     }
     override fun onError(error: String) {
         ToastUtils.show(error)

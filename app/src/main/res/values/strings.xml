@@ -18,4 +18,5 @@
     <string name="dialog_copy_wechat" translatable="false">zszsking</string>
     <string name="dialog_copy_email">495968956@qq.com</string>
     <string name="dialog_copy_js">https://www.jianshu.com/u/274367e58472</string>
+    <string name="integral_rule">积分规则</string>
 </resources>
