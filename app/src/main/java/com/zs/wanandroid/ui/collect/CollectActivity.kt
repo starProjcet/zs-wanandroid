@@ -18,12 +18,10 @@ import com.zs.wanandroid.entity.CollectEntity
 import com.zs.wanandroid.ui.web.WebActivity
 import com.zs.wanandroid.utils.ToastUtils
 import com.zs.wanandroid.weight.ReloadListener
-import kotlinx.android.synthetic.main.activity_collect.*
 import kotlinx.android.synthetic.main.activity_collect.ivBack
 import kotlinx.android.synthetic.main.activity_collect.loadingTip
 import kotlinx.android.synthetic.main.activity_collect.rvCollect
 import kotlinx.android.synthetic.main.activity_collect.smartRefresh
-import kotlinx.android.synthetic.main.activity_rank.*
 
 /**
  * 收藏

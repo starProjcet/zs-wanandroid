@@ -11,6 +11,7 @@ import com.zs.wanandroid.proxy.IConfirmClickCallBack
 import com.zs.wanandroid.ui.login.LoginActivity
 import com.zs.wanandroid.ui.web.WebActivity
 import com.zs.wanandroid.utils.AppManager
+import com.zs.wanandroid.utils.CacheDataManager
 import com.zs.wanandroid.utils.StatusUtils
 import com.zs.wanandroid.utils.ToastUtils
 import kotlinx.android.synthetic.main.activity_set.*
@@ -27,6 +28,7 @@ class SetActivity : BaseActivity<SetContract.Presenter<SetContract.View>>(),SetC
         tvProject.setOnClickListener(this)
         tvCopyright.setOnClickListener(this)
         tvLogout.setOnClickListener(this)
+        tvClearValue.text = CacheDataManager.getTotalCacheSize(this)
     }
 
     override fun onClick(v: View?) {
@@ -37,6 +39,8 @@ class SetActivity : BaseActivity<SetContract.Presenter<SetContract.View>>(),SetC
             R.id.tvClear->{
                 DialogProxy.confirm(this,"缓存中可能包含小姐姐照片哦，是否确定清除?",object : IConfirmClickCallBack {
                     override fun onClick() {
+                        CacheDataManager.clearAllCache(this@SetActivity)
+                        tvClearValue.text = ""
                         ToastUtils.show("已清除")
                     }
                 })
