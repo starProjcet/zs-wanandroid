@@ -46,7 +46,6 @@ public class RetrofitFactory {
     }
 
     public static Retrofit factory() {
-
         OkHttpClient okHttpClient = getOkHttpClientBuilder().build();
         return new Retrofit.Builder()
                 .client(okHttpClient)
@@ -55,6 +54,4 @@ public class RetrofitFactory {
                 .baseUrl(ApiConstants.BASE_URL)
                 .build();
     }
-
-
 }

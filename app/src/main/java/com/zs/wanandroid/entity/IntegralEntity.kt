@@ -2,6 +2,11 @@ package com.zs.wanandroid.entity
 
 import java.io.Serializable
 
+/**
+ * des 个人积分
+ * @author zs
+ * @data 2020-03-17
+ */
 class IntegralEntity: Serializable {
 
     /**

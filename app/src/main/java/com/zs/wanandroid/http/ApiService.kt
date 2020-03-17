@@ -95,6 +95,12 @@ interface ApiService {
     /**
      * 排名
      */
-    @GET("coin/rank/{pageNum}/json")
+    @GET("/coin/rank/{pageNum}/json")
     fun getRank(@Path("pageNum")pageNum: Int) : Observable<BaseResponse<RankEntity>>
+
+    /**
+     * 积分记录
+     */
+    @GET("/lg/coin/list/{pageNum}/json")
+    fun getIntegralRecord(@Path("pageNum")pageNum: Int) : Observable<BaseResponse<IntegralRecordEntity>>
 }

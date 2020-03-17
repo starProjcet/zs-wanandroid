@@ -72,6 +72,7 @@ class HomeFragment : LazyFragment<HomeContract.Presenter<HomeContract.View>>() ,
         if (Build.VERSION.SDK_INT>= Build.VERSION_CODES.LOLLIPOP){
             rlSearch.elevation = 10f
             llRadius.elevation = 20f
+            rvHomeList.isNestedScrollingEnabled = false
         }
 
         articleAdapter =

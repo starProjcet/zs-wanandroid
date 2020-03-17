@@ -17,7 +17,7 @@ import java.io.Serializable
  */
 object PrefUtils {
 
-    val PREF_NAME = "config"
+    private const val PREF_NAME = "config"
 
     fun getBoolean(
         key: String,

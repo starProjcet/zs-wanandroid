@@ -88,6 +88,13 @@ class SearchActivity : BaseActivity<SearchContract.Presenter<SearchContract.View
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                 keyWord = editText.text!!.toString().trim { it <= ' ' }
                 if (!TextUtils.isEmpty(keyWord)) {
+                    //将已存在的key移除，避免存在重复数据
+                    for (index in 0 until recordList?.size!!){
+                        if (recordList!![index]==keyWord) {
+                            recordList!!.removeAt(index)
+                            break
+                        }
+                    }
                     recordList?.add(keyWord!!)
                     search()
                 }

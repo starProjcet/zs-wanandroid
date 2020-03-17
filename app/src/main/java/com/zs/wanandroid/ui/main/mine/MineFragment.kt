@@ -1,16 +1,14 @@
 package com.zs.wanandroid.ui.main.mine
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import com.example.zs_wan_android.R
-import com.google.gson.Gson
-import com.zs.wanandroid.base.BaseFragment
 import com.zs.wanandroid.base.LazyFragment
 import com.zs.wanandroid.constants.Constants
 import com.zs.wanandroid.entity.IntegralEntity
 import com.zs.wanandroid.http.LoginEvent
 import com.zs.wanandroid.http.LogoutEvent
+import com.zs.wanandroid.ui.Integral.IntegralActivity
 import com.zs.wanandroid.ui.collect.CollectActivity
 import com.zs.wanandroid.ui.girl.GirlActivity
 import com.zs.wanandroid.ui.login.LoginActivity
@@ -94,7 +92,7 @@ class MineFragment : LazyFragment<MineContract.Presenter<MineContract.View>>(),V
                     integralEntity?.username?.let { putString(Constants.MY_NAME, it) }
                 }, RankActivity::class.java,true)
             }
-            R.id.rlIntegral->{}
+            R.id.rlIntegral->intent(IntegralActivity::class.java,true)
             R.id.rlCollect-> intent(CollectActivity::class.java,true)
             R.id.rlArticle->{}
             R.id.rlWebsite->{
@@ -105,14 +103,12 @@ class MineFragment : LazyFragment<MineContract.Presenter<MineContract.View>>(),V
             }
             R.id.rlGirl->intent(GirlActivity::class.java,false)
             R.id.rlSet-> intent(SetActivity::class.java,false)
-
         }
     }
 
     override fun showIntegral(e: IntegralEntity) {
         this.integralEntity = e
         setIntegral()
-
     }
     override fun onError(error: String) {
         ToastUtils.show(error)
@@ -128,7 +124,6 @@ class MineFragment : LazyFragment<MineContract.Presenter<MineContract.View>>(),V
 
     override fun onDestroy() {
         super.onDestroy()
-
         //设置积分为空，下次进入界面重新请求
         PrefUtils.removeKey(Constants.INTEGRAL_INFO)
         EventBus.getDefault().unregister(this)

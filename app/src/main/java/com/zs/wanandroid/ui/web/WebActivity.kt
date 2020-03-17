@@ -34,7 +34,6 @@ class WebActivity : BaseActivity<IBasePresenter<*>>() {
         val bundle: Bundle? = intent.extras
         loadUrl = bundle?.getString(Constants.WEB_URL)
         title = bundle?.getString(Constants.WEB_TITLE)
-        loadUrl = "https://h5-local.chiyue365.com/material/material.html?platformCode=all&id=23&referType=2&referId=10"
         ivBack.setOnClickListener {
             finish()
         }

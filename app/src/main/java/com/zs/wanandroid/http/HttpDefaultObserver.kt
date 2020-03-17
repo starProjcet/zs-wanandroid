@@ -8,7 +8,6 @@ import org.json.JSONException
 import java.net.ConnectException
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import java.lang.reflect.ParameterizedType
 
 
@@ -43,18 +42,18 @@ abstract class HttpDefaultObserver<T> :Observer<BaseResponse<T>> {
     }
 
     override fun onError(e: Throwable) {
-        var errorMsg = ""
-        if (e is UnknownHostException) {
+        var errorMsg = if (e is UnknownHostException) {
+            "网络异常"
         } else if (e is JSONException || e is JsonParseException) {
-            errorMsg = "数据异常"
+            "数据异常"
         } else if (e is SocketTimeoutException) {
-            errorMsg = "连接超时"
+            "连接超时"
         } else if (e is ConnectException) {
-            errorMsg = "连接错误"
+            "连接错误"
         } else if (e is BusinessHttpException){
-            errorMsg = e.businessMessage
+            e.businessMessage
         } else{
-            errorMsg = "未知错误"
+            "未知错误"
         }
         onError(errorMsg)
     }

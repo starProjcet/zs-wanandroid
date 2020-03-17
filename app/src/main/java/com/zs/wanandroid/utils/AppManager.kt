@@ -11,11 +11,6 @@ import androidx.core.content.ContextCompat.getSystemService
 import androidx.core.content.ContextCompat.getSystemService
 
 
-
-
-
-
-
 /**
  * des app管理类
  *
