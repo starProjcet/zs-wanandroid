@@ -1,4 +1,4 @@
-package com.zs.wanandroid.ui.main.project.list
+package com.zs.wanandroid.ui.main.account.list
 
 import com.zs.wanandroid.base.BasePresenter
 import com.zs.wanandroid.entity.ArticleEntity
@@ -12,12 +12,12 @@ import io.reactivex.schedulers.Schedulers
  * @author zs
  * @data 2020-03-14
  */
-class ProjectListPresenter(view: ProjectListContract.View):BasePresenter<ProjectListContract.View>(view)
-    ,ProjectListContract.Presenter<ProjectListContract.View>{
+class OfficialAccountListPresenter(view: OfficialAccountListContract.View):BasePresenter<OfficialAccountListContract.View>(view)
+    ,OfficialAccountListContract.Presenter<OfficialAccountListContract.View>{
 
     override fun loadData(id: Int, pageNum: Int) {
         RetrofitHelper.getApiService()
-            .getProjectList(pageNum,id)
+            .getAccountList(id,pageNum)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : HttpDefaultObserver<ArticleEntity>(){

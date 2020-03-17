@@ -63,14 +63,27 @@ interface ApiService {
      * 获取项目tab
      */
     @GET("/project/tree/json")
-    fun getProjectTabList(): Observable<BaseResponse<MutableList<ProjectTabEntity>>>
+    fun getProjectTabList(): Observable<BaseResponse<MutableList<TabEntity>>>
 
     /**
      * 获取项目tab
      */
+    @GET("/wxarticle/chapters/json  ")
+    fun getAccountTabList(): Observable<BaseResponse<MutableList<TabEntity>>>
+
+    /**
+     * 获取项目列表
+     */
     @GET("/project/list/{pageNum}/json")
     fun getProjectList(@Path("pageNum")pageNum:Int,@Query("cid")cid:Int)
-            : Observable<BaseResponse<ProjectListEntity>>
+            : Observable<BaseResponse<ArticleEntity>>
+
+    /**
+     * 获取公众号列表
+     */
+    @GET("/wxarticle/list/{id}/{pageNum}/json")
+    fun getAccountList(@Path("id")cid:Int,@Path("pageNum")pageNum:Int)
+            : Observable<BaseResponse<ArticleEntity>>
 
 
     /**

@@ -8,7 +8,7 @@ import com.zs.wanandroid.entity.TabEntity
  * @author zs
  * @data 2020-03-14
  */
-interface ProjectContract {
+interface OfficialAccountContract {
     interface View:IBaseView{
         fun showList(list:MutableList<TabEntity>)
     }

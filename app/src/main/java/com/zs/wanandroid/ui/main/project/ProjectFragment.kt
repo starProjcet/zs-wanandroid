@@ -9,7 +9,7 @@ import com.example.zs_wan_android.R
 import com.zs.wanandroid.adapter.FragmentListAdapter
 import com.zs.wanandroid.adapter.TabAdapter
 import com.zs.wanandroid.base.BaseFragment
-import com.zs.wanandroid.entity.ProjectTabEntity
+import com.zs.wanandroid.entity.TabEntity
 import com.zs.wanandroid.ui.main.project.list.ProjectListFragment
 import com.zs.wanandroid.utils.ToastUtils
 import com.zs.wanandroid.weight.indicator.OnTabClickListener
@@ -26,7 +26,7 @@ import net.lucode.hackware.magicindicator.buildins.commonnavigator.CommonNavigat
 class ProjectFragment : BaseFragment<ProjectContract.Presenter<ProjectContract.View>>()
     ,ProjectContract.View ,OnTabClickListener{
 
-    private var tabList = mutableListOf<ProjectTabEntity>()
+    private var tabList = mutableListOf<TabEntity>()
     override fun init(savedInstanceState: Bundle?) {
         if (VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP){
             flTop.elevation = 10f
@@ -34,7 +34,7 @@ class ProjectFragment : BaseFragment<ProjectContract.Presenter<ProjectContract.V
         presenter?.loadData()
     }
 
-    override fun showList(list: MutableList<ProjectTabEntity>) {
+    override fun showList(list: MutableList<TabEntity>) {
         tabList.clear()
         tabList.addAll(list)
         initFragment()

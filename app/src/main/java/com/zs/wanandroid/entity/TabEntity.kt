@@ -1,6 +1,6 @@
 package com.zs.wanandroid.entity
 
-class ProjectTabEntity {
+class TabEntity {
     /**
      * children : []
      * courseId : 13

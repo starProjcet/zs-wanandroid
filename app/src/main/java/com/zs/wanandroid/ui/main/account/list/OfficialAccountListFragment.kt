@@ -1,4 +1,4 @@
-package com.zs.wanandroid.ui.main.project.list
+package com.zs.wanandroid.ui.main.account.list
 
 
 import android.os.Bundle
@@ -24,13 +24,13 @@ import kotlinx.android.synthetic.main.fragment_article_list.loadingTip
 import kotlinx.android.synthetic.main.fragment_article_list.smartRefresh
 
 /**
- * des 项目列表
+ * des 公众号列表
  *
  * @author zs
  * @data 2020-03-14
  */
-class ProjectListFragment : LazyFragment<ProjectListContract.Presenter<ProjectListContract.View>>()
-,ProjectListContract.View,OnCollectClickListener,BaseQuickAdapter.OnItemClickListener
+class OfficialAccountListFragment : LazyFragment<OfficialAccountListContract.Presenter<OfficialAccountListContract.View>>()
+,OfficialAccountListContract.View,OnCollectClickListener,BaseQuickAdapter.OnItemClickListener
     , OnLoadMoreListener, OnRefreshListener, ReloadListener {
 
     private var projectList = mutableListOf<ArticleEntity.DatasBean>()
@@ -149,8 +149,8 @@ class ProjectListFragment : LazyFragment<ProjectListContract.Presenter<ProjectLi
         loadData()
     }
 
-    override fun createPresenter(): ProjectListContract.Presenter<ProjectListContract.View>? {
-        return ProjectListPresenter(this)
+    override fun createPresenter(): OfficialAccountListContract.Presenter<OfficialAccountListContract.View>? {
+        return OfficialAccountListPresenter(this)
     }
 
     override fun getLayoutId(): Int {

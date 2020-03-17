@@ -4,7 +4,6 @@ import android.content.Context
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import com.example.zs_wan_android.R
-import com.zs.wanandroid.entity.ProjectTabEntity
 import com.zs.wanandroid.utils.ColorUtils
 import com.zs.wanandroid.weight.indicator.OnTabClickListener
 import com.zs.wanandroid.weight.indicator.ZsSimplePagerTitleView
