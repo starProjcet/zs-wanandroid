@@ -74,6 +74,11 @@ public class Constants {
     public static final String APP_NAME = "WanAndroid";
 
     /**
+     * wan android 官网
+     */
+    public static final String INTEGRAL_RULE = "https://www.wanandroid.com/blog/show/2653";
+
+    /**
      * 小姐姐照片地址
      */
     public static final String GIRL1 = "https://upload-images.jianshu.io/upload_images/10073662-c9b63f859fc3fda7.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240";
@@ -94,4 +99,17 @@ public class Constants {
      * 导航体系fragment
      */
     public static final String SYSTEM_2 = "导航";
+
+    /**
+     * 我的排名
+     */
+    public static final String MY_RANK = "myRank";
+    /**
+     * 我的名称
+     */
+    public static final String MY_NAME = "myName";
+    /**
+     * 我的积分
+     */
+    public static final String MY_INTEGRAL = "myIntegral";
 }

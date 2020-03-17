@@ -9,7 +9,9 @@ import android.view.ViewGroup
 import com.example.zs_wan_android.R
 
 /**
- * A simple [Fragment] subclass.
+ * des 公众号
+ * @author zs
+ * @data 2020-03-16
  */
 class OfficialAccountFragment : Fragment() {
 

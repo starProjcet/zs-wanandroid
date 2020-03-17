@@ -91,4 +91,10 @@ interface ApiService {
      */
     @GET("/navi/json")
     fun getNavigation() : Observable<BaseResponse<MutableList<NavigationEntity>>>
+
+    /**
+     * 排名
+     */
+    @GET("coin/rank/{pageNum}/json")
+    fun getRank(@Path("pageNum")pageNum: Int) : Observable<BaseResponse<RankEntity>>
 }

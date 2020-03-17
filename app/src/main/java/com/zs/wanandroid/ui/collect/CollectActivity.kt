@@ -19,8 +19,11 @@ import com.zs.wanandroid.ui.web.WebActivity
 import com.zs.wanandroid.utils.ToastUtils
 import com.zs.wanandroid.weight.ReloadListener
 import kotlinx.android.synthetic.main.activity_collect.*
+import kotlinx.android.synthetic.main.activity_collect.ivBack
 import kotlinx.android.synthetic.main.activity_collect.loadingTip
+import kotlinx.android.synthetic.main.activity_collect.rvCollect
 import kotlinx.android.synthetic.main.activity_collect.smartRefresh
+import kotlinx.android.synthetic.main.activity_rank.*
 
 /**
  * 收藏
@@ -73,7 +76,6 @@ class CollectActivity : BaseActivity<CollectContract.Presenter<CollectContract.V
 
     override fun showList(list: MutableList<CollectEntity.DatasBean>) {
         dismissRefresh()
-        loadingTip.dismiss()
         if (list.isNotEmpty()){
             collectList.addAll(list)
             collectAdapter?.setNewData(collectList)
@@ -92,7 +94,6 @@ class CollectActivity : BaseActivity<CollectContract.Presenter<CollectContract.V
         lockCollectClick = true
         //请求失败将page -1
         if (pageNum>0)pageNum--
-        loadingTip.dismiss()
         dismissRefresh()
         ToastUtils.show(error)
     }
@@ -133,6 +134,7 @@ class CollectActivity : BaseActivity<CollectContract.Presenter<CollectContract.V
      * 隐藏刷新加载
      */
     private fun dismissRefresh() {
+        loadingTip.dismiss()
         if (smartRefresh.state.isOpening) {
             smartRefresh.finishLoadMore()
             smartRefresh.finishRefresh()
