@@ -32,6 +32,12 @@ public class Constants {
     public static final String USER_INFO = "userInfo";
 
     /**
+     * 用户积分信息
+     */
+    public static final String INTEGRAL_INFO = "integralInfo";
+
+
+    /**
      * webView url
      */
     public static final String WEB_URL = "webUrl";
