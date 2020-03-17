@@ -84,7 +84,6 @@ class RankActivity : BaseActivity<RankContract.Presenter<RankContract.View>>(),R
      * 初始化，网络出错重新加载，刷新均可使用
      */
     private fun loadData(){
-        //banner只加载一次
         rankList.clear()
         rankAdapter?.setNewData(rankList)
         pageNum = 1
