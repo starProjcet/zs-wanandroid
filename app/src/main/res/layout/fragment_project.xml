@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical"
-    tools:context="com.zs.wanandroid.ui.main.project.ProjectFragment">
+    tools:context="com.zs.wanandroid.ui.main.tab.TabFragment">
 
     <FrameLayout
         android:id="@+id/flTop"

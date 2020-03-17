@@ -14,8 +14,9 @@
     <TextView
         android:id="@+id/tvRank"
         style="@style/text_2"
-        android:layout_width="30dp"
+        android:layout_width="wrap_content"
         android:layout_height="30dp"
+        android:layout_marginLeft="10dp"
         android:gravity="center"
         android:textSize="@dimen/text_1"
         android:textStyle="bold"
@@ -26,7 +27,7 @@
         style="@style/text_1"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="40dp"
         android:layout_toRightOf="@+id/tvRank"
         android:gravity="center" />
 

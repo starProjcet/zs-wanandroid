@@ -9,10 +9,10 @@ import com.example.zs_wan_android.R
 import com.zs.wanandroid.base.BaseActivity
 import com.zs.wanandroid.base.IBasePresenter
 import com.zs.wanandroid.base.IBaseView
-import com.zs.wanandroid.ui.main.account.OfficialAccountFragment
+import com.zs.wanandroid.constants.Constants
 import com.zs.wanandroid.ui.main.home.HomeFragment
 import com.zs.wanandroid.ui.main.mine.MineFragment
-import com.zs.wanandroid.ui.main.project.ProjectFragment
+import com.zs.wanandroid.ui.main.tab.TabFragment
 import com.zs.wanandroid.ui.main.system.SystemFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -35,10 +35,23 @@ class MainActivity : BaseActivity<IBasePresenter<*>>(),
     }
 
     private fun initFragment() {
+        //首页
         fragments.add(HomeFragment())
-        fragments.add(ProjectFragment())
+        //项目
+        val project = TabFragment()
+        val proBundle = Bundle()
+        proBundle.putInt("type", Constants.PROJECT_TYPE)
+        project.arguments = proBundle
+        fragments.add(project)
+        //体系
         fragments.add(SystemFragment())
-        fragments.add(OfficialAccountFragment())
+        //公众号
+        val account = TabFragment()
+        val accountBundle = Bundle()
+        accountBundle.putInt("type", Constants.ACCOUNT_TYPE)
+        account.arguments = accountBundle
+        fragments.add(account)
+        //我的
         fragments.add(MineFragment())
         setFragmentPosition(0)
     }

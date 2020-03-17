@@ -19,16 +19,23 @@ class RankAdapter(layoutId:Int):BaseQuickAdapter<RankEntity.DatasBean,BaseViewHo
                     helper.setVisible(R.id.ivRank,true)
                     helper.setImageResource(R.id.ivRank,R.mipmap.gold_crown)
                     helper.setVisible(R.id.tvRank,false)
+                    //占位符
+                    helper.setText(R.id.tvRank,"1")
+
                 }
                 1->{
                     helper.setVisible(R.id.ivRank,true)
                     helper.setImageResource(R.id.ivRank,R.mipmap.silver_crown)
                     helper.setVisible(R.id.tvRank,false)
+                    //占位符
+                    helper.setText(R.id.tvRank,"1")
                 }
                 2->{
                     helper.setVisible(R.id.ivRank,true)
                     helper.setImageResource(R.id.ivRank,R.mipmap.cooper_crown)
                     helper.setVisible(R.id.tvRank,false)
+                    //占位符
+                    helper.setText(R.id.tvRank,"1")
                 }
                 else->{
                     helper.setVisible(R.id.ivRank,false)

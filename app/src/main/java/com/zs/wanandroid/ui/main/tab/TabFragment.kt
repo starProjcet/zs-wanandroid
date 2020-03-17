@@ -1,16 +1,17 @@
-package com.zs.wanandroid.ui.main.account
+package com.zs.wanandroid.ui.main.tab
 
 import android.os.Build
+import android.os.Build.VERSION
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.View
+import androidx.fragment.app.Fragment
 import com.example.zs_wan_android.R
 import com.zs.wanandroid.adapter.FragmentListAdapter
 import com.zs.wanandroid.adapter.TabAdapter
 import com.zs.wanandroid.base.BaseFragment
 import com.zs.wanandroid.entity.TabEntity
-import com.zs.wanandroid.ui.main.account.list.OfficialAccountListFragment
-import com.zs.wanandroid.ui.main.project.OfficialAccountContract
+import com.zs.wanandroid.ui.main.tab.list.TabListFragment
 import com.zs.wanandroid.utils.ToastUtils
 import com.zs.wanandroid.weight.indicator.OnTabClickListener
 import kotlinx.android.synthetic.main.fragment_project.*
@@ -18,19 +19,23 @@ import net.lucode.hackware.magicindicator.ViewPagerHelper
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.CommonNavigator
 
 /**
- * des 公众号
+ * 项目/公众号界面
+ *
  * @author zs
- * @data 2020-03-16
+ * @data 2020-03-14
  */
-class OfficialAccountFragment : BaseFragment<OfficialAccountContract.Presenter<OfficialAccountContract.View>>()
-    , OfficialAccountContract.View , OnTabClickListener {
+class TabFragment : BaseFragment<TabContract.Presenter<TabContract.View>>()
+    ,TabContract.View ,OnTabClickListener{
 
     private var tabList = mutableListOf<TabEntity>()
+    private var type:Int? = null
     override fun init(savedInstanceState: Bundle?) {
-        if (Build.VERSION.SDK_INT>= Build.VERSION_CODES.LOLLIPOP){
+        type = arguments?.getInt("type")
+        Log.i(TAG,"type:$type")
+        if (VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP){
             flTop.elevation = 10f
         }
-        presenter?.loadData()
+        type?.let { presenter?.loadData(it) }
     }
 
     override fun showList(list: MutableList<TabEntity>) {
@@ -43,8 +48,9 @@ class OfficialAccountFragment : BaseFragment<OfficialAccountContract.Presenter<O
         val fragmentList = mutableListOf<Fragment>()
         val list = mutableListOf<String>()
         tabList.forEach {
-            val fragment = OfficialAccountListFragment()
+            val fragment = TabListFragment()
             val bundle = Bundle()
+            type?.let { it1 -> bundle.putInt("type", it1) }
             bundle.putInt("id", it.id)
             bundle.putString("name", it.name)
             fragment.arguments = bundle
@@ -68,8 +74,8 @@ class OfficialAccountFragment : BaseFragment<OfficialAccountContract.Presenter<O
         ToastUtils.show(error)
     }
 
-    override fun createPresenter(): OfficialAccountContract.Presenter<OfficialAccountContract.View>? {
-        return OfficialAccountPresenter(this)
+    override fun createPresenter(): TabContract.Presenter<TabContract.View>? {
+        return TabPresenter(this)
     }
 
     override fun getLayoutId(): Int {

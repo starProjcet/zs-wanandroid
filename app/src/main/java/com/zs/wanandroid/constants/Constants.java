@@ -8,6 +8,15 @@ package com.zs.wanandroid.constants;
  */
 public class Constants {
     public static final int DEFAULT_TIMEOUT = 10000;
+
+    /**
+     * 项目/公众号公用一套逻辑。项目标记
+     */
+    public static final int PROJECT_TYPE = 10;
+    /**
+     * 项目/公众号公用一套逻辑。公众号标记
+     */
+    public static final int ACCOUNT_TYPE = 20;
     /**
      * 多布局中带图片
      */

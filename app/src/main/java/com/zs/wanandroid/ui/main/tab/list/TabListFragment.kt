@@ -1,4 +1,4 @@
-package com.zs.wanandroid.ui.main.account.list
+package com.zs.wanandroid.ui.main.tab.list
 
 
 import android.os.Bundle
@@ -24,13 +24,13 @@ import kotlinx.android.synthetic.main.fragment_article_list.loadingTip
 import kotlinx.android.synthetic.main.fragment_article_list.smartRefresh
 
 /**
- * des 公众号列表
+ * des 项目/公众号列表
  *
  * @author zs
  * @data 2020-03-14
  */
-class OfficialAccountListFragment : LazyFragment<OfficialAccountListContract.Presenter<OfficialAccountListContract.View>>()
-,OfficialAccountListContract.View,OnCollectClickListener,BaseQuickAdapter.OnItemClickListener
+class TabListFragment : LazyFragment<TabListContract.Presenter<TabListContract.View>>()
+,TabListContract.View,OnCollectClickListener,BaseQuickAdapter.OnItemClickListener
     , OnLoadMoreListener, OnRefreshListener, ReloadListener {
 
     private var projectList = mutableListOf<ArticleEntity.DatasBean>()
@@ -39,8 +39,9 @@ class OfficialAccountListFragment : LazyFragment<OfficialAccountListContract.Pre
     private var name:String? = null
     private var projectAdapter:ArticleAdapter? = null
     private var currentPosition = 0
-
+    private var type:Int? = null
     override fun lazyInit() {
+        type = arguments?.getInt("type")
         projectId = arguments?.getInt("id") ?: 0
         name = arguments?.getString("name") ?: ""
         initView()
@@ -63,7 +64,7 @@ class OfficialAccountListFragment : LazyFragment<OfficialAccountListContract.Pre
         projectList.clear()
         projectAdapter?.setNewData(projectList)
         pageNum = 1
-        presenter?.loadData(projectId,pageNum)
+        type?.let { presenter?.loadData(it,projectId,pageNum) }
     }
 
     override fun showList(list: MutableList<ArticleEntity.DatasBean>) {
@@ -134,7 +135,7 @@ class OfficialAccountListFragment : LazyFragment<OfficialAccountListContract.Pre
 
     override fun onLoadMore(refreshLayout: RefreshLayout) {
         pageNum++
-        presenter?.loadData(id,pageNum)
+        type?.let { presenter?.loadData(it,id,pageNum) }
     }
 
     override fun onRefresh(refreshLayout: RefreshLayout) {
@@ -149,8 +150,8 @@ class OfficialAccountListFragment : LazyFragment<OfficialAccountListContract.Pre
         loadData()
     }
 
-    override fun createPresenter(): OfficialAccountListContract.Presenter<OfficialAccountListContract.View>? {
-        return OfficialAccountListPresenter(this)
+    override fun createPresenter(): TabListContract.Presenter<TabListContract.View>? {
+        return TabListPresenter(this)
     }
 
     override fun getLayoutId(): Int {
