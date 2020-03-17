@@ -1,6 +1,8 @@
 package com.zs.wanandroid.entity
 
-class IntegralEntity {
+import java.io.Serializable
+
+class IntegralEntity: Serializable {
 
     /**
      * coinCount : 451

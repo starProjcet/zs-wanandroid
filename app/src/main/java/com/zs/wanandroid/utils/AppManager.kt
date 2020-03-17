@@ -39,7 +39,7 @@ class AppManager {
             EventBus.getDefault().post(LogoutEvent())
             PrefUtils.setBoolean(Constants.LOGIN, false)
             PrefUtils.setHashSet(Constants.COOKIE, HashSet())
-            PrefUtils.setObject(Constants.USER_INFO, null)
+            PrefUtils.removeKey(Constants.USER_INFO)
         }
 
         /**

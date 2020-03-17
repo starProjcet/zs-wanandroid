@@ -1,8 +1,10 @@
 package com.zs.wanandroid.ui.main.mine
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import com.example.zs_wan_android.R
+import com.google.gson.Gson
 import com.zs.wanandroid.base.BaseFragment
 import com.zs.wanandroid.base.LazyFragment
 import com.zs.wanandroid.constants.Constants
@@ -16,6 +18,7 @@ import com.zs.wanandroid.ui.rank.RankActivity
 import com.zs.wanandroid.ui.set.SetActivity
 import com.zs.wanandroid.ui.web.WebActivity
 import com.zs.wanandroid.utils.AppManager
+import com.zs.wanandroid.utils.PrefUtils
 import com.zs.wanandroid.utils.ToastUtils
 import kotlinx.android.synthetic.main.fragment_mine.*
 import org.greenrobot.eventbus.EventBus
@@ -37,9 +40,27 @@ class MineFragment : LazyFragment<MineContract.Presenter<MineContract.View>>(),V
     }
 
     override fun lazyInit() {
+        //先判断数据是否为空，然后再强转，否则会出异常
+        PrefUtils.getObject(Constants.INTEGRAL_INFO)?.let {
+            //先从本地获取积分，获取不到再通过网络获取
+            integralEntity = it as IntegralEntity?
+        }
+        if (integralEntity==null){
+            if (AppManager.isLogin()) {
+                presenter?.loadIntegral()
+            }
+        }else{
+            setIntegral()
+        }
         setListener()
-        if (AppManager.isLogin()) {
-            presenter?.loadIntegral()
+    }
+
+    private fun setIntegral(){
+        integralEntity?.apply {
+            tvUserName.text = username
+            tvId.text = String.format("%s","id:$userId")
+            tvRanking.text = rank.toString()
+            tvIntegral.text = coinCount.toString()
         }
     }
 
@@ -90,12 +111,7 @@ class MineFragment : LazyFragment<MineContract.Presenter<MineContract.View>>(),V
 
     override fun showIntegral(e: IntegralEntity) {
         this.integralEntity = e
-        integralEntity?.apply {
-            tvUserName.text = username
-            tvId.text = String.format("%s","id:$userId")
-            tvRanking.text = rank.toString()
-            tvIntegral.text = coinCount.toString()
-        }
+        setIntegral()
 
     }
     override fun onError(error: String) {
@@ -112,6 +128,9 @@ class MineFragment : LazyFragment<MineContract.Presenter<MineContract.View>>(),V
 
     override fun onDestroy() {
         super.onDestroy()
+
+        //设置积分为空，下次进入界面重新请求
+        PrefUtils.removeKey(Constants.INTEGRAL_INFO)
         EventBus.getDefault().unregister(this)
     }
 

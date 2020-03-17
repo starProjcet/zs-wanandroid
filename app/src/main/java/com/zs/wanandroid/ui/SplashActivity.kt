@@ -8,9 +8,18 @@ import io.reactivex.disposables.Disposable
 import java.util.concurrent.TimeUnit
 import android.Manifest
 import android.os.Bundle
+import android.util.Log
 import com.example.zs_wan_android.R
+import com.google.gson.Gson
+import com.zs.wanandroid.constants.Constants
+import com.zs.wanandroid.entity.IntegralEntity
+import com.zs.wanandroid.http.HttpDefaultObserver
+import com.zs.wanandroid.http.RetrofitHelper
 import com.zs.wanandroid.proxy.DialogProxy
 import com.zs.wanandroid.proxy.IConfirmClickCallBack
+import com.zs.wanandroid.utils.PrefUtils
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import pub.devrel.easypermissions.AfterPermissionGranted
 import pub.devrel.easypermissions.EasyPermissions
 import pub.devrel.easypermissions.EasyPermissions.PermissionCallbacks
@@ -29,6 +38,7 @@ class SplashActivity : BaseActivity<IBasePresenter<*>>(), PermissionCallbacks {
     private val tips = "玩安卓现在要向您申请存储权限，用于存储历史记录以及保存小姐姐图片，您也可以在设置中手动开启或者取消。"
     private val perms = arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE)
     override fun init(savedInstanceState: Bundle?) {
+        saveIntegral()
         requestPermission()
     }
 
@@ -99,6 +109,26 @@ class SplashActivity : BaseActivity<IBasePresenter<*>>(), PermissionCallbacks {
      */
     override fun onPermissionsGranted(requestCode: Int, perms: List<String>) {
         startIntent()
+    }
+
+    /**
+     * 保存积分信息
+     */
+    private fun saveIntegral(){
+        RetrofitHelper.getApiService()
+            .getIntegral()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(object : HttpDefaultObserver<IntegralEntity>() {
+                override fun onSuccess(t: IntegralEntity) {
+                    PrefUtils.setObject(Constants.INTEGRAL_INFO,t)
+                }
+                override fun onError(errorMsg: String) {
+                }
+
+                override fun disposable(d: Disposable) {
+                }
+            })
     }
 
     companion object {
