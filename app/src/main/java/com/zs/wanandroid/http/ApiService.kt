@@ -138,7 +138,7 @@ interface ApiService {
     /**
      * 注册
      */
-    @POST("/lg/user_article/add/json")
+    @POST("/user/register")
     fun register(@Query("username")username: String,
                  @Query("password")password: String,
                  @Query("repassword")repassword: String) : Observable<BaseResponse<Any>>

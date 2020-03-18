@@ -8,6 +8,7 @@ import android.view.View
 import com.example.zs_wan_android.R
 import com.zs.wanandroid.base.BaseActivity
 import com.zs.wanandroid.constants.Constants
+import com.zs.wanandroid.ui.register.RegisterActivity
 import com.zs.wanandroid.utils.PrefUtils
 import com.zs.wanandroid.utils.ToastUtils
 import kotlinx.android.synthetic.main.activity_login.*
@@ -43,7 +44,7 @@ class LoginActivity : BaseActivity<LoginContract.Presenter<LoginContract.View>>(
                     }
                 }
             }
-            R.id.tvRegister->{}
+            R.id.tvRegister-> intent(RegisterActivity::class.java,false)
             R.id.tvSkip-> finish()
             R.id.ivClear-> {
                 etUsername.requestFocus()
