@@ -116,4 +116,16 @@ interface ApiService {
      */
     @GET("/lg/coin/list/{pageNum}/json")
     fun getIntegralRecord(@Path("pageNum")pageNum: Int) : Observable<BaseResponse<IntegralRecordEntity>>
+
+    /**
+     * 我分享的文章
+     */
+    @GET("/user/lg/private_articles/{pageNum}/json")
+    fun getMyArticle(@Path("pageNum")pageNum: Int) : Observable<BaseResponse<MyArticleEntity>>
+
+    /**
+     * 我分享的文章
+     */
+    @POST("/lg/user_article/delete/{id}/json")
+    fun deleteMyArticle(@Path("id")id: Int) : Observable<BaseResponse<Any>>
 }

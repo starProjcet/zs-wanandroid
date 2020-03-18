@@ -6,12 +6,15 @@ import com.example.zs_wan_android.R
 import com.zs.wanandroid.base.LazyFragment
 import com.zs.wanandroid.constants.Constants
 import com.zs.wanandroid.entity.IntegralEntity
+import com.zs.wanandroid.entity.MyArticleEntity
 import com.zs.wanandroid.http.LoginEvent
 import com.zs.wanandroid.http.LogoutEvent
 import com.zs.wanandroid.ui.Integral.IntegralActivity
 import com.zs.wanandroid.ui.collect.CollectActivity
 import com.zs.wanandroid.ui.girl.GirlActivity
+import com.zs.wanandroid.ui.history.HistoryActivity
 import com.zs.wanandroid.ui.login.LoginActivity
+import com.zs.wanandroid.ui.my.MyArticleActivity
 import com.zs.wanandroid.ui.rank.RankActivity
 import com.zs.wanandroid.ui.set.SetActivity
 import com.zs.wanandroid.ui.web.WebActivity
@@ -78,13 +81,17 @@ class MineFragment : LazyFragment<MineContract.Presenter<MineContract.View>>(),V
 
     override fun onClick(p0: View?) {
         when(p0?.id){
+            //头像
             R.id.ivHead->ToastUtils.show("我只是一只可爱的小老鼠..")
+            //用户名
             R.id.tvUserName->{
                 if (!AppManager.isLogin()){
                     intent(LoginActivity::class.java,false)
                 }
             }
-            R.id.llHistory->{}
+            //足迹
+            R.id.llHistory->intent(HistoryActivity::class.java,true)
+            //排名
             R.id.llRanking->{
                 intent(Bundle().apply {
                     integralEntity?.coinCount?.let { putInt(Constants.MY_INTEGRAL, it) }
@@ -92,16 +99,22 @@ class MineFragment : LazyFragment<MineContract.Presenter<MineContract.View>>(),V
                     integralEntity?.username?.let { putString(Constants.MY_NAME, it) }
                 }, RankActivity::class.java,true)
             }
+            //积分
             R.id.rlIntegral->intent(IntegralActivity::class.java,true)
+            //收藏
             R.id.rlCollect-> intent(CollectActivity::class.java,true)
-            R.id.rlArticle->{}
+            //我的文章
+            R.id.rlArticle-> intent(MyArticleActivity::class.java,true)
+            //官网
             R.id.rlWebsite->{
                 intent(Bundle().apply {
                     putString(Constants.WEB_URL,Constants.WEBSITE)
                     putString(Constants.WEB_TITLE,Constants.APP_NAME)
                 }, WebActivity::class.java,false)
             }
+            //轻松一下
             R.id.rlGirl->intent(GirlActivity::class.java,false)
+            //设置
             R.id.rlSet-> intent(SetActivity::class.java,false)
         }
     }
