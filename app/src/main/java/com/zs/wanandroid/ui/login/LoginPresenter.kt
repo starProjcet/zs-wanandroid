@@ -4,8 +4,7 @@ import com.zs.wanandroid.base.BasePresenter
 import com.zs.wanandroid.constants.Constants
 import com.zs.wanandroid.entity.UserEntity
 import com.zs.wanandroid.http.HttpDefaultObserver
-import com.zs.wanandroid.http.LoginEvent
-import com.zs.wanandroid.http.LogoutEvent
+import com.zs.wanandroid.event.LoginEvent
 import com.zs.wanandroid.http.RetrofitHelper
 import com.zs.wanandroid.utils.PrefUtils
 import io.reactivex.android.schedulers.AndroidSchedulers

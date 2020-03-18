@@ -6,9 +6,8 @@ import com.example.zs_wan_android.R
 import com.zs.wanandroid.base.LazyFragment
 import com.zs.wanandroid.constants.Constants
 import com.zs.wanandroid.entity.IntegralEntity
-import com.zs.wanandroid.entity.MyArticleEntity
-import com.zs.wanandroid.http.LoginEvent
-import com.zs.wanandroid.http.LogoutEvent
+import com.zs.wanandroid.event.LoginEvent
+import com.zs.wanandroid.event.LogoutEvent
 import com.zs.wanandroid.ui.Integral.IntegralActivity
 import com.zs.wanandroid.ui.collect.CollectActivity
 import com.zs.wanandroid.ui.girl.GirlActivity

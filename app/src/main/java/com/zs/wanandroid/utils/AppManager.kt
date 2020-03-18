@@ -1,14 +1,11 @@
 package com.zs.wanandroid.utils
 
 import com.zs.wanandroid.constants.Constants
-import com.zs.wanandroid.http.LogoutEvent
+import com.zs.wanandroid.event.LogoutEvent
 import org.greenrobot.eventbus.EventBus
 import java.util.HashSet
-import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
-import androidx.core.content.ContextCompat.getSystemService
-import androidx.core.content.ContextCompat.getSystemService
 
 
 /**
@@ -33,7 +30,6 @@ class AppManager {
             //发送退出登录消息
             EventBus.getDefault().post(LogoutEvent())
             PrefUtils.setBoolean(Constants.LOGIN, false)
-            PrefUtils.setHashSet(Constants.COOKIE, HashSet())
             PrefUtils.removeKey(Constants.USER_INFO)
         }
 

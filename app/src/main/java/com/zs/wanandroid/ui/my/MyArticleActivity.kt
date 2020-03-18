@@ -5,18 +5,18 @@ import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chad.library.adapter.base.BaseQuickAdapter
-import com.chad.library.adapter.base.BaseViewHolder
 import com.example.zs_wan_android.R
 import com.scwang.smartrefresh.layout.api.RefreshLayout
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener
 import com.zs.wanandroid.adapter.MyArticleAdapter
-import com.zs.wanandroid.adapter.OnDeleteClickListener
 import com.zs.wanandroid.base.BaseActivity
 import com.zs.wanandroid.constants.Constants
 import com.zs.wanandroid.entity.ArticleEntity
 import com.zs.wanandroid.entity.MyArticleEntity
-import com.zs.wanandroid.ui.add.AddArticleActivity
+import com.zs.wanandroid.event.LoginEvent
+import com.zs.wanandroid.event.ShareEvent
+import com.zs.wanandroid.ui.share.ShareArticleActivity
 import com.zs.wanandroid.ui.web.WebActivity
 import com.zs.wanandroid.utils.ToastUtils
 import com.zs.wanandroid.weight.ReloadListener
@@ -24,6 +24,9 @@ import kotlinx.android.synthetic.main.activity_my_article.*
 import kotlinx.android.synthetic.main.activity_my_article.ivBack
 import kotlinx.android.synthetic.main.activity_my_article.loadingTip
 import kotlinx.android.synthetic.main.activity_my_article.smartRefresh
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 
 /**
  * 我的文章
@@ -32,7 +35,7 @@ import kotlinx.android.synthetic.main.activity_my_article.smartRefresh
  */
 class MyArticleActivity : BaseActivity<MyArticleContract.Presenter<MyArticleContract.View>>()
     ,MyArticleContract.View , OnLoadMoreListener, OnRefreshListener, ReloadListener
-    ,BaseQuickAdapter.OnItemClickListener,OnDeleteClickListener {
+    ,BaseQuickAdapter.OnItemChildClickListener {
 
     private var currentPosition = 0
     private var articleAdapter: MyArticleAdapter? = null
@@ -46,19 +49,19 @@ class MyArticleActivity : BaseActivity<MyArticleContract.Presenter<MyArticleCont
     }
 
     private fun initView(){
+        EventBus.getDefault().register(this)
         ivBack.setOnClickListener {
             finish()
         }
         ivAdd.setOnClickListener {
-            intent(AddArticleActivity::class.java,true)
+            intent(ShareArticleActivity::class.java,true)
         }
         loadingTip.setReloadListener(this)
         smartRefresh?.setOnRefreshListener(this)
         smartRefresh?.setOnLoadMoreListener(this)
         rvMyArticle.layoutManager = LinearLayoutManager(this)
         articleAdapter = MyArticleAdapter(R.layout.item_my_article)
-        articleAdapter?.setonDeleteClickListener(this)
-        articleAdapter?.onItemClickListener = this
+        articleAdapter?.onItemChildClickListener = this
         rvMyArticle.adapter = articleAdapter
     }
 
@@ -110,20 +113,25 @@ class MyArticleActivity : BaseActivity<MyArticleContract.Presenter<MyArticleCont
         loadData()
     }
 
-    override fun onItemClick(adapter: BaseQuickAdapter<*, *>?, view: View?, position: Int) {
-        intent(Bundle().apply {
-            putString(Constants.WEB_URL,articleList[position].link)
-            putString(Constants.WEB_TITLE,articleList[position].title)
-        }, WebActivity::class.java,false)
-    }
+    override fun onItemChildClick(adapter: BaseQuickAdapter<*, *>?, view: View?, position: Int) {
+        when(view?.id){
+            R.id.rlContent->{
+                intent(Bundle().apply {
+                    putString(Constants.WEB_URL,articleList[position].link)
+                    putString(Constants.WEB_TITLE,articleList[position].title)
+                }, WebActivity::class.java,false)
+            }
+            R.id.tvDelete->{
+                if (position<articleList.size){
+                    //记录当前点击的item
+                    currentPosition = position
+                    presenter?.delete(articleList[position].id)
+                }
+            }
 
-    override fun onDeleteClick(helper: BaseViewHolder, position: Int) {
-        if (position<articleList.size){
-            //记录当前点击的item
-            currentPosition = position
-            presenter?.delete(articleList[position].id)
         }
     }
+
 
     override fun createPresenter(): MyArticleContract.Presenter<MyArticleContract.View>? {
         return MyArticlePresenter(this)
@@ -147,4 +155,18 @@ class MyArticleActivity : BaseActivity<MyArticleContract.Presenter<MyArticleCont
             smartRefresh.finishRefresh()
         }
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        EventBus.getDefault().unregister(this)
+    }
+
+    /**
+     * 登陆消息
+     */
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public fun shareEvent(shareEvent: ShareEvent){
+        loadData()
+    }
+
 }

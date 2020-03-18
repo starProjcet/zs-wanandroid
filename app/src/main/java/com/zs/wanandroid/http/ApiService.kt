@@ -128,4 +128,10 @@ interface ApiService {
      */
     @POST("/lg/user_article/delete/{id}/json")
     fun deleteMyArticle(@Path("id")id: Int) : Observable<BaseResponse<Any>>
+
+    /**
+     * 分享文章
+     */
+    @POST("/lg/user_article/add/json")
+    fun shareArticle(@Query("title")title: String,@Query("link")link: String) : Observable<BaseResponse<Any>>
 }

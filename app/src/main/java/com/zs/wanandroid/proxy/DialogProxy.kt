@@ -17,6 +17,7 @@ import com.zs.wanandroid.utils.AppManager
 class DialogProxy {
 
     companion object{
+        private var dialog:Dialog? = null
         /**
          * 二次确认对话框
          */
@@ -84,6 +85,24 @@ class DialogProxy {
             dialog = builder.create()
 
             dialog.show()
+        }
+
+
+        /**
+         * 提示对话框
+         */
+        fun loading(context: Context,tips:String){
+            val builder = AlertDialog.Builder(context)
+            val view = LayoutInflater.from(context).inflate(R.layout.dialog_loading,null)
+            val tvMsg = view.findViewById<TextView>(R.id.tvMsg)
+            tvMsg.text = tips
+            builder.setView(view)
+            dialog = builder.create()
+            dialog?.show()
+        }
+
+        fun dismiss(){
+            dialog?.dismiss()
         }
     }
 }

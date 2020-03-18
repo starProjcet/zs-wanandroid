@@ -13,6 +13,7 @@
     <color name="black">#111111</color>
     <color name="red">#F60B0B</color>
     <color name="transparent">#00FFFFFF</color>
+    <!--    分割线颜色-->
     <color name="division_line">#EDEDED</color>
     <color name="division_line_thickening">#F8F8F8</color>
 
@@ -29,4 +30,7 @@
     <color name="text_3">#bbbbbb</color>
 
     <color name="orange">#ea9518</color>
+    <!--    标记框背景色-->
+    <color name="share_edit">#F7F7F7</color>
+
 </resources>

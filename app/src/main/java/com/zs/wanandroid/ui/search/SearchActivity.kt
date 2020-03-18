@@ -23,6 +23,8 @@ import com.zs.wanandroid.base.BaseActivity
 import com.zs.wanandroid.constants.Constants
 import com.zs.wanandroid.entity.ArticleEntity
 import com.zs.wanandroid.http.KeyBoardUtil
+import com.zs.wanandroid.proxy.DialogProxy
+import com.zs.wanandroid.proxy.IConfirmClickCallBack
 import com.zs.wanandroid.ui.web.WebActivity
 import com.zs.wanandroid.utils.AppManager
 import com.zs.wanandroid.utils.PrefUtils
@@ -325,9 +327,21 @@ class SearchActivity : BaseActivity<SearchContract.Presenter<SearchContract.View
             R.id.ivClear->editText.setText("")
             //清除搜索记录
             R.id.tvClear -> {
-
+                DialogProxy.confirm(this,"是否确定清除？",object :IConfirmClickCallBack{
+                    override fun onClick() {
+                        clearRecord()
+                    }
+                })
             }
         }
+    }
+
+    /**
+     * 清除搜索记录
+     */
+    private fun clearRecord(){
+        recordList?.clear()
+        loadRecord()
     }
 
     override fun onPause() {

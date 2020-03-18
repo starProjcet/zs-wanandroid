@@ -61,7 +61,8 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/rvMyArticle"/>
+                android:id="@+id/rvMyArticle"
+                android:overScrollMode="never"/>
         </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
         <com.zs.wanandroid.weight.LoadingTip

@@ -20,7 +20,7 @@
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name="com.zs.wanandroid.ui.history.HistoryActivity"></activity>
         <activity android:name="com.zs.wanandroid.ui.my.MyArticleActivity" />
-        <activity android:name="com.zs.wanandroid.ui.add.AddArticleActivity" />
+        <activity android:name="com.zs.wanandroid.ui.share.ShareArticleActivity" />
         <activity android:name="com.zs.wanandroid.ui.Integral.IntegralActivity" />
         <activity android:name="com.zs.wanandroid.ui.rank.RankActivity" />
         <activity

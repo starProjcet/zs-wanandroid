@@ -22,8 +22,8 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener
 import com.zs.wanandroid.adapter.OnCollectClickListener
 import com.zs.wanandroid.base.LazyFragment
 import com.zs.wanandroid.constants.Constants
-import com.zs.wanandroid.http.LoginEvent
-import com.zs.wanandroid.http.LogoutEvent
+import com.zs.wanandroid.event.LoginEvent
+import com.zs.wanandroid.event.LogoutEvent
 import com.zs.wanandroid.proxy.ImageLoad
 import com.zs.wanandroid.ui.search.SearchActivity
 import com.zs.wanandroid.ui.web.WebActivity

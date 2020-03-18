@@ -100,7 +100,8 @@ class CollectActivity : BaseActivity<CollectContract.Presenter<CollectContract.V
         intent(Bundle().apply {
             putString(Constants.WEB_URL,collectList[position].link)
             putString(Constants.WEB_TITLE,collectList[position].title)
-        }, WebActivity::class.java,false)    }
+        }, WebActivity::class.java,false)
+    }
 
     override fun onCollectClick(helper: BaseViewHolder, position: Int) {
         if (position<collectList.size&&lockCollectClick){
