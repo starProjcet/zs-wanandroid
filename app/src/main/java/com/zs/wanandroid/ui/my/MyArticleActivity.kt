@@ -2,6 +2,7 @@ package com.zs.wanandroid.ui.my
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chad.library.adapter.base.BaseQuickAdapter
@@ -114,6 +115,7 @@ class MyArticleActivity : BaseActivity<MyArticleContract.Presenter<MyArticleCont
     }
 
     override fun onItemChildClick(adapter: BaseQuickAdapter<*, *>?, view: View?, position: Int) {
+        Log.i(TAG,"id:${view?.id}")
         when(view?.id){
             R.id.rlContent->{
                 intent(Bundle().apply {

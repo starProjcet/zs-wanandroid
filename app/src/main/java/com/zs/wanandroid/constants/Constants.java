@@ -56,6 +56,17 @@ public class Constants {
      */
     public static final String WEB_TITLE = "webTitle";
 
+    /**
+     * 体系 id
+     */
+    public static final String SYSTEM_ID = "systemId";
+
+    /**
+     * 体系 标题
+     */
+    public static final String SYSTEM_TITLE = "systemTitle";
+
+
 
     /**
      * 搜索历史

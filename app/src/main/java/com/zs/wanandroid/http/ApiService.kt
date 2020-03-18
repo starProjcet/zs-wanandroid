@@ -90,7 +90,7 @@ interface ApiService {
      * 获取项目tab
      */
     @POST("/article/query/{pageNum}/json")
-    fun search(@Path("pageNum")pageNum:Int,@Query("k")cid:String)
+    fun search(@Path("pageNum")pageNum:Int,@Query("k")k:String)
             : Observable<BaseResponse<ArticleEntity>>
 
     /**
@@ -98,6 +98,14 @@ interface ApiService {
      */
     @GET("/tree/json")
     fun getSystemList() : Observable<BaseResponse<MutableList<SystemListEntity>>>
+
+
+    /**
+     * 获取项目tab
+     */
+    @GET("/article/list/{pageNum}/json")
+    fun getSystemArticle(@Path("pageNum")pageNum:Int,@Query("cid")cid:Int)
+            : Observable<BaseResponse<ArticleEntity>>
 
     /**
      * 导航

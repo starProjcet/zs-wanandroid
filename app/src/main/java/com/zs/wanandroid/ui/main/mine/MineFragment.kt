@@ -89,7 +89,7 @@ class MineFragment : LazyFragment<MineContract.Presenter<MineContract.View>>(),V
                 }
             }
             //足迹
-            R.id.llHistory->intent(HistoryActivity::class.java,true)
+            R.id.llHistory->ToastUtils.show("正在开发中...")
             //排名
             R.id.llRanking->{
                 intent(Bundle().apply {

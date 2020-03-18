@@ -18,7 +18,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name="com.zs.wanandroid.ui.register.RegisterActivity"></activity>
+        <activity android:name="com.zs.wanandroid.ui.main.system.activity.SystemActivity"></activity>
+        <activity android:name="com.zs.wanandroid.ui.register.RegisterActivity" />
         <activity android:name="com.zs.wanandroid.ui.history.HistoryActivity" />
         <activity android:name="com.zs.wanandroid.ui.my.MyArticleActivity" />
         <activity android:name="com.zs.wanandroid.ui.share.ShareArticleActivity" />
