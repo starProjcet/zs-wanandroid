@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.activity_girl.*
  * 小姐姐界面
  *
  * @author zs
- * @data 2020-03-15
+ * @date 2020-03-15
  */
 class GirlActivity : BaseActivity<IBasePresenter<IBaseView>>() {
 

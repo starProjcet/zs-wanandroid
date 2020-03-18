@@ -11,7 +11,7 @@ import io.reactivex.schedulers.Schedulers
 
 /**
  * @author zs
- * @data 2020-03-08
+ * @date 2020-03-08
  */
 class HomePresenter(view: HomeContract.View):
     BasePresenter<HomeContract.View>(view) ,

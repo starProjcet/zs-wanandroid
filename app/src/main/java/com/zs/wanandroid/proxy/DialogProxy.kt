@@ -12,7 +12,7 @@ import com.zs.wanandroid.utils.AppManager
 /**
  * des 对话框代理类，对外暴露使用接口，将框架与业务进行隔离
  * @author zs
- * @data 2020-03-12
+ * @date 2020-03-12
  */
 class DialogProxy {
 

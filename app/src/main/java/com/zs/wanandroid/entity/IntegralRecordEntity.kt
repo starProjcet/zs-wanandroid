@@ -3,7 +3,7 @@ package com.zs.wanandroid.entity
 /**
  * des 获取积分记录
  * @author zs
- * @data 2020-03-17
+ * @date 2020-03-17
  */
 class IntegralRecordEntity {
 

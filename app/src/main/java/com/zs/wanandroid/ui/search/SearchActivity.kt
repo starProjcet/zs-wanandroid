@@ -38,7 +38,7 @@ import kotlinx.android.synthetic.main.activity_search.smartRefresh
 /**
  * des搜索界面
  * @author zs
- * @data 2020-03-15
+ * @date 2020-03-15
  */
 class SearchActivity : BaseActivity<SearchContract.Presenter<SearchContract.View>>(),SearchContract.View
     , View.OnClickListener, OnLoadMoreListener, ReloadListener, BaseQuickAdapter.OnItemClickListener,

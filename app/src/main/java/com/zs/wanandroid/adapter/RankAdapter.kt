@@ -8,7 +8,7 @@ import com.zs.wanandroid.entity.RankEntity
 /**
  * 排名适配器
  * @author zs
- * @data 2020-03-16
+ * @date 2020-03-16
  */
 class RankAdapter(layoutId:Int):BaseQuickAdapter<RankEntity.DatasBean,BaseViewHolder>(layoutId) {
 

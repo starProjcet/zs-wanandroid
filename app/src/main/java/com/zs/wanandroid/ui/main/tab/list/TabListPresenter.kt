@@ -11,7 +11,7 @@ import io.reactivex.schedulers.Schedulers
 
 /**
  * @author zs
- * @data 2020-03-14
+ * @date 2020-03-14
  */
 class TabListPresenter(view: TabListContract.View):BasePresenter<TabListContract.View>(view)
     ,TabListContract.Presenter<TabListContract.View>{

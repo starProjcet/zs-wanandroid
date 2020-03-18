@@ -6,7 +6,7 @@ import android.os.Bundle
 /**
  * des 基于androidx实现懒加载
  * @author zs
- * @data 2020-03-14
+ * @date 2020-03-14
  */
 abstract class LazyFragment<P: IBasePresenter<*>>: BaseFragment<P>() {
 

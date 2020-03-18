@@ -8,7 +8,7 @@ import com.zs.wanandroid.entity.IntegralRecordEntity
 /**
  * 积分增加记录
  * @author zs
- * @data 2020-03-17
+ * @date 2020-03-17
  */
 class IntegralAdapter(layoutId:Int) : BaseQuickAdapter<IntegralRecordEntity.DatasBean, BaseViewHolder>(layoutId) {
 

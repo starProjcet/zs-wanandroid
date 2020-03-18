@@ -9,7 +9,7 @@ import androidx.fragment.app.FragmentStatePagerAdapter
  * des 默认使用androidx懒加载机制
  *
  * @author zs
- * @data 2020-03-14
+ * @date 2020-03-14
  */
 class FragmentListAdapter(private val fragments: MutableList<Fragment>, fm: FragmentManager) :
     FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {

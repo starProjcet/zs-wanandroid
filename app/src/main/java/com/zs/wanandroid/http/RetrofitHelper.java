@@ -4,7 +4,7 @@ package com.zs.wanandroid.http;
  * des 实例化Retrofit,获取ApiService
  *
  * @author zs
- * @data 2020-03-05
+ * @date 2020-03-05
  */
 public class RetrofitHelper {
     private static ApiService apiService;

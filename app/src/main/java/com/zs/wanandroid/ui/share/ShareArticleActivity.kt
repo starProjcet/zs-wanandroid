@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.View
 import com.example.zs_wan_android.R
 import com.zs.wanandroid.base.BaseActivity
-import com.zs.wanandroid.base.IBasePresenter
 import com.zs.wanandroid.proxy.DialogProxy
 import com.zs.wanandroid.utils.ToastUtils
 import kotlinx.android.synthetic.main.activity_share_articel.*
@@ -13,7 +12,7 @@ import kotlinx.android.synthetic.main.activity_share_articel.*
 /**
  * 分享文章
  * @author zs
- * @data 2020-03-18
+ * @date 2020-03-18
  */
 class ShareArticleActivity : BaseActivity<ShareContract.Presenter<ShareContract.View>>(),
     ShareContract.View, View.OnClickListener {

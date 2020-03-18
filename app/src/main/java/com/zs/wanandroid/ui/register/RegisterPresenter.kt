@@ -1,35 +1,34 @@
-package com.zs.wanandroid.ui.share
+package com.zs.wanandroid.ui.register
 
 import com.zs.wanandroid.base.BasePresenter
-import com.zs.wanandroid.event.ShareEvent
 import com.zs.wanandroid.http.HttpDefaultObserver
 import com.zs.wanandroid.http.RetrofitHelper
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import org.greenrobot.eventbus.EventBus
 
 /**
- * 我的文章
+ * des 注册
  * @author zs
- * @date 2020-03-17
+ * @date 2020-03-18
  */
-class SharePresenter(view:ShareContract.View):BasePresenter<ShareContract.View>(view)
-    , ShareContract.Presenter<ShareContract.View>{
+class RegisterPresenter(view:RegisterContract.View):BasePresenter<RegisterContract.View>(view)
+    ,RegisterContract.Presenter<RegisterContract.View> {
 
-    override fun share(title: String, link: String) {
+    override fun register(username: String, password: String, repassword: String) {
         RetrofitHelper.getApiService()
-            .shareArticle(title,link)
+            .register(username,password,repassword)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : HttpDefaultObserver<Any>(){
                 override fun disposable(d: Disposable) {
                     addSubscribe(d)
                 }
+
                 override fun onSuccess(t: Any) {
-                    EventBus.getDefault().post(ShareEvent())
-                    view?.shareSuccess()
+                    view?.registerSuccess()
                 }
+
                 override fun onError(errorMsg: String) {
                     view?.onError(errorMsg)
                 }

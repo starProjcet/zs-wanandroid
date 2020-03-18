@@ -11,7 +11,7 @@ import io.reactivex.schedulers.Schedulers
 /**
  * des 积分排行榜
  * @author zs
- * @data 2020-03-16
+ * @date 2020-03-16
  */
 class RankPresenter(view:RankContract.View):BasePresenter<RankContract.View>(view),RankContract.Presenter<RankContract.View> {
 

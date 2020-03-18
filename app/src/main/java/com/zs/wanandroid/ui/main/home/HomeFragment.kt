@@ -41,7 +41,7 @@ import org.greenrobot.eventbus.ThreadMode
  * 首页
  *
  * @author zs
- * @data 2020-03-09
+ * @date 2020-03-09
  */
 class HomeFragment : LazyFragment<HomeContract.Presenter<HomeContract.View>>() ,BGABanner.Adapter<ImageView?, String?>
 ,BGABanner.Delegate<ImageView?, String?> , HomeContract.View,OnLoadMoreListener,OnRefreshListener,ReloadListener

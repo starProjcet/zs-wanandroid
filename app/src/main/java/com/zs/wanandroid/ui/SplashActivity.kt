@@ -30,7 +30,7 @@ import pub.devrel.easypermissions.EasyPermissions.PermissionCallbacks
  * 权限：https://www.cnblogs.com/blosaa/p/9584348.html
  *
  * @author zs
- * @data 2020-03-07
+ * @date 2020-03-07
  */
 class SplashActivity : BaseActivity<IBasePresenter<*>>(), PermissionCallbacks {
 

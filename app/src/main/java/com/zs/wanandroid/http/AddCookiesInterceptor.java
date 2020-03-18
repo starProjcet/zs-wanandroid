@@ -13,7 +13,7 @@ import okhttp3.Response;
 /**
  * des 请求天假cookie
  * @author zs
- * @data 2020-03-09
+ * @date 2020-03-09
  */
 public class AddCookiesInterceptor implements Interceptor {
 

@@ -11,7 +11,7 @@ import io.reactivex.schedulers.Schedulers
 
 /**
  * @author zs
- * @data 2020-03-13
+ * @date 2020-03-13
  */
 class CollectPresenter(view:CollectContract.View):BasePresenter<CollectContract.View>(view)
     ,CollectContract.Presenter<CollectContract.View> {

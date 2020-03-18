@@ -12,7 +12,7 @@ import com.wang.avi.AVLoadingIndicatorView
  * des 辅助站位图
  *
  * @author zs
- * @data 2020-03-12
+ * @date 2020-03-12
  */
 class LoadingTip : RelativeLayout {
 

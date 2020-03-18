@@ -6,7 +6,7 @@ import com.zs.wanandroid.WanAndroidApplication
 
 /**
  * @author zs
- * @data 2020-03-09
+ * @date 2020-03-09
  */
 object UIUtils {
 

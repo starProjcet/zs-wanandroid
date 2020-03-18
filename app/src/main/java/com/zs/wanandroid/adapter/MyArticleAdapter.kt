@@ -10,7 +10,7 @@ import com.zs.wanandroid.entity.ArticleEntity
 /**
  * 我的文章适配器
  * @author zs
- * @data 2020-03-17
+ * @date 2020-03-17
  */
 class MyArticleAdapter(layoutId:Int):BaseQuickAdapter<ArticleEntity.DatasBean,BaseViewHolder>(layoutId) {
 

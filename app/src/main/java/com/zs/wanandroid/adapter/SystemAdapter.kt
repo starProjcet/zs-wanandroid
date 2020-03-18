@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.activity_search.view.*
 /**
  * 体系 适配器
  * @author zs
- * @data 2020-03-16
+ * @date 2020-03-16
  */
 class SystemAdapter(layoutId:Int) :BaseQuickAdapter<SystemListEntity,BaseViewHolder>(layoutId){
 

@@ -7,7 +7,7 @@ import com.zs.wanandroid.entity.SystemListEntity
 /**
  * des体系列表
  * @author zs
- * @data 2020-03-16
+ * @date 2020-03-16
  */
 interface SystemListContract {
 

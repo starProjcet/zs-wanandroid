@@ -11,7 +11,7 @@ import io.reactivex.schedulers.Schedulers
 /**
  * des体系
  * @author zs
- * @data 2020-03-16
+ * @date 2020-03-16
  */
 class SystemListPresenter(view:SystemListContract.View):BasePresenter<SystemListContract.View>(view)
     ,SystemListContract.Presenter<SystemListContract.View> {

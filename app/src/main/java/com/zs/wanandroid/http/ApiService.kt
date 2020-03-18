@@ -134,4 +134,12 @@ interface ApiService {
      */
     @POST("/lg/user_article/add/json")
     fun shareArticle(@Query("title")title: String,@Query("link")link: String) : Observable<BaseResponse<Any>>
+
+    /**
+     * 注册
+     */
+    @POST("/lg/user_article/add/json")
+    fun register(@Query("username")username: String,
+                 @Query("password")password: String,
+                 @Query("repassword")repassword: String) : Observable<BaseResponse<Any>>
 }

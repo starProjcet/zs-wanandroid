@@ -21,7 +21,7 @@ import kotlinx.android.synthetic.main.activity_rank.*
 /**
  * des 积分排行榜
  * @author zs
- * @data 2020-03-16
+ * @date 2020-03-16
  */
 class RankActivity : BaseActivity<RankContract.Presenter<RankContract.View>>(),RankContract.View
     , OnLoadMoreListener, OnRefreshListener, ReloadListener {

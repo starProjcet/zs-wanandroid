@@ -12,7 +12,7 @@ import android.content.Context
  * des app管理类
  *
  * @author zs
- * @data 2020-03-12
+ * @date 2020-03-12
  */
 class AppManager {
     companion object{

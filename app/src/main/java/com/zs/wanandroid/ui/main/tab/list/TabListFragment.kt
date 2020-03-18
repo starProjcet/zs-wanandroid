@@ -27,7 +27,7 @@ import kotlinx.android.synthetic.main.fragment_article_list.smartRefresh
  * des 项目/公众号列表
  *
  * @author zs
- * @data 2020-03-14
+ * @date 2020-03-14
  */
 class TabListFragment : LazyFragment<TabListContract.Presenter<TabListContract.View>>()
 ,TabListContract.View,OnCollectClickListener,BaseQuickAdapter.OnItemClickListener

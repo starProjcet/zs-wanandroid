@@ -15,7 +15,7 @@ import com.zs.wanandroid.weight.GlideRoundTransform
  * des 图片加载代理类
  *
  * @author zs
- * @data 2020-03-14
+ * @date 2020-03-14
  */
 class ImageLoad{
     companion object{

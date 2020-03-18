@@ -28,7 +28,7 @@ import org.greenrobot.eventbus.ThreadMode
 /**
  * des 我的界面
  * @author zs
- * @data 2020-03-13
+ * @date 2020-03-13
  */
 class MineFragment : LazyFragment<MineContract.Presenter<MineContract.View>>(),View.OnClickListener,
     MineContract.View {

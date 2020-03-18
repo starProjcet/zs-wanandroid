@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.fragment_system_list.*
 /**
  * des 体系
  * @author zs
- * @data 2020-03-16
+ * @date 2020-03-16
  */
 class SystemListFragment : LazyFragment<SystemListContract.Presenter<SystemListContract.View>>()
     ,SystemListContract.View ,OnSystemClickListener{

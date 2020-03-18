@@ -6,7 +6,7 @@ import com.zs.wanandroid.entity.CollectEntity
 
 /**
  * @author zs
- * @data 2020-03-13
+ * @date 2020-03-13
  */
 interface CollectContract {
     interface View:IBaseView{

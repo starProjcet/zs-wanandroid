@@ -16,7 +16,7 @@ import com.zs.wanandroid.utils.ColorUtils;
 /**
  * des app
  * @author zs
- * @data 2020-03-05
+ * @date 2020-03-05
  */
 public class WanAndroidApplication extends Application {
     private static Application baseApplication;

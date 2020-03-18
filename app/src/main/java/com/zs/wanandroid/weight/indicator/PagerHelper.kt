@@ -7,7 +7,7 @@ import net.lucode.hackware.magicindicator.MagicIndicator
  * des 将指示器于ViewPager2绑定
  *
  * @author zs
- * @data 2020-03-14
+ * @date 2020-03-14
  */
 class PagerHelper {
     companion object{

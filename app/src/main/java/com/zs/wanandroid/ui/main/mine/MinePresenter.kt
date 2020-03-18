@@ -12,7 +12,7 @@ import io.reactivex.schedulers.Schedulers
 
 /**
  * @author zs
- * @data 2020-03-12
+ * @date 2020-03-12
  */
 class MinePresenter(view: MineContract.View):BasePresenter<MineContract.View> (view),
     MineContract.Presenter<MineContract.View> {

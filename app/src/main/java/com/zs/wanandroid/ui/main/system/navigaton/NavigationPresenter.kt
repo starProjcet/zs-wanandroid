@@ -13,7 +13,7 @@ import io.reactivex.schedulers.Schedulers
 /**
  * des 导航
  * @author zs
- * @data 2020-03-16
+ * @date 2020-03-16
  */
 class NavigationPresenter (view: NavigationContract.View): BasePresenter<NavigationContract.View>(view)
     , NavigationContract.Presenter<NavigationContract.View> {

@@ -7,7 +7,7 @@ import com.zs.wanandroid.WanAndroidApplication;
 /**
  * des toast工具类
  * @author zs
- * @data 2020-03-10
+ * @date 2020-03-10
  */
 public class ToastUtils {
 

@@ -26,7 +26,7 @@ import android.view.animation.DecelerateInterpolator
 /**
  * des 积分
  * @author zs
- * @data 2020-03-17
+ * @date 2020-03-17
  */
 class IntegralActivity : BaseActivity<IntegralContract.Presenter<IntegralContract.View>>()
     ,IntegralContract.View , OnLoadMoreListener, ReloadListener {

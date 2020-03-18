@@ -13,7 +13,7 @@ import com.zs.wanandroid.utils.AppManager
  * fragment基础类
  *
  * @author zs
- * @data 2020-03-07
+ * @date 2020-03-07
  */
 abstract class BaseFragment<P: IBasePresenter<*>>: Fragment() {
 

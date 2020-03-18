@@ -31,7 +31,7 @@ import org.greenrobot.eventbus.ThreadMode
 /**
  * 我的文章
  * @author zs
- * @data 2020-03-17
+ * @date 2020-03-17
  */
 class MyArticleActivity : BaseActivity<MyArticleContract.Presenter<MyArticleContract.View>>()
     ,MyArticleContract.View , OnLoadMoreListener, OnRefreshListener, ReloadListener

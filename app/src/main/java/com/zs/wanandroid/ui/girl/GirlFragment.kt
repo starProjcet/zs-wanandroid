@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.fragment_girl.*
 /**
  * des 小姐姐界面
  * @author zs
- * @data 2020-03-16
+ * @date 2020-03-16
  */
 class GirlFragment : BaseFragment<IBasePresenter<*>>() {
 

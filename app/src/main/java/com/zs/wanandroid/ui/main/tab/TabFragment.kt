@@ -22,7 +22,7 @@ import net.lucode.hackware.magicindicator.buildins.commonnavigator.CommonNavigat
  * 项目/公众号界面
  *
  * @author zs
- * @data 2020-03-14
+ * @date 2020-03-14
  */
 class TabFragment : BaseFragment<TabContract.Presenter<TabContract.View>>()
     ,TabContract.View ,OnTabClickListener{

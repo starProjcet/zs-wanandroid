@@ -19,7 +19,7 @@ import com.example.zs_wan_android.R
 /**
  * 展示h5
  * @author zs
- * @data 2020-03-16修改
+ * @date 2020-03-16修改
  */
 class WebActivity : BaseActivity<IBasePresenter<*>>() {
 

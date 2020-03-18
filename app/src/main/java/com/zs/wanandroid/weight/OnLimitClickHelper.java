@@ -15,7 +15,7 @@ import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
  * des 防止快速点击抖动
  *
  * @author zs
- * @data 2020--3-13
+ * @date 2020--3-13
  */
 public class OnLimitClickHelper implements View.OnClickListener {
     public static final int LIMIT_TIME = 500;

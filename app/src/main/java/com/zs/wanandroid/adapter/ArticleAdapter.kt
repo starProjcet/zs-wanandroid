@@ -17,7 +17,7 @@ import com.zs.wanandroid.weight.OnLimitClickListener
 /**
  * 文章适配器
  * @author zs
- * @data 2020-03-16修改
+ * @date 2020-03-16修改
  */
 class ArticleAdapter(list:MutableList<ArticleEntity.DatasBean>)
     : BaseMultiItemQuickAdapter<ArticleEntity.DatasBean,

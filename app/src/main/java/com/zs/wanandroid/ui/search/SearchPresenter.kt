@@ -10,7 +10,7 @@ import io.reactivex.schedulers.Schedulers
 
 /**
  * @author zs
- * @data 2020-03-15
+ * @date 2020-03-15
  */
 class SearchPresenter(view: SearchContract.View):
     BasePresenter<SearchContract.View>(view) ,

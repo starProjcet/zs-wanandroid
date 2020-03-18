@@ -8,7 +8,7 @@ import com.zs.wanandroid.entity.NavigationEntity
 /**
  * des 导航列表
  * @author zs
- * @data 2020-03-16
+ * @date 2020-03-16
  */
 interface NavigationContract {
     interface View: IBaseView {

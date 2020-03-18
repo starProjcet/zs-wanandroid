@@ -20,7 +20,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 /**
  * des Retrofit工厂类
  * @author zs
- * @data 2020-03-05
+ * @date 2020-03-05
  */
 public class RetrofitFactory {
 

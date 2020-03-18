@@ -6,7 +6,7 @@ import com.zs.wanandroid.entity.ArticleEntity
 
 /**
  * @author zs
- * @data 2020-03-14
+ * @date 2020-03-14
  */
 interface TabListContract {
     interface View:IBaseView{

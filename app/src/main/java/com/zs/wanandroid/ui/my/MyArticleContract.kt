@@ -6,7 +6,7 @@ import com.zs.wanandroid.entity.MyArticleEntity
 
 /**
  * @author zs
- * @data 2020-03-17
+ * @date 2020-03-17
  */
 interface MyArticleContract {
     interface View:IBaseView{

@@ -3,7 +3,7 @@ package com.zs.wanandroid.entity
 /**
  * des 我的文章
  * @author zs
- * @data 2020-03-17
+ * @date 2020-03-17
  */
 class MyArticleEntity {
     /**
