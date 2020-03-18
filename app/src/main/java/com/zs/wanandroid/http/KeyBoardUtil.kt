@@ -5,8 +5,8 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 
 /**
- * des: 键盘操作类
- * Created by panlei on 16/10/27.
+ * @author zs
+ * @date 2020-03-18
  */
 class KeyBoardUtil private constructor() {
     companion object {
