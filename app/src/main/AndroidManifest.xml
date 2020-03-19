@@ -25,6 +25,7 @@
         <activity android:name="com.zs.wanandroid.ui.share.ShareArticleActivity" />
         <activity android:name="com.zs.wanandroid.ui.Integral.IntegralActivity" />
         <activity android:name="com.zs.wanandroid.ui.rank.RankActivity" />
+
         <activity
             android:name="com.zs.wanandroid.ui.SplashActivity"
             android:screenOrientation="portrait"
