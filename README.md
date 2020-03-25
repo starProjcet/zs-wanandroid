@@ -1,3 +1,4 @@
+# 已停止维护，不建议fork，请直接参考我的优化版wanandroid：[https://github.com/zskingking/zs-wan-android](https://github.com/zskingking/WanAndroid-ZS)
 # zs-wan-android
 
 ### 非常感谢鸿洋大神提供的api，让我实现了为时已久的小目标。同时也感谢阿里巴巴矢量图&花瓣网提供的图标和界面设计。如果觉得有帮助到你，请给个star。App目前是第一版，所以存在很多问题，欢迎issues，事先谢过。附上github：[https://github.com/zskingking/zs-wan-android](https://github.com/zskingking/zs-wan-android)
